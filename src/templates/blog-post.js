@@ -54,6 +54,22 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
+const Meta = ({ post }) => {
+  const origin = 'https://0831hamz.netlify.com/';
+    
+  return (
+    <Helmet
+      title={`${post.frontmatter.title} | Blog`}
+      meta={[
+        { name: 'description', content: post.frontmatter.description },
+        { property: 'og:title', content: post.frontmatter.title },
+        { property: 'og:description', content: post.frontmatter.description },
+        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
+      ]}
+    />
+  );
+};
+
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
 
