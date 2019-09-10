@@ -54,7 +54,7 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-/*const Meta = ({ post }) => {
+const Meta = ({ post }) => {
   const origin = 'https://0831hamz.netlify.com/';
     
   return (
@@ -68,7 +68,7 @@ BlogPostTemplate.propTypes = {
       ]}
     />
   );
-};*/
+};
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
