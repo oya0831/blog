@@ -5,6 +5,7 @@ import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Content, { HTMLContent } from '../components/Content'
+import Img from 'gatsby-image'
 
 export const BlogPostTemplate = ({
   content,
@@ -15,7 +16,7 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-
+  console.log(helmet);
   return (
     <section className="section">
       {helmet || ''}
@@ -56,7 +57,6 @@ BlogPostTemplate.propTypes = {
 
 const Meta = ({ post }) => {
   const origin = 'https://0831hamz.netlify.com/';
-    
   return (
     <Helmet
       title={`${post.frontmatter.title} | Blog`}
@@ -79,15 +79,17 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        helmet={
+        /*helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
             <meta
               name="description"
               content={`${post.frontmatter.description}`}
             />
+            <Meta post={post}/>
           </Helmet>
-        }
+        }*/
+        helmet={<Meta post={post} />}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
       />
