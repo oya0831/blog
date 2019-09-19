@@ -18,7 +18,8 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-  console.log(image.childImageSharp.fluid);
+  let isImage = (image!=null)? true : false;
+
   return (
     <section className="section">
       {helmet || ''}
@@ -28,7 +29,7 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            <Img fluid={image.childImageSharp.fluid} alt="" />
+            {isImage && <Img fluid={image.childImageSharp.fluid} alt="" />}
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
@@ -122,7 +123,7 @@ export const pageQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid(maxWidth: 300) {
+            fluid(maxWidth: 800, quality:100) {
               ...GatsbyImageSharpFluid
             }
           }
