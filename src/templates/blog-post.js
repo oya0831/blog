@@ -4,8 +4,9 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
-import Content, { HTMLContent } from '../components/Content'
+//import styled from 'styled-components'
 import Img from 'gatsby-image'
+import Content, { HTMLContent } from '../components/Content'
 
 export const BlogPostTemplate = ({
   content,
@@ -13,10 +14,11 @@ export const BlogPostTemplate = ({
   description,
   tags,
   title,
+  image,
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-  console.log(helmet);
+  console.log(image.childImageSharp.fluid);
   return (
     <section className="section">
       {helmet || ''}
@@ -26,6 +28,7 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
+            <Img fluid={image.childImageSharp.fluid} alt="" />
             <p>{description}</p>
             <PostContent content={content} />
             {tags && tags.length ? (
@@ -57,6 +60,7 @@ BlogPostTemplate.propTypes = {
 
 const Meta = ({ post }) => {
   const origin = 'https://0831hamz.netlify.com/';
+  //const origin = 'https://localhost:8000';
   return (
     <Helmet
       title={`${post.frontmatter.title} | Blog`}
@@ -72,6 +76,7 @@ const Meta = ({ post }) => {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
+  console.log(post.frontmatter.image);
 
   return (
     <Layout>
@@ -92,6 +97,7 @@ const BlogPost = ({ data }) => {
         helmet={<Meta post={post} />}
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
+        image={post.frontmatter.image}
       />
     </Layout>
   )
@@ -114,8 +120,22 @@ export const pageQuery = graphql`
         date(formatString: "MMMM DD, YYYY")
         title
         description
+        image {
+          childImageSharp {
+            fluid(maxWidth: 300) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
         tags
       }
     }
   }
 `
+/*resolutions(width: 400) {
+              width
+              height
+              src
+              srcSet
+              */
+            
