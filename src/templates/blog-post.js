@@ -4,7 +4,6 @@ import { kebabCase } from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
-//import styled from 'styled-components'
 import Img from 'gatsby-image'
 import Content, { HTMLContent } from '../components/Content'
 
@@ -18,7 +17,6 @@ export const BlogPostTemplate = ({
   helmet,
 }) => {
   const PostContent = contentComponent || Content
-  let isImage = (image!=null)? true : false;
 
   return (
     <section className="section">
@@ -29,8 +27,10 @@ export const BlogPostTemplate = ({
             <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
               {title}
             </h1>
-            {isImage && <Img fluid={image.childImageSharp.fluid} alt="" />}
             <p>{description}</p>
+            {image ? (
+              <Img fluid={image.childImageSharp.fluid} alt="" />
+             ) : null}
             <PostContent content={content} />
             {tags && tags.length ? (
               <div style={{ marginTop: `4rem` }}>
@@ -59,22 +59,6 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const Meta = ({ post }) => {
-  const origin = 'https://0831hamz.netlify.com/';
-  //const origin = 'https://localhost:8000';
-  return (
-    <Helmet
-      title={`${post.frontmatter.title} | Blog`}
-      meta={[
-        { name: 'description', content: post.frontmatter.description },
-        { property: 'og:title', content: post.frontmatter.title },
-        { property: 'og:description', content: post.frontmatter.description },
-        { property: 'og:image', content: `${origin}${post.frontmatter.image}` },
-      ]}
-    />
-  );
-};
-
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
   console.log(post.frontmatter.image);
@@ -85,17 +69,15 @@ const BlogPost = ({ data }) => {
         content={post.html}
         contentComponent={HTMLContent}
         description={post.frontmatter.description}
-        /*helmet={
+        helmet={
           <Helmet titleTemplate="%s | Blog">
             <title>{`${post.frontmatter.title}`}</title>
             <meta
               name="description"
               content={`${post.frontmatter.description}`}
             />
-            <Meta post={post}/>
           </Helmet>
-        }*/
-        helmet={<Meta post={post} />}
+        }
         tags={post.frontmatter.tags}
         title={post.frontmatter.title}
         image={post.frontmatter.image}
@@ -123,7 +105,7 @@ export const pageQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid(maxWidth: 800, quality:100) {
+            fluid(maxWidth: 1000, quality:100) {
               ...GatsbyImageSharpFluid
             }
           }
@@ -133,10 +115,3 @@ export const pageQuery = graphql`
     }
   }
 `
-/*resolutions(width: 400) {
-              width
-              height
-              src
-              srcSet
-              */
-            
