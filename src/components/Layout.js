@@ -6,7 +6,6 @@ import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from "gatsby"
 /*今は使わないので削除*/
-//import mainImg from '../img/'
 //import PreviewMainImage from './PreviewMainImage'
 
 const TemplateWrapper = ({ children }) => {
