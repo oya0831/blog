@@ -5,12 +5,13 @@ import Navbar from '../components/Navbar'
 import './all.sass'
 import useSiteMetadata from './SiteMetadata'
 import { withPrefix } from "gatsby"
+/*今は使わないので削除*/
 //import mainImg from '../img/'
-import PreviewMainImage from './PreviewMainImage'
+//import PreviewMainImage from './PreviewMainImage'
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
-  const image = 'kinako.JPG'
+  //const image = 'kinako.JPG'
 
   return (
     <div>
@@ -49,7 +50,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <PreviewMainImage filename={image} />
+      {/*<PreviewMainImage filename={image} /> //今は削除*/}
       <Navbar />
       <div>{children}</div>
       <Footer />
