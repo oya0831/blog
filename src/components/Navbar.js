@@ -1,6 +1,5 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import github from '../img/github-icon.svg'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -53,13 +52,13 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-              <Link className="navbar-item" to="/about">
+              <Link className="navbar-item" to="/ham">
                 はむ日和
               </Link>
-              <Link className="navbar-item" to="/blog">
+              <Link className="navbar-item" to="/owner">
                 飼い主日和
               </Link>
-              <Link className="navbar-item" to="/contact">
+              <Link className="navbar-item" to="/story">
                 ネタ日和
               </Link>
           </div>
