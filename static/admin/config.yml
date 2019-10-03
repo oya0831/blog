@@ -11,7 +11,6 @@ collections:
     folder: "src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    folder1: "src/pages"
     fields:
       - {label: "Template Key", name: "templateKey", widget: "string", default: "blog-post"}
       - {label: "Title", name: "title", widget: "string"}
