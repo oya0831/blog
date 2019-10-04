@@ -12,15 +12,15 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "Template Key", name: "templateKey", widget: "string", default: "blog-post"}
-      - {label: "Title", name: "title", widget: "string"}
-      - {label: "Publish Date", name: "date", widget: "datetime"}
-      - {label: "Description", name: "description", widget: "text"}
-      #- {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      - {label: "Featured Image", name: "featuredimage", widget: "image"}
-      - {label: "Body", name: "body", widget: "markdown"}
-      - {label: "Image", name: "image", widget: "image"}
-      - {label: "Tags", name: "tags", widget: "list"}
+      - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "カテゴリ", name: "categoryKey", widget: "string", default: "ham"}
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "日付", name: "date", widget: "datetime"}
+      - {label: "見出し", name: "description", widget: "text"}
+      - {label: "見出し画像", name: "featuredimage", widget: "image"}
+      - {label: "内容", name: "body", widget: "markdown"}
+      - {label: "ブログ内画像", name: "image", widget: "image"}
+      - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "pages"
     label: "Pages"
