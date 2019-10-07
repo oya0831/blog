@@ -8,6 +8,8 @@ class BlogRoll extends React.Component {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
     console.log(posts);
+    var urlParam = window.location.href;
+    console.log(urlParam);
 
     return (
       <div className="columns is-multiline">
@@ -20,7 +22,7 @@ class BlogRoll extends React.Component {
                 }`}
               >
                 <header>
-                  {post.frontmatter.featuredimage ? (
+                  {post.frontmatter.categoryKey=="ham" && post.frontmatter.featuredimage ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
@@ -87,6 +89,7 @@ export default () => (
               frontmatter {
                 title
                 templateKey
+                categoryKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredimage {
                   childImageSharp {
