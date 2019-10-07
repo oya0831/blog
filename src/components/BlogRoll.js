@@ -4,15 +4,26 @@ import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 class BlogRoll extends React.Component {
-  componentDidMount() {
-    const urlParam = window.location.href;
-    console.log(urlParam);
+  constructor(props) {
+    super(props)
+    this.state = {
+      urlParam: ''
+    }
+  }
+
+  componentWillMount() {
+    this.setState(
+      {
+        urlParam: window.location.href
+      }
+    )
   }
 
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
     console.log(posts);
+    console.log(this.state.urlParam);
 
     return (
       <div className="columns is-multiline">
