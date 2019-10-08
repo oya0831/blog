@@ -25,9 +25,8 @@ export const BlogIndexPage = ({
 
 const BlogIndex = ({ location }) => {
   if (location.state) {
-    const state = String(location.state.fromFeed);
     return ( 
-      <BlogIndexPage param={state} />
+      <BlogIndexPage param={location.state.fromFeed} />
     )
   } else {
     return (

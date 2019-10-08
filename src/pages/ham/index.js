@@ -3,11 +3,10 @@ import React from 'react'
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 
-export const HamIndexPage = ({
-  location
-  }) => {
-    console.log(location.state.fromFeed);
+export default class HamIndexPage extends React.Component {
+  render() {
     return (
+      <Layout>
         <section className="section">
           <div className="container">
             <div className="content">
@@ -15,19 +14,7 @@ export const HamIndexPage = ({
             </div>
           </div>
         </section>
+      </Layout>
     )
+  }
 }
-
-
-
-const HamIndex = ({ location }) => {
-   return (
-    <Layout>
-      <HamIndexPage
-        location={location}
-      />
-    </Layout>
-    )
-}
-
-export default HamIndex
