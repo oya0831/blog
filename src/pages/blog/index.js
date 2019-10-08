@@ -6,7 +6,7 @@ import BlogRoll from '../../components/BlogRoll'
 export const BlogIndexPage = ({
   location
 }) => {
-  console.log(location.state.fromFeed);
+  console.log(location);
 
   return (
     <section className="section">
@@ -25,7 +25,7 @@ const BlogIndex = ({ location }) => {
   return (
     <Layout>
       <BlogIndexPage
-        location={location}
+        location={location.state.fromFeed}
       />
     </Layout>
   )
