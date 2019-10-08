@@ -22,13 +22,25 @@ export const BlogIndexPage = ({
 }
 
 const BlogIndex = ({ location }) => {
-  return (
-    <Layout>
-      <BlogIndexPage
-        location={location.state.fromFeed}
-      />
-    </Layout>
-  )
+  if (location.state) {
+    const state = location.state.fromFeed
+    return ( 
+      <Layout>
+        <BlogIndexPage
+          location={state}
+        />
+      </Layout>
+    )
+  } else {
+    return (
+      <Layout>
+        <BlogIndexPage
+          location={null}
+        />
+      </Layout>
+    )
+  }
+      
 }
 
 export default BlogIndex
