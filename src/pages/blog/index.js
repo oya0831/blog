@@ -4,43 +4,36 @@ import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 
 export const BlogIndexPage = ({
-  location
+  param
 }) => {
-  console.log(location);
+  console.log(param);
 
   return (
-    <section className="section">
-      <div className="container">
-        <div className="content">
-          <BlogRoll
-            location={location}
-          />
+    <Layout>
+      <section className="section">
+        <div className="container">
+          <div className="content">
+            <BlogRoll
+              param={param}
+            />
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </Layout>
   )
 }
 
 const BlogIndex = ({ location }) => {
   if (location.state) {
-    const state = location.state.fromFeed
+    const state = String(location.state.fromFeed);
     return ( 
-      <Layout>
-        <BlogIndexPage
-          location={state}
-        />
-      </Layout>
+      <BlogIndexPage param={state} />
     )
   } else {
     return (
-      <Layout>
-        <BlogIndexPage
-          location={null}
-        />
-      </Layout>
+      <BlogIndexPage param={null} />
     )
   }
-      
 }
 
 export default BlogIndex
