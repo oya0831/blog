@@ -8,7 +8,7 @@ class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-    console.log(this.props.state);
+    console.log(this.props)
 
     return (
       <div className="columns is-multiline">
@@ -62,6 +62,10 @@ class BlogRoll extends React.Component {
   }
 }
 
+Navbar.BlogRollContextTypes = {
+    location: PropTypes.location,
+}
+
 BlogRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
@@ -70,7 +74,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default ({ state }) => (
+export default ({ location }) => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -103,6 +107,6 @@ export default ({ state }) => (
         }
       }
     `}
-    render={(data) => <BlogRoll data={data} state={state}/>}
+    render={(data, location) => <BlogRoll data={data} location={location}/>}
   />
 )
