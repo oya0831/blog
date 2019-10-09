@@ -5,6 +5,7 @@ import BlogRoll from '../../components/BlogRoll'
 
 export class BlogIndexPage extends React.Component {
   render(){
+    console.log(this.props.state)
     return (
       <Layout>
         <section className="section">
