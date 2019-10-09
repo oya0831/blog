@@ -24,7 +24,7 @@ export class BlogIndexPage extends React.Component {
 export default ({ location }) => {
   if (location.state) {
     return ( 
-      <BlogIndexPage state={location.state.fromFeed} />
+      <BlogIndexPage state={location.state.path} />
     )
   } else {
     return (
