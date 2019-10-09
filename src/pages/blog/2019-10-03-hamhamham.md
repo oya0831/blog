@@ -1,5 +1,6 @@
 ---
 templateKey: blog-post
+categoryKey: ham
 title: hamhamham
 date: 2019-10-03T05:50:23.117Z
 description: hammmmmm
