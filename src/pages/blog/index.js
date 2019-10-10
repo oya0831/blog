@@ -4,6 +4,12 @@ import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 
 export class BlogIndexPage extends React.Component {
+  componentWillMount() {
+    this.setState({
+      state: this.props.state
+    })
+    console.log(this.props.state)
+  }
   render(){
     console.log(this.props.state)
     return (
