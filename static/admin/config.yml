@@ -9,7 +9,7 @@ collections:
   - name: "blog"
     label: "Blog"
     identifier_field: categoryKey
-    folder: "src/pages/blog/-{{identifier_field}}"
+    folder: "src/pages/blog/{identifier_field}"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
