@@ -3,39 +3,20 @@ import React from 'react'
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 
-export class BlogIndexPage extends React.Component {
-  componentWillMount() {
-    this.setState({
-      state: this.props.state
-    })
-    console.log(this.props.state)
-  }
-  render(){
-    console.log(this.props.state)
+export default class BlogIndexPage extends React.Component {
+ render(){
     return (
       <Layout>
         <section className="section">
           <div className="container">
             <div className="content">
               <BlogRoll
-                state={this.props.state}
+                state={this.props.state===undefined? "blog" : this.props.state}
               />
             </div>
           </div>
         </section>
       </Layout>
-    )
-  }
-}
-
-export default ({ location }) => {
-  if (location.state) {
-    return ( 
-      <BlogIndexPage state={location.state.path} />
-    )
-  } else {
-    return (
-      <BlogIndexPage state={null} />
     )
   }
 }
