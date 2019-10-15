@@ -49,7 +49,7 @@ const TemplateWrapper = ({ children }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <Link to="/" title="Kinako" state={{ path: "index" }}>
+      <Link to="/" title="Kinako">
         <PreviewMainImage filename={image} />
       </Link>
       <Navbar />
