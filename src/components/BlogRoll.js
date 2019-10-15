@@ -8,13 +8,14 @@ class BlogRoll extends React.Component {
     const { data } = this.props
     const categoryPath = this.props.state
     const { edges: posts } = data.allMarkdownRemark
-    console.log(categoryPath);
+    console.log(posts[0]);
+    console.log(categoryPath)
       
     return (
       <div className="columns is-multiline">
         {posts &&
           posts.map(({ node: post }) => (
-            post.frontmatter.categoryKey===categoryPath ? (
+            categoryPath==="blog" || post.frontmatter.categoryKey===categoryPath ? (
               <div className="is-parent column is-6" key={post.id}>
                 <article
                   className={`blog-list-item tile is-child box notification ${

@@ -13,6 +13,7 @@ export const IndexPageTemplate = ({
   mainpitch,
   description,
   intro,
+  state,
 }) => (
   <div>
     <section className="section section--gradient">
@@ -25,7 +26,7 @@ export const IndexPageTemplate = ({
                   <h3 className="has-text-weight-semibold is-size-2">
                     カテゴリ別最新の記事
                   </h3>
-                  <BlogRoll />
+                  <BlogRoll state={state}/>
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
                       Read more
@@ -53,7 +54,7 @@ IndexPageTemplate.propTypes = {
   }),
 }
 
-const IndexPage = ({ data }) => {
+const IndexPage = ({ location, data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
@@ -66,6 +67,7 @@ const IndexPage = ({ data }) => {
         mainpitch={frontmatter.mainpitch}
         description={frontmatter.description}
         intro={frontmatter.intro}
+        state={location.state ? location.state.path: null}
       />
     </Layout>
   )
