@@ -8,8 +8,6 @@ class BlogRoll extends React.Component {
     const { data } = this.props
     const categoryPath = this.props.state
     const { edges: posts } = data.allMarkdownRemark
-    console.log(posts[0])
-    console.log(categoryPath)
       
     return (
       <div className="columns is-multiline">
