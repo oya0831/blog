@@ -54,7 +54,7 @@ collections:
       - {label: "BlogImage", name: "image", widget: "image", required: false}
       - {label: "Tags", name: "tags", widget: "list"}
   
-  - name: "blog"
+  - name: "blogggg"
     label: "ぶろぐ"
     folder: "src/pages/blog/story"
     create: true
