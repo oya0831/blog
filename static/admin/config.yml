@@ -19,7 +19,7 @@ collections:
       - {label: "見出し", name: "description", widget: "text", required: false}
       - {label: "見出し画像", name: "featuredimage", widget: "image", required: false}
       - {label: "内容", name: "body", widget: "markdown"}
-      - {label: "ブログ内画像", name: "image", widget: "image", required: false}
+      - {label: "メイン画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "owner"
@@ -44,15 +44,15 @@ collections:
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
-      - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "story"}
-      - {label: "タイトル", name: "title", widget: "string"}
-      - {label: "日付", name: "date", widget: "datetime"}
-      - {label: "見出し", name: "description", widget: "text", required: false}
-      - {label: "見出し画像", name: "featuredimage", widget: "image", required: false}
-      - {label: "内容", name: "body", widget: "markdown"}
-      - {label: "ブログ内画像", name: "image", widget: "image", required: false}
-      - {label: "タグ", name: "tags", widget: "list"}
+      - {label: "Template", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "Category", name: "categoryKey", widget: "hidden", default: "story"}
+      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Publish Date", name: "date", widget: "datetime"}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "FeaturedImage", name: "featuredimage", widget: "image", required: false}
+      - {label: "Body", name: "body", widget: "markdown"}
+      - {label: "BlogImage", name: "image", widget: "image", required: false}
+      - {label: "Tags", name: "tags", widget: "list"}
   
   - name: "pages"
     label: "Pages"

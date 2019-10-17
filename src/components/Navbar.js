@@ -52,9 +52,6 @@ const Navbar = class extends React.Component {
             id="navMenu"
             className={`navbar-menu ${this.state.navBarActiveClass}`}
           >
-              <Link className="navbar-item" to="/blog" state={{ path: "blog" }}>
-                みんな日和
-              </Link>
               <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
                 はむ日和
               </Link>
