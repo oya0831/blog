@@ -109,8 +109,8 @@ collections:
         label: "うちはむ"
         name: "products"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page",required:false}
-          - {label: Title, name: title, widget: string,required:false}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
+          - {label: "Title", name: title, widget: string,required:false}
           - {label: Image, name: image, widget: image,required:false}
           - {label: Heading, name: heading, widget: string,required:false}
           - {label: Description, name: description, widget: string,required:false}
