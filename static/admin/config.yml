@@ -6,7 +6,7 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "ham"
+  - name: "hamg"
     label: "ブログ日和"
     folder: "src/pages/blog/ham"
     create: true
@@ -21,8 +21,6 @@ collections:
       - {label: "内容", name: "body", widget: "markdown"}
       - {label: "メイン画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
-
-   
 
 
   - name: "ham"
