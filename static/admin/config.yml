@@ -7,7 +7,7 @@ public_folder: /img
 
 collections:
   - name: "blog"
-    label: "Blog"
+    label: "ぶく"
     folder: "src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -34,7 +34,7 @@ collections:
 #      - {label: "Tags", name: "tags", widget: "list"}
  
   - name: "ham"
-    label: "はむ日和"
+    label: "Ham"
     folder: "src/pages/blog/ham"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
