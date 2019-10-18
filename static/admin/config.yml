@@ -7,8 +7,8 @@ public_folder: /img
 
 collections:
   - name: "blog"
-    label: "ブログ日和"
-    folder: "src/pages/blog/ham"
+    label: "Blog"
+    folder: "src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -22,7 +22,17 @@ collections:
       - {label: "メイン画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
 
-
+ 
+#    fields:
+#      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
+#      - {label: "Title", name: "title", widget: "string"}
+#      - {label: "Publish Date", name: "date", widget: "datetime"}
+#      - {label: "Description", name: "description", widget: "text"}
+#      - {label: "Featured Post", name: "featuredpost", widget: "boolean"}
+#      - {label: "Featured Image", name: "featuredimage", widget: image}
+#      - {label: "Body", name: "body", widget: "markdown"}
+#      - {label: "Tags", name: "tags", widget: "list"}
+ 
   - name: "ham"
     label: "はむ日和"
     folder: "src/pages/blog/ham"
