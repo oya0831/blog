@@ -3,12 +3,9 @@ import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
-import Testimonials from '../components/Testimonials'
-import Pricing from '../components/Pricing'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const ProductPageTemplate = ({
-  intro,
+export const HamzPageTemplate = ({
+  hamz,
 }) => (
   <div className="content">
     <section className="section section--gradient">
@@ -16,7 +13,7 @@ export const ProductPageTemplate = ({
         <div className="section">
           <div className="columns">
             <div className="column is-10 is-offset-1">
-              <Features gridItems={intro.blurbs} />
+              <Features gridItems={hamz.lists} />
             </div>
           </div>
         </div>
@@ -25,25 +22,25 @@ export const ProductPageTemplate = ({
   </div>
 )
 
-ProductPageTemplate.propTypes = {
-  intro: PropTypes.shape({
-    blurbs: PropTypes.array,
+HamzPageTemplate.propTypes = {
+  hamz: PropTypes.shape({
+    lists: PropTypes.array,
   }),
 }
 
-const ProductPage = ({ data }) => {
+const HamzPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
-      <ProductPageTemplate
-        intro={frontmatter.intro}
+      <HamzPageTemplate
+        hamz={frontmatter.hamz}
       />
     </Layout>
   )
 }
 
-ProductPage.propTypes = {
+HamzPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -51,14 +48,14 @@ ProductPage.propTypes = {
   }),
 }
 
-export default ProductPage
+export default HamzPage
 
-export const productPageQuery = graphql`
-  query ProductPage($id: String!) {
+export const hamzPageQuery = graphql`
+  query HamzPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
-        intro {
-          blurbs {
+        hamz {
+          lists {
             image {
               childImageSharp {
                 fluid(maxWidth: 240, quality: 64) {

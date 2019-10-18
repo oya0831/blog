@@ -1,7 +1,7 @@
 ---
-templateKey: product-page
-intro:
-  blurbs:
+templateKey: hamz-page
+hamz:
+  lists:
     - image: /img/01.png
       text: "きなこちゃん。2017年7月30日生まれの女の子。トイレと砂浴び場を使い分けることができるめちゃめちゃ賢い子です✨性格はおっとりしてます\U0001F439時々らっこ食いをさせてくれます、その姿がとても可愛い笑"
     - image: /img/img_6353.jpg

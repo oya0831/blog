@@ -61,7 +61,7 @@ const Navbar = class extends React.Component {
               <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
                 ネタ日和
               </Link>
-              <Link className="navbar-item" to="/products">
+              <Link className="navbar-item" to="/hamz">
                 はむちゃんず
               </Link>
 

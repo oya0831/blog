@@ -6,20 +6,6 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: "はむさん"
-    folder: "src/pages/blog/ham"
-    create: true
-    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    fields:
-      #- {label: "Template Key", name: "templateKey", widget: "hidden", default: "blog-post"}
-      #- {label: "Title", name: "title", widget: "string"}
-      #- {label: "Publish Date", name: "date", widget: "datetime"}
-      #- {label: "Description", name: "description", widget: "text"}
-      #- {label: "Featured Post", name: "featuredpost", widget: "boolean"}
-      #- {label: "Featured Image", name: "featuredimage", widget: image}
-      #- {label: "Body", name: "body", widget: "markdown"}
-      #- {label: "Tags", name: "tags", widget: "list"}
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "ham"}
       - {label: "タイトル", name: "title", widget: "string"}
@@ -34,7 +20,7 @@ collections:
 
 
   - name: "ham"
-    label: "はむ日和"
+    label: "はむ"
     folder: "src/pages/blog/ham"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -50,7 +36,7 @@ collections:
       - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "owner"
-    label: "飼い主日和"
+    label: "飼い主"
     folder: "src/pages/blog/owner"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -66,7 +52,7 @@ collections:
       - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "story"
-    label: "ネタ日和"
+    label: "ネタ"
     folder: "src/pages/blog"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -107,15 +93,7 @@ collections:
       
       - file: "src/pages/products/index.md"
         label: "うちはむ"
-        name: "products"
+        name: "hamz"
         fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "product-page"}
-          #- {label: Title, name: title, widget: string, required:false}
-          #- {label: Image, name: image, widget: image,required:false}
-          #- {label: Heading, name: heading, widget: string,required:false}
-          #- {label: Description, name: description, widget: string,required:false}
-          - {label: Intro, name: intro, widget: object, fields: [{label: Blurbs, name: blurbs, widget: list, fields: [{label: Image, name: image, widget: image}, {label: Text, name: text, widget: text}]}]}
-          #- {label: Main, name: main, widget: object, fields: [{label: Heading, name: heading, widget: string,required:false}, {label: Description, name: description, widget: text,required:false}, {label: Image1, name: image1, widget: object, fields: [{label: Image, name: image, widget: image,required:false}, {label: Alt, name: alt, widget: string,required:false}]}, {label: Image2, name: image2, widget: object, fields: [{label: Image, name: image, widget: image,required:false}, {label: Alt, name: alt, widget: string,required:false}]}, {label: Image3, name: image3, widget: object, fields: [{label: Image, name: image, widget: image,required:false}, {label: Alt, name: alt, widget: string,required:false}]}]}
-          #- {label: Testimonials, name: testimonials, widget: list, fields: [{label: Quote, name: quote, widget: string,required:false}, {label: Author, name: author, widget: string,required:false}]}
-          #- {label: Full_image, name: full_image, widget: image,required:false}
-          #- {label: Pricing, name: pricing, widget: object, fields: [{label: Heading, name: heading, widget: string,required:false}, {label: Description, name: description, widget: string,required:false}, {label: Plans, name: plans, widget: list, fields: [{label: Plan, name: plan, widget: string,required:false}, {label: Price, name: price, widget: string,required:false}, {label: Description, name: description, widget: string,required:false}, {label: Items, name: items, widget: list,required:false}]}]}
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "hamz-page"}
+          - {label: はむちゃんず, name: hamz, widget: object, fields: [{label: はむリスト, name: lists, widget: list, fields: [{label: 画像, name: image, widget: image}, {label: 紹介文, name: text, widget: text}]}]}
