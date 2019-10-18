@@ -7,7 +7,26 @@ public_folder: /img
 
 collections:
   - name: "ham"
-    label: "はむ"
+    label: "ブログ日和"
+    folder: "src/pages/blog/ham"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
+      - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "ham"}
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "日付", name: "date", widget: "datetime"}
+      - {label: "見出し", name: "description", widget: "text", required: false}
+      - {label: "見出し画像", name: "featuredimage", widget: "image", required: false}
+      - {label: "内容", name: "body", widget: "markdown"}
+      - {label: "メイン画像", name: "image", widget: "image", required: false}
+      - {label: "タグ", name: "tags", widget: "list"}
+
+   
+
+
+  - name: "ham"
+    label: "はむ日和"
     folder: "src/pages/blog/ham"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -23,7 +42,7 @@ collections:
       - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "owner"
-    label: "飼い主"
+    label: "飼い主日和"
     folder: "src/pages/blog/owner"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
@@ -39,8 +58,8 @@ collections:
       - {label: "タグ", name: "tags", widget: "list"}
 
   - name: "story"
-    label: "ネタ"
-    folder: "src/pages/blog"
+    label: "ネタ日和"
+    folder: "src/pages/blog/story"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
@@ -78,7 +97,7 @@ collections:
           - {label: "Title", name: "title", widget: "string"}
           - {label: "Body", name: "body", widget: "markdown"}
       
-      - file: "src/pages/products/index.md"
+      - file: "src/pages/hamz/index.md"
         label: "うちはむ"
         name: "hamz"
         fields:
