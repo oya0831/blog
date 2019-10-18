@@ -6,9 +6,9 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "blog"
-    label: "ぶく"
-    folder: "src/pages/blog"
+  - name: "ham"
+    label: "はむさん"
+    folder: "src/pages/blog/ham"
     create: true
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
