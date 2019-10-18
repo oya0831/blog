@@ -6,7 +6,7 @@ media_folder: static/img
 public_folder: /img
 
 collections:
-  - name: "haam"
+  - name: "blog"
     label: "はむさん"
     folder: "src/pages/blog/ham"
     create: true
@@ -33,7 +33,7 @@ collections:
 #      - {label: "Body", name: "body", widget: "markdown"}
 #      - {label: "Tags", name: "tags", widget: "list"}
  
-  - name: "ham"
+  - name: "blog"
     label: "Ham"
     folder: "src/pages/blog/ham"
     create: true
@@ -49,7 +49,7 @@ collections:
       - {label: "メイン画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
 
-  - name: "owner"
+  - name: "blog"
     label: "飼い主日和"
     folder: "src/pages/blog/owner"
     create: true
@@ -65,7 +65,7 @@ collections:
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
 
-  - name: "story"
+  - name: "blog"
     label: "ネタ日和"
     folder: "src/pages/blog/story"
     create: true
