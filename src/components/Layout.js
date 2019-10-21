@@ -9,7 +9,7 @@ import { Link } from 'gatsby'
 
 const TemplateWrapper = ({ children }) => {
   const { title, description } = useSiteMetadata()
-  const image = 'kinako.JPG'
+  const image = 'kinako.jpg'
 
   return (
     <div>
