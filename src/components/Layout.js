@@ -7,9 +7,9 @@ import { withPrefix } from "gatsby"
 import PreviewMainImage from './PreviewMainImage'
 import { Link } from 'gatsby'
 
-const TemplateWrapper = ({ children }) => {
+const TemplateWrapper = ({ children, state }) => {
   const { title, description } = useSiteMetadata()
-  const image = 'kinako.jpg'
+  const image = state==="index" ? 'kinako.jpg' : 'kinako2.jpg'
 
   return (
     <div>

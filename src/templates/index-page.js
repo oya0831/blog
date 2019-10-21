@@ -49,7 +49,7 @@ const IndexPage = ({ location, data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout>
+    <Layout state={"index"}>
       <IndexPageTemplate
         mainpitch={frontmatter.mainpitch}
       />

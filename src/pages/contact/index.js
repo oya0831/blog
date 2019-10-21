@@ -35,7 +35,7 @@ export default class Index extends React.Component {
 
   render() {
     return (
-      <Layout>
+      <Layout state={"contact"}>
         <section className="section">
           <div className="container">
             <h4>

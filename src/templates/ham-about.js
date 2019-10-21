@@ -32,7 +32,7 @@ const HamAboutPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout>
+    <Layout state={"ham-about"}>
       <HamAboutPageTemplate
         hamz={frontmatter.hamz}
       />
