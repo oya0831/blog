@@ -8,6 +8,7 @@ class BlogRoll extends React.Component {
     const { data } = this.props
     const categoryPath = this.props.state
     const { edges: posts } = data.allMarkdownRemark
+    console.log(posts[0].node.frontmatter.date);
       
     return (
       <div className="columns is-multiline">
@@ -52,7 +53,7 @@ class BlogRoll extends React.Component {
                     <br />
                     <br />
                     <Link className="button" to={post.fields.slug}>
-                      Keep Reading →
+                      続きを読む ≫
                     </Link>
                   </p>
                 </article>

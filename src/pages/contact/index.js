@@ -38,8 +38,15 @@ export default class Index extends React.Component {
       <Layout>
         <section className="section">
           <div className="container">
+            <h4>
+              ご意見などがございましたらぜひ下記よりご連絡くださいませ。
+              お待ちしております。
+            </h4>
+            {/*ここ後でリファクタリングすること*/}
+            <br/>
+            <br/>
+            <br/>
             <div className="content">
-              <h1>Contact</h1>
               <form
                 name="contact"
                 method="post"
@@ -58,7 +65,7 @@ export default class Index extends React.Component {
                 </div>
                 <div className="field">
                   <label className="label" htmlFor={'name'}>
-                    Your name
+                    名前：
                   </label>
                   <div className="control">
                     <input
@@ -73,7 +80,7 @@ export default class Index extends React.Component {
                 </div>
                 <div className="field">
                   <label className="label" htmlFor={'email'}>
-                    Email
+                    メールアドレス：
                   </label>
                   <div className="control">
                     <input
@@ -88,7 +95,7 @@ export default class Index extends React.Component {
                 </div>
                 <div className="field">
                   <label className="label" htmlFor={'message'}>
-                    Message
+                    内容：  
                   </label>
                   <div className="control">
                     <textarea
@@ -102,7 +109,7 @@ export default class Index extends React.Component {
                 </div>
                 <div className="field">
                   <button className="button is-link" type="submit">
-                    Send
+                    送信
                   </button>
                 </div>
               </form>

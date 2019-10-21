@@ -8,7 +8,7 @@ class BlogIndexRoll extends React.Component {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
 
-    //今だけゴリ押しで。気持ち悪いので修正したい。
+    //今だけゴリ押しで各カテゴリの最新の記事のみを取得。気持ち悪いので修正したい。
     let ham=0,owner=0,story=0;
     const str = posts.map( function( value ) {
       switch(value.node.frontmatter.categoryKey) {
@@ -77,7 +77,7 @@ class BlogIndexRoll extends React.Component {
                   <br />
                   <br />
                   <Link className="button" to={post.fields.slug}>
-                    Keep Reading →
+                    続きを読む ≫
                   </Link>
                 </p>
               </article>

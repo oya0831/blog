@@ -4,7 +4,7 @@ import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import Features from '../components/Features'
 
-export const HamzPageTemplate = ({
+export const HamAboutPageTemplate = ({
   hamz,
 }) => (
   <div className="content">
@@ -22,25 +22,25 @@ export const HamzPageTemplate = ({
   </div>
 )
 
-HamzPageTemplate.propTypes = {
+HamAboutPageTemplate.propTypes = {
   hamz: PropTypes.shape({
     lists: PropTypes.array,
   }),
 }
 
-const HamzPage = ({ data }) => {
+const HamAboutPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
-      <HamzPageTemplate
+      <HamAboutPageTemplate
         hamz={frontmatter.hamz}
       />
     </Layout>
   )
 }
 
-HamzPage.propTypes = {
+HamAboutPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
@@ -48,10 +48,10 @@ HamzPage.propTypes = {
   }),
 }
 
-export default HamzPage
+export default HamAboutPage
 
-export const hamzPageQuery = graphql`
-  query HamzPage($id: String!) {
+export const hamAboutPageQuery = graphql`
+  query HamAboutPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
         hamz {
