@@ -48,9 +48,18 @@ const TemplateWrapper = ({ children, state }) => {
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <Link to="/" title="Kinako">
+      <div className="main-image">
         <PreviewMainImage filename={image} />
-      </Link>
+        <Link to="/">
+          <h1 className="main-text">はむっと！</h1>
+        </Link>
+        <Link to="/about">
+          <h3 className="about-text">🐹このブログについて</h3>
+        </Link>
+        <Link to="/contact">
+          <h3 className="contact-text">🐹お問い合わせ</h3>
+        </Link>
+      </div>
       <Navbar />
       <div>{children}</div>
     </div>
