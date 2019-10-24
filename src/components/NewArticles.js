@@ -1,5 +1,4 @@
 const NewArticles = ({ posts }) => {
-  console.log(posts)
 
   let ham=0,owner=0,story=0;
   const str = posts.map( function( value ) {
