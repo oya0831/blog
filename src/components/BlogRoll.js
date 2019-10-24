@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import TranslateDate from './TranslateDate'
 
 class BlogRoll extends React.Component {
   render() {
@@ -43,7 +44,7 @@ class BlogRoll extends React.Component {
                       </Link>
                       <span> &bull; </span>
                       <span className="subtitle is-size-5 is-block">
-                        {post.frontmatter.date}
+                        <TranslateDate date={post.frontmatter.date} />
                       </span>
                     </p>
                   </header>

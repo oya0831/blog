@@ -2,43 +2,19 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import NewArticles from './NewArticles'
+import TranslateDate from './TranslateDate'
 
 class BlogIndexRoll extends React.Component {
   render() {
     const { data } = this.props
     const { edges: posts } = data.allMarkdownRemark
-
-    //今だけゴリ押しで各カテゴリの最新の記事のみを取得。気持ち悪いので修正したい。
-    let ham=0,owner=0,story=0;
-    const str = posts.map( function( value ) {
-      switch(value.node.frontmatter.categoryKey) {
-        case "ham": 
-          if(ham===0) {
-            ham++
-            return value
-          }
-          break;
-        case "owner":
-          if(owner===0) {
-            owner++
-            return value
-          }
-          break;
-        default:
-          if(story===0) {
-            story++
-            return value
-          }
-          break;
-      }
-    });
-    const results=str.filter(v => v);
+    const  results  = NewArticles({ posts })
 
     return (
       <div className="columns is-multiline">
         {results &&
           results.map(({ node: post }) => (
-            post!==undefined ? (
             <div className="is-parent column is-6" key={post.id}>
               <article
                 className={`blog-list-item tile is-child box notification ${
@@ -49,6 +25,7 @@ class BlogIndexRoll extends React.Component {
                   {post.frontmatter.featuredimage ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
+
                         imageInfo={{
                           image: post.frontmatter.featuredimage,
                           alt: `featured image thumbnail for post ${
@@ -68,7 +45,7 @@ class BlogIndexRoll extends React.Component {
                     </Link>
                     <span> &bull; </span>
                     <span className="subtitle is-size-5 is-block">
-                      {post.frontmatter.date}
+                      <TranslateDate date={post.frontmatter.date} />
                     </span>
                   </p>
                 </header>
@@ -82,7 +59,6 @@ class BlogIndexRoll extends React.Component {
                 </p>
               </article>
             </div>
-            ) : null
           ))}
       </div>
     )
