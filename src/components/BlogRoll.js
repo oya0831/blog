@@ -42,7 +42,7 @@ class BlogRoll extends React.Component {
                       >
                         {post.frontmatter.title}
                       </Link>
-                      <span> &bull; </span>
+                      <span> &shy; </span>
                       <span className="subtitle is-size-5 is-block">
                         <TranslateDate date={post.frontmatter.date} />
                       </span>
