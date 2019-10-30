@@ -11,6 +11,7 @@ const Navbar = class extends React.Component {
       navBarActiveClass: '',
       drawerActiveClass: '',
       importantTextActiveClass: 'navbar-layout',
+      drawerLayoutClass: '',
     }
   }
 
@@ -28,11 +29,13 @@ const Navbar = class extends React.Component {
               navBarActiveClass: 'is-active',
               drawerActiveClass: 'drawer-active',
               importantTextActiveClass: '',
+              drawerLayoutClass: 'drawer-layout'
             })
           : this.setState({
               navBarActiveClass: '',
               drawerActiveClass: '',
               importantTextActiveClass: 'navbar-layout',
+              drawerLayoutClass: ''
             })
       }
     )
@@ -41,7 +44,7 @@ const Navbar = class extends React.Component {
   render() {
     const { data } = this.props
     const image = this.props.state==="index" ? data.main : data.sub
-    const blogNavBar = this.props.state==='index' ? 'index-position': 'nav-position'
+    const imagePosition = this.props.state==='index' ? 'index-position': 'other-position'
 
     return (
       <div className="main-navbar">
@@ -62,59 +65,67 @@ const Navbar = class extends React.Component {
            
           <div
             id="navMenu"
-            className={`navbar-menu ${this.state.navBarActiveClass}`}
+            className={`navbar-menu ${this.state.navBarActiveClass} ${this.state.drawerLayoutClass}`}
           >
             { this.state.active &&
               <>
-                <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
+                <Link className="navbar-item text-layout" to="/blog/ham" state={{ path: "ham" }}>
                   はむ日和
                 </Link>
-                <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
+                <Link className="navbar-item text-layout" to="/blog/owner" state={{ path: "owner" }}>
                   飼い主日和
                 </Link>
-                <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
+                <Link className="navbar-item text-layout" to="/blog/story" state={{ path: "story" }}>
                   ネタ日和
                 </Link>
-                <Link className="navbar-item" to="/hamz" state={{ path: "hamz" }}>
+                <Link className="navbar-item text-layout" to="/hamz" state={{ path: "hamz" }}>
                   うちのはむちゃんず
                 </Link>
               </>
             }
-            <Link className={`navbar-item ${this.state.importantTextActiveClass}`} to="/about">
-              <span role="img" aria-label="ham">🐹</span>
+            <Link className="navbar-item text-layout" to="/about">
+              { this.state.active===false && <span role="img" aria-label="ham">🐹</span> }
               このブログについて
             </Link>
-            <Link className={`navbar-item ${this.state.importantTextActiveClass}`} to="/contact">
-              <span role="img" aria-label="ham">🐹</span>
+            <Link className="navbar-item text-layout" to="/contact">
+              { this.state.active===false && <span role="img" aria-label="ham">🐹</span> }
               お問い合わせ
             </Link>
           </div>
         </div>
-        { this.state.active==false &&
-          <div className={blogNavBar}>
+        { this.state.active===false &&
+          <div>
             <div
               id="navMenu"
               className="navbar-menu"
             >
-              <Link className="navbar-item navbar-layout" to="/blog/ham" state={{ path: "ham" }}>
+             <div className="column is-4 has-text-centered">
+              <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
                 はむ日和
               </Link>
-              <Link className="navbar-item navbar-layout" to="/blog/owner" state={{ path: "owner" }}>
+              </div>
+              <div className="column is-4">
+              <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
                 飼い主日和
               </Link>
-              <Link className="navbar-item navbar-layout" to="/blog/story" state={{ path: "story" }}>
+              </div>
+              <div className="column is-4">
+              <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
                 ネタ日和
               </Link>
-              <Link to="/hamz">
-                <div 
-                  style={{
-                    width: '50px',
-                    display: 'inline-block'
-                  }}
-                >
-                  <PreviewCompatibleImage  imageInfo={{image: data.hamz, alt:"kinako"}}/>
-                </div>
-              </Link>
+              </div>
+              <div className={imagePosition}>
+                <Link to="/hamz">
+                  <div 
+                    style={{
+                      width: '50px',
+                      display: 'inline-block'
+                    }}
+                  >
+                    <PreviewCompatibleImage  imageInfo={{image: data.hamz, alt:"kinako"}}/>
+                  </div>
+                </Link>
+              </div>
             </div>
           </div>
         }
