@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import Layout from '../components/Layout'
-import Features from '../components/Features'
+import HamAboutFeatures from '../components/HamAboutFeatures'
 
 export const HamAboutPageTemplate = ({
   hamz,
@@ -12,7 +12,7 @@ export const HamAboutPageTemplate = ({
       <div className="container">
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <Features gridItems={hamz.lists} />
+            <HamAboutFeatures gridItems={hamz.lists} />
           </div>
         </div>
       </div>

@@ -15,10 +15,12 @@ export const IndexPageTemplate = ({
       <div className="container">
         <div className="columns">
           <div className="column is-12 has-text-centered">
-            <h4>
+          <Link className="btn" to="/news">
+            <div className="subtitle is-6">
               New!! <TranslateDate date={date} />
-            </h4>
-            <h3 className="subtitle">{mainpitch}</h3>
+            </div>
+            <div className="subtitle">{mainpitch}</div>
+          </Link>
           </div>
         </div>
         <br/>
