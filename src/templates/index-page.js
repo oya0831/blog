@@ -50,7 +50,7 @@ export const IndexPageTemplate = ({
 
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,
-  date: PropTypes.string,
+  date: PropTypes.number,
 }
 
 const IndexPage = ({ data }) => {
