@@ -11,7 +11,7 @@ $body-color: #333
 $black: #2b2523
 
 .navbar .navbar-menu
-  box-shadow:none !important
+  box-shadow: none !important
 
 .content .taglist
   list-style: none
@@ -122,29 +122,52 @@ $menu-label-color: $white-ter
   flex-basis: 35%;
   margin: 0 1.5em 0 0;
 
-//main image
-.main-image
+//main navgation
+.main-navbar
   position: relative;
 .main-text
   position: absolute;
   color: white;
   top: 0;
   left: 0;
-.about-text
-  position: absolute;
-  color: white;
-  top: 0;
-  right: 10%;
-.contact-text
-  position: absolute;
-  color: white;
-  top: 0;
-  right: 1%;
-.hamz-text
-  position: absolute;
-  color: white;
-  top: 75%;
-  right: 8%;
+.other-position
+  position: absolute !important;
+  top: 40%;
+  right: 15%;
+  background-color: transparent !important;
+.index-position
+  position: absolute !important;
+  top: 55%;
+  right: 17%;
+  background-color: transparent !important;
+.burger-position
+  position: absolute !important;
+  top: 0%;
+  right: 0%;
+  background-color: transparent !important;
+.about-position
+  position: absolute !important;
+  top: 0%;
+  right: 14%;
+  background-color: transparent !important;
+.contact-position
+  position: absolute !important;
+  top: 0%;
+  right: 2%;
+  background-color: transparent !important;
+.burger-layout
+  z-index: 40;
+.text-layout
+  background-color: transparent !important;
+  color: white !important;
+.drawer-layout
+  border-top-left-radius: 10px !important;
+  border-bottom-left-radius: 10px !important;
+  background-color: #996633 !important;
+  position: absolute !important;
+  z-index: 30;
+  top: 0%;
+  right: 0%;
 
 @import "~bulma"
 
