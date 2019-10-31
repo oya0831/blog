@@ -8,6 +8,7 @@ const IndexPagePreview = ({ entry, getAsset }) => {
   if (data) {
     return (
       <IndexPageTemplate
+        date={data.date || {}}
         mainpitch={data.mainpitch || {}}
       />
     )

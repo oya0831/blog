@@ -4,15 +4,20 @@ import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import BlogIndexRoll from '../components/BlogIndexRoll'
+import TranslateDate from '../components/TranslateDate'
 
 export const IndexPageTemplate = ({
   mainpitch,
+  date,
 }) => (
   <div>
     <section className="section section--gradient">
       <div className="container">
         <div className="columns">
           <div className="column is-12 has-text-centered">
+            <h4>
+              New!! <TranslateDate date={date} />
+            </h4>
             <h3 className="subtitle">{mainpitch}</h3>
           </div>
         </div>
@@ -43,15 +48,17 @@ export const IndexPageTemplate = ({
 
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,
+  date: PropTypes.string,
 }
 
-const IndexPage = ({ location, data }) => {
+const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
     <Layout state={"index"}>
       <IndexPageTemplate
         mainpitch={frontmatter.mainpitch}
+        date={frontmatter.date}
       />
     </Layout>
   )
@@ -71,6 +78,7 @@ export const pageQuery = graphql`
   query IndexPageTemplate {
     markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
       frontmatter {
+        date(formatString: "MMMM DD, YYYY")
         mainpitch 
       }
     }
