@@ -9,10 +9,7 @@ const Navbar = class extends React.Component {
     this.state = {
       active: false,
       navBarActiveClass: '',
-      drawerActiveClass: '',
-      importantTextActiveClass: 'navbar-layout',
       drawerLayoutClass: '',
-      importantTextLayoutClass: 'burger-position',
       aboutTextPositionClass: 'about-position',
       contactTextPositionClass: 'contact-position',
     }
@@ -30,19 +27,13 @@ const Navbar = class extends React.Component {
         this.state.active
           ? this.setState({
               navBarActiveClass: 'is-active',
-              drawerActiveClass: 'drawer-active',
-              importantTextActiveClass: '',
               drawerLayoutClass: 'drawer-layout',
-              importantTextLayoutClass: '',
               aboutTextPositionClass: '',
               contactTextPositionClass: '',
             })
           : this.setState({
               navBarActiveClass: '',
-              drawerActiveClass: '',
-              importantTextActiveClass: 'navbar-layout',
               drawerLayoutClass: '',
-              importantTextLayoutClass: 'burger-position',
               aboutTextPositionClass: 'about-position',
               contactTextPositionClass: 'contact-position',
             })
@@ -98,32 +89,32 @@ const Navbar = class extends React.Component {
                 <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
                   はむ日和
                 </Link>
-                </div>
-                <div className="column is-4">
-                  <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
-                    飼い主日和
-                  </Link>
-                </div>
-                <div className="column is-4">
-                  <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
-                    ネタ日和
-                  </Link>
-                </div>
-                <div className={imagePosition}>
-                  <Link to="/hamz">
-                    <div 
-                      style={{
-                        width: '50px',
-                        display: 'inline-block'
-                      }}
-                    >
-                      <PreviewCompatibleImage  imageInfo={{image: data.hamz, alt:"kinako"}}/>
-                    </div>
-                  </Link>
-                </div>
-              </>
+              </div>
+              <div className="column is-4">
+                <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
+                  飼い主日和
+                </Link>
+              </div>
+              <div className="column is-4">
+                <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
+                  ネタ日和
+                </Link>
+              </div>
+              <div className={imagePosition}>
+                <Link to="/hamz">
+                  <div 
+                    style={{
+                      width: '50px',
+                      display: 'inline-block'
+                    }}
+                  >
+                    <PreviewCompatibleImage  imageInfo={{image: data.hamz, alt:"kinako"}}/>
+                  </div>
+                </Link>
+              </div>
+            </>
           }
-
+          
           <div className={`${this.state.aboutTextPositionClass}`}>
             <Link className="navbar-item text-layout" to="/about">
               { this.state.active === false && <span role="img" aria-label="ham">🐹</span> }
