@@ -70,7 +70,7 @@ collections:
         name: "news"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
-          - {label: ニュース一覧, name: news, widget: object, fields: [{label: はむ, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 内容, name: body, widget: markdown}]}]}
+          - {label: ニュース一覧, name: news, widget: object, fields: [{label: ニュース, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 内容, name: body, widget: markdown}]}]}
 
       - file: "src/pages/about/index.md"
         label: "このブログについて"
