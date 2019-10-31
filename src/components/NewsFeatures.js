@@ -21,7 +21,7 @@ const NewsFeatureGrid = ({ gridItems }) => (
 NewsFeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
-      date: PropTypes.number,
+      date: PropTypes.string,
       title: PropTypes.string,
       body: PropTypes.string,
     })

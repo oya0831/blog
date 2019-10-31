@@ -2,7 +2,7 @@ import React from 'react'
 
 export default class TranslateDate extends React.Component {
   render() {
-    const date = this.props.date.split(" ")
+    const date = String(this.props.date).split(" ")
 
     const month = (() => {
       switch (date[0]) {
