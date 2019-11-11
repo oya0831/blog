@@ -6,6 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import Content, { HTMLContent } from '../components/Content'
+import { Disqus } from 'gatsby-plugin-disqus'
 
 export const BlogPostTemplate = ({
   content,
@@ -59,8 +60,13 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const BlogPost = ({ data }) => {
+const BlogPost = ({ location, data }) => {
   const { markdownRemark: post } = data
+  let disqusConfig = {
+    url: location.href,
+    identifier: post.frontmatter.id,
+    title: post.frontmatter.title,
+  }                
 
   return (
     <Layout state={"blog"}>
@@ -81,6 +87,18 @@ const BlogPost = ({ data }) => {
         title={post.frontmatter.title}
         image={post.frontmatter.image}
       />
+      <section className="section">
+        <div className="container">
+          <div className="columns">
+            {/*
+            <div className="column is-10 is-offset-1">
+              //コメント欄
+              <Disqus config={disqusConfig} />
+            </div>
+            */}
+          </div>
+        </div>
+      </section>
     </Layout>
   )
 }

@@ -36,23 +36,22 @@ class BlogRoll extends React.Component {
                       ) : null
                     }
                     <p className="post-meta">
+                      <span className="blog-text-layout is-size-6 is-block">
+                        <TranslateDate date={post.frontmatter.date} />
+                      </span>
                       <Link
-                        className="title has-text-primary is-size-4"
+                        className="blog-slug-text is-size-4"
                         to={post.fields.slug}
                       >
                         {post.frontmatter.title}
                       </Link>
-                      <span> &shy; </span>
-                      <span className="subtitle is-size-5 is-block">
-                        <TranslateDate date={post.frontmatter.date} />
-                      </span>
                     </p>
                   </header>
                   <p>
-                    {post.excerpt}
+                    <div className="blog-text-layout">{post.excerpt}</div>
                     <br />
                     <br />
-                    <Link className="button" to={post.fields.slug}>
+                    <Link className="button blog-read-text" to={post.fields.slug}>
                       続きを読む ≫
                     </Link>
                   </p>

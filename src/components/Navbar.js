@@ -2,6 +2,8 @@ import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import './all.sass'
+import Img from 'gatsby-image'
+import css from 'gatsby-plugin-glamor'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -9,7 +11,7 @@ const Navbar = class extends React.Component {
     this.state = {
       active: false,
       navBarActiveClass: '',
-      drawerLayoutClass: '',
+      drawerLayoutClass: 'pc-layout',
       aboutTextPositionClass: 'about-position',
       contactTextPositionClass: 'contact-position',
     }
@@ -33,7 +35,7 @@ const Navbar = class extends React.Component {
             })
           : this.setState({
               navBarActiveClass: '',
-              drawerLayoutClass: '',
+              drawerLayoutClass: 'pc-layout',
               aboutTextPositionClass: 'about-position',
               contactTextPositionClass: 'contact-position',
             })
@@ -45,6 +47,7 @@ const Navbar = class extends React.Component {
     const { data } = this.props
     const image = this.props.state==="index" ? data.main : data.sub
     const imagePosition = this.props.state==='index' ? 'index-position': 'other-position'
+    console.log(data.ham_before)
 
     return (
       <div className="main-navbar">
@@ -85,19 +88,103 @@ const Navbar = class extends React.Component {
             </>
             :  
             <>
-              <div className="column is-4 has-text-centered">
-                <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
-                  はむ日和
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/ham" state={{ path: "ham" }}>
+                  <div 
+                    style={{
+                      position: 'relative'
+                    }}
+                  >
+                  <div
+                    style={{
+                      width: '220px',
+                      position: 'absolute',
+                    }}
+                    >
+                     
+                    <PreviewCompatibleImage  imageInfo={{image: data.ham_before, alt:"kinako"}}/>
+                    </div>
+                    
+                    <div 
+                      css={{
+                      width: '220px',
+                      position: 'absolute',
+                      opacity: 0,
+                      ':hover': {
+                        opacity: 0.7,
+                      }
+                      }}
+                    >
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
+
+                  </div>
                 </Link>
               </div>
-              <div className="column is-4">
-                <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
-                  飼い主日和
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/owner" state={{ path: "owner" }}>
+                  <div 
+                    style={{
+                      position: 'relative'
+                    }}
+                  >
+                  <div
+                    style={{
+                      width: '220px',
+                      position: 'absolute',
+                    }}
+                    >
+                     
+                    <PreviewCompatibleImage  imageInfo={{image: data.owner_before, alt:"kinako"}}/>
+                    </div>
+                    
+                    <div 
+                      css={{
+                      width: '220px',
+                      position: 'absolute',
+                      opacity: 0,
+                      ':hover': {
+                        opacity: 0.7,
+                      }
+                      }}
+                    >
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
+
+                  </div>
                 </Link>
               </div>
-              <div className="column is-4">
-                <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
-                  ネタ日和
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/story" state={{ path: "story" }}>
+                 <div 
+                    style={{
+                      position: 'relative'
+                    }}
+                  >
+                  <div
+                    style={{
+                      width: '220px',
+                      position: 'absolute',
+                    }}
+                    >
+                     
+                    <PreviewCompatibleImage  imageInfo={{image: data.story_before, alt:"kinako"}}/>
+                    </div>
+                    
+                    <div 
+                      css={{
+                      width: '220px',
+                      position: 'absolute',
+                      opacity: 0,
+                      ':hover': {
+                        opacity: 0.7,
+                      }
+                      }}
+                    >
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
+
+                  </div>
                 </Link>
               </div>
               <div className={imagePosition}>
@@ -158,6 +245,35 @@ export default ({ state }) => (
             }
           }
         }
+        ham_before:file(relativePath: {eq: "ham-before.png"}) {
+          childImageSharp{
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        ham_after:file(relativePath: {eq: "after.png"}) {
+          childImageSharp{
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        owner_before:file(relativePath: {eq: "owner-before.png"}) {
+          childImageSharp{
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+        story_before:file(relativePath: {eq: "story-before.png"}) {
+          childImageSharp{
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
+
       }
     `}
     render={(data) => <Navbar data={data} state={state} />}

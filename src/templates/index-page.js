@@ -5,6 +5,7 @@ import { Link, graphql } from 'gatsby'
 import Layout from '../components/Layout'
 import BlogIndexRoll from '../components/BlogIndexRoll'
 import TranslateDate from '../components/TranslateDate'
+import '../components/all.sass'
 
 export const IndexPageTemplate = ({
   mainpitch,
@@ -16,10 +17,10 @@ export const IndexPageTemplate = ({
         <div className="columns">
           <div className="column is-12 has-text-centered">
           <Link className="btn" to="/news">
-            <div className="subtitle is-6">
+            <div className="news-date">
               New!! <TranslateDate date={date} />
             </div>
-            <div className="subtitle">{mainpitch}</div>
+            <div className="news-text">{mainpitch}</div>
           </Link>
           </div>
         </div>
@@ -29,13 +30,10 @@ export const IndexPageTemplate = ({
             <div className="column is-10 is-offset-1">
               <div className="content">
                 <div className="column is-12">
-                  <h2 className="has-text-weight-semibold">
-                    カテゴリ別最新の記事
-                  </h2>
                   <BlogIndexRoll />
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
-                      もっとはむっと！
+                      全部見る ≫
                     </Link>
                   </div>
                 </div>

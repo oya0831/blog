@@ -8,9 +8,13 @@ const NewsFeatureGrid = ({ gridItems }) => (
     {gridItems.map(item => (
       <div key={item.date} className="column is-12">
         <section className="section">
-          <p>
-            <TranslateDate date={item.date} />更新  {item.title}
-          </p>
+          <div>
+            <TranslateDate date={item.date} />
+          </div>
+          <div>
+            {item.title}
+          </div>
+          <br/>
           <p>{item.body}</p>
         </section>
       </div>
