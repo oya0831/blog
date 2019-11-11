@@ -3,14 +3,17 @@ import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import TranslateDate from './TranslateDate'
+import TagsList from './TagsList'
 
 class BlogRoll extends React.Component {
   render() {
     const { data } = this.props
     const categoryPath = this.props.state
     const { edges: posts } = data.allMarkdownRemark
+    console.log(posts[0].node.frontmatter.tags)
       
     return (
+    <>
       <div className="columns is-multiline">
         {posts &&
           posts.map(({ node: post }) => (
@@ -61,6 +64,7 @@ class BlogRoll extends React.Component {
             ) : null
           ))}
       </div>
+      </>
     )
   }
 }
@@ -103,6 +107,7 @@ export default ({ state }) => (
                     }
                   }
                 }
+                tags
               }
             }
           }
