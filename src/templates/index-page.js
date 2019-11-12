@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
-import BlogIndexRoll from '../components/BlogIndexRoll'
+import BlogRoll from '../components/BlogRoll'
 import TranslateDate from '../components/TranslateDate'
 
 export const IndexPageTemplate = ({
@@ -32,7 +32,7 @@ export const IndexPageTemplate = ({
                   <h2 className="has-text-weight-semibold">
                     カテゴリ別最新の記事
                   </h2>
-                  <BlogIndexRoll />
+                  <BlogRoll state={"index"}/>
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
                       もっとはむっと！

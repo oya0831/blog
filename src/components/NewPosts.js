@@ -1,30 +1,31 @@
-const NewArticles = ({ posts }) => {
+const NewPosts = ({ posts }) => {
 
   let ham=0,owner=0,story=0;
-  const str = posts.map( function( value ) {
+  const str = posts.map(value => {
     switch(value.node.frontmatter.categoryKey) {
-      case "ham": 
+      case "ham" : 
         if(ham===0) {
           ham++
           return value
         }
-        break;
-      case "owner":
+        return null
+      case "owner" :
         if(owner===0) {
           owner++
           return value
         }
-        break;
-      default:
+        return null
+      default :
         if(story===0) {
           story++
           return value
         }
+        return null
     }
-  });
+  })
   const results=str.filter(str => str);
 
   return results
 }
 
-export default NewArticles
+export default NewPosts

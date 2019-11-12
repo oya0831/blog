@@ -2,65 +2,65 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import ByCategoryPosts from './ByCategoryPosts'
+import NewPosts from './NewPosts'
 import TranslateDate from './TranslateDate'
 
 class BlogRoll extends React.Component {
   render() {
-    const { data } = this.props
-    const categoryPath = this.props.state
-    const { edges: posts } = data.allMarkdownRemark
-      
+    const results = this.props.results
+
     return (
+    <>
       <div className="columns is-multiline">
-        {posts &&
-          posts.map(({ node: post }) => (
-            categoryPath==="blog" || post.frontmatter.categoryKey===categoryPath ? (
-              <div className="is-parent column is-6" key={post.id}>
-                <article
-                  className={`blog-list-item tile is-child box notification ${
-                    post.frontmatter.featuredimage ? 'is-featured' : ''
-                  }`}
-                >
-                  <header>
-                    {post.frontmatter.featuredimage ? (
-                      <div className="featured-thumbnail">
-                        <PreviewCompatibleImage
-                          imageInfo={{
-                            image: post.frontmatter.featuredimage,
-                            alt: `featured image thumbnail for post ${
-                              post.title
-                            }`,
-                          }}
-                        />
-                      </div>
-                      ) : null
-                    }
-                    <p className="post-meta">
-                      <Link
-                        className="title has-text-primary is-size-4"
-                        to={post.fields.slug}
-                      >
-                        {post.frontmatter.title}
-                      </Link>
-                      <span> &shy; </span>
-                      <span className="subtitle is-size-5 is-block">
-                        <TranslateDate date={post.frontmatter.date} />
-                      </span>
-                    </p>
-                  </header>
-                  <p>
-                    {post.excerpt}
-                    <br />
-                    <br />
-                    <Link className="button" to={post.fields.slug}>
-                      続きを読む ≫
+        {results &&
+          results.map(({ node: result }) => (
+            <div className="is-parent column is-6" key={result.id}>
+              <article
+                className={`blog-list-item tile is-child box notification ${
+                  result.frontmatter.featuredimage ? 'is-featured' : ''
+                }`}
+              >
+                <header>
+                  {result.frontmatter.featuredimage ? (
+                    <div className="featured-thumbnail">
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: result.frontmatter.featuredimage,
+                          alt: `featured image thumbnail for result ${
+                            result.title
+                          }`,
+                        }}
+                      />
+                    </div>
+                    ) : null
+                  }
+                  <p className="post-meta">
+                    <Link
+                      className="title has-text-primary is-size-4"
+                      to={result.fields.slug}
+                    >
+                      {result.frontmatter.title}
                     </Link>
+                    <span> &shy; </span>
+                    <span className="subtitle is-size-5 is-block">
+                      <TranslateDate date={result.frontmatter.date} />
+                    </span>
                   </p>
-                </article>
-              </div>
-            ) : null
+                </header>
+                <p>
+                  {result.excerpt}
+                  <br />
+                  <br />
+                  <Link className="button" to={result.fields.slug}>
+                    続きを読む ≫
+                  </Link>
+                </p>
+              </article>
+            </div>
           ))}
-      </div>
+        </div>
+      </>
     )
   }
 }
@@ -73,10 +73,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-
-
-
-export default ({ state }) => (
+export default ({ state, tagsdata }) => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -103,12 +100,25 @@ export default ({ state }) => (
                     }
                   }
                 }
+                tags
               }
             }
           }
         }
       }
     `}
-    render={(data) => <BlogRoll data={data} state={state}/>}
+    render={(data) => {
+      const { edges: posts } = data.allMarkdownRemark
+      const results = (function(state) {
+        switch (state) {
+          case "index": return NewPosts({ posts })
+          case "tags": return tagsdata
+          case "blog" : return posts
+          default : return ByCategoryPosts({ posts, state })
+        }
+      })(state)
+
+      return <BlogRoll results={results} state={state}/>
+    }}
   />
 )
