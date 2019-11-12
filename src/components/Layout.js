@@ -5,15 +5,17 @@ import Navbar from '../components/Navbar'
 import useSiteMetadata from './SiteMetadata'
 import './all.sass'
 
-export default class TemplateWrapper extends React.Component {
-  render() {
-    const { title, description } = useSiteMetadata
-    return (
-      <div>
-        <Helmet>
-          <html lang="ja" />
-          <title>{title}</title>
-          <meta name="description" content={description} />
+const TemplateWrapper = ({
+  children,
+  state
+}) => {
+  const { title, description } = useSiteMetadata()
+  return (
+    <div>
+      <Helmet>
+        <html lang="ja" />
+        <title>{title}</title>
+        <meta name="description" content={description} />
 
           {/*ファビコン画像をあとで設定すること
           <link
@@ -41,15 +43,16 @@ export default class TemplateWrapper extends React.Component {
           />
           */}
 
-          <meta name="theme-color" content="#fff" />
-          <meta property="og:type" content="business.business" />
-          <meta property="og:title" content={title} />
-          <meta property="og:url" content="/" />
-          <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
-        </Helmet>
-        <Navbar state={this.props.state}/>
-        {this.props.children}
-      </div>
-    )
-  }
+        <meta name="theme-color" content="#fff" />
+        <meta property="og:type" content="business.business" />
+        <meta property="og:title" content={title} />
+        <meta property="og:url" content="/" />
+        <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
+      </Helmet>
+      <Navbar state={state}/>
+      {children}
+    </div>
+  )
 }
+
+export default TemplateWrapper
