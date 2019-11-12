@@ -2,8 +2,8 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Category from './Category'
-import NewArticles from './NewArticles'
+import ByCategoryPosts from './ByCategoryPosts'
+import NewPosts from './NewPosts'
 import TranslateDate from './TranslateDate'
 
 class BlogRoll extends React.Component {
@@ -111,10 +111,10 @@ export default ({ state, tagsdata }) => (
       const { edges: posts } = data.allMarkdownRemark
       const results = (function(state) {
         switch (state) {
-          case "index": return NewArticles({ posts })
+          case "index": return NewPosts({ posts })
           case "tags": return tagsdata
           case "blog" : return posts
-          default : return Category({ posts, state })
+          default : return ByCategoryPosts({ posts, state })
         }
       })(state)
 

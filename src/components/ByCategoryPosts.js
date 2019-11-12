@@ -1,4 +1,4 @@
-const Category = ({ posts,state }) => {
+const ByCategoryPosts = ({ posts,state }) => {
   const str = posts.map(value => {
     if(value.node.frontmatter.categoryKey===state) {
       return value
@@ -12,4 +12,4 @@ const Category = ({ posts,state }) => {
   return results
 }
 
-export default Category
+export default ByCategoryPosts
