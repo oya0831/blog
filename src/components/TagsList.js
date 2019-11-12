@@ -7,7 +7,6 @@ const TagsList = ({
     allMarkdownRemark: { group },
   }
 }) => {
-  console.log(group)
   return(
     <>
     {group.map(tag => (
