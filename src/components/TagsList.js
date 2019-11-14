@@ -9,13 +9,13 @@ const TagsList = ({
 }) => {
   return(
     <>
-    {group.map(tag => (
-      <div key={tag.fieldValue}>
-        <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-          {tag.fieldValue} ({tag.totalCount})
-        </Link>
-      </div>
-    ))}
+      {group.map(tag => (
+        <div key={tag.fieldValue}>
+          <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
+            {tag.fieldValue} ({tag.totalCount})
+          </Link>
+        </div>
+      ))}
     </>
   )
 }

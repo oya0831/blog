@@ -1,9 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-import './all.sass'
 import Img from 'gatsby-image'
-import css from 'gatsby-plugin-glamor'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -47,7 +45,6 @@ const Navbar = class extends React.Component {
     const { data } = this.props
     const image = this.props.state==="index" ? data.main : data.sub
     const imagePosition = this.props.state==='index' ? 'index-position': 'other-position'
-    console.log(data.ham_before)
 
     return (
       <div className="main-navbar">
@@ -245,7 +242,7 @@ export default ({ state }) => (
             }
           }
         }
-        ham_before:file(relativePath: {eq: "ham-before.png"}) {
+        ham_before:file(relativePath: {eq: "ham-day.png"}) {
           childImageSharp{
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
@@ -259,14 +256,14 @@ export default ({ state }) => (
             }
           }
         }
-        owner_before:file(relativePath: {eq: "owner-before.png"}) {
+        owner_before:file(relativePath: {eq: "owner-day.png"}) {
           childImageSharp{
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
         }
-        story_before:file(relativePath: {eq: "story-before.png"}) {
+        story_before:file(relativePath: {eq: "story-day.png"}) {
           childImageSharp{
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid

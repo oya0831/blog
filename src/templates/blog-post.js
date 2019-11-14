@@ -6,7 +6,7 @@ import { graphql, Link } from 'gatsby'
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import Content, { HTMLContent } from '../components/Content'
-import { Disqus } from 'gatsby-plugin-disqus'
+//import { Disqus } from 'gatsby-plugin-disqus'
 
 export const BlogPostTemplate = ({
   content,
@@ -63,11 +63,11 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ location, data }) => {
   const { markdownRemark: post } = data
-  let disqusConfig = {
+  /*let disqusConfig = {
     url: location.href,
     identifier: post.frontmatter.id,
     title: post.frontmatter.title,
-  }                
+  }*/                
 
   return (
     <Layout state={"blog"}>
