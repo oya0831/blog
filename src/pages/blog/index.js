@@ -5,7 +5,6 @@ import Img from 'gatsby-image'
 import Layout from '../../components/Layout'
 import TagsList from '../../components/TagsList'
 import BlogRoll from '../../components/BlogRoll'
-import PreviewCompatibleImage from '../../components/PreviewCompatibleImage'
 
 const BlogIndexPage = class extends React.Component {
  render(){
@@ -25,13 +24,13 @@ const BlogIndexPage = class extends React.Component {
           <div className="container">
             <div className="link-layout">
               <Img
-                style={{width:'25px'}}
+                style={{width:'20px'}}
                 fluid={home.childImageSharp.fluid}
               />
               <Link to="/">
                 ホーム
               </Link>
-              >{currentState}
+               > {currentState}
               
             </div>
             <div className="content">
@@ -57,7 +56,7 @@ export default ({ state }) => (
   <StaticQuery
     query={graphql`
       query {
-        home:file(relativePath: {eq: "home.png"}) {
+        home:file(relativePath: {eq: "home5.png"}) {
           childImageSharp{
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid

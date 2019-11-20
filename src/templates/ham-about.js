@@ -1,15 +1,27 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+
 import Layout from '../components/Layout'
 import HamAboutFeatures from '../components/HamAboutFeatures'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const HamAboutPageTemplate = ({
   hamz,
+  home
 }) => (
   <div className="content">
     <section className="section section--gradient">
       <div className="container">
+        <div className="link-info-layout">
+          <div className="home-size">
+            <PreviewCompatibleImage imageInfo={{image: home, alt:"kinako"}} />
+          </div>
+          <Link to="/">
+            ホーム
+          </Link>
+           > うちのはむちゃんず
+        </div>
         <div className="columns">
           <div className="column is-10 is-offset-1">
             <HamAboutFeatures gridItems={hamz.lists} />
@@ -33,6 +45,7 @@ const HamAboutPage = ({ data }) => {
     <Layout state={"ham-about"}>
       <HamAboutPageTemplate
         hamz={frontmatter.hamz}
+        home={data.home}
       />
     </Layout>
   )
@@ -63,6 +76,13 @@ export const hamAboutPageQuery = graphql`
             }
             text
           }
+        }
+      }
+    }
+    home:file(relativePath: {eq: "home5.png"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }

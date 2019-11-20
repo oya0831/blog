@@ -9,6 +9,7 @@ $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
+$hamz: only screen and (min-width:1024px) and (max-width:1219px)
 
 .navbar .navbar-menu
   box-shadow: none !important
@@ -139,8 +140,15 @@ $menu-label-color: $white-ter
 .blog-text-layout
   font-weight: 600;
   color: #6b6b6b !important;
+
+//link layout
 .link-layout
   display: flex;
+  margin-bottom: 30px;
+.link-info-layout
+  display: flex;
+.home-size
+  width: 20px;
 
 //news
 .news-date
@@ -149,35 +157,32 @@ $menu-label-color: $white-ter
   font-size: 1.35rem !important;
   margin-top: 10px;
 
+//index posts
+.index-posts
+  text-align: center;
+  display: inline-block;
+
 //main navgation
-.main-navbar
+.main-navbar .sub-navbar
   position: relative;
 .main-text
   position: absolute;
   color: white;
   top: 0;
   left: 0;
-.other-position
-  position: absolute !important;
-  top: 40%;
-  right: 15%;
-  background-color: transparent !important;
-.index-position
-  position: absolute !important;
-  top: 55%;
-  right: 17%;
-  background-color: transparent !important;
 .burger-position
   position: absolute !important;
   top: 0%;
   right: 0%;
   background-color: transparent !important;
 .about-position
+  width: 120px;
   position: absolute !important;
   top: 0%;
-  right: 14%;
+  right: 15%;
   background-color: transparent !important;
 .contact-position
+  width: 130px;
   position: absolute !important;
   top: 0%;
   right: 2%;
@@ -198,7 +203,51 @@ $menu-label-color: $white-ter
 .pc-layout
   background-color: #ffb96117 !important;
   height: 70px;
+.navtext-layout
+  width: 220px;
+  position: absolute;
+.hover-layout
+  width: 220px;
+  position: absolute;
+  opacity: 0;
+  &:hover
+    opacity: 0.7;
 
+//hamz image
+//wood
+.indexwood-layout
+  width: 200px;
+  position: absolute;
+  top: 16%;
+  right: 2%;
+.otherwood-layout
+  width: 140px;
+  position: absolute;
+  top: 7.5%;
+  right: 2%;
+//hamster
+.indexham-layout
+  position: absolute;
+  right: 2%;
+  top: 16%;
+  z-index: 40;
+  width: 200px;
+  opacity: 0;
+  &:hover
+    top: 8%;
+    opacity: 1;
+.otherham-layout
+  position: absolute;
+  right: 2%;
+  top: 7.5%;
+  z-index: 60;
+  width: 140px;
+  opacity: 0;
+  &:hover
+    right: 6.5%;
+    top: 9%;
+    opacity: 1;
+    
 @import "~bulma"
 
 
@@ -206,7 +255,6 @@ $menu-label-color: $white-ter
 +tablet-only
   .blog-list-item .featured-thumbnail
     flex-basis: 50%;
-
 +mobile
   .blog-list-item header
     display: block
@@ -214,3 +262,22 @@ $menu-label-color: $white-ter
     text-align: center;
     max-width: 70%;
     margin: 0 0 1em;
+@media #{$hamz}
+  .indexwood-layout
+    width: 160px;
+    top: 14%;
+  .otherwood-layout
+    width: 110px;
+    top: 6.5%;
+  .indexham-layout
+    right: 2%;
+    top: 14%;
+    width: 160px;
+    &:hover
+      top: 7%;
+  .otherham-layout
+    right: 2%;
+    top: 6.5%;
+    width: 110px;
+    &:hover
+      top: 8%;

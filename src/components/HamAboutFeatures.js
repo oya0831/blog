@@ -10,7 +10,7 @@ const HamAboutFeatureGrid = ({ gridItems }) => (
           <div className="has-text-centered">
             <div
               style={{
-                width: '240px',
+                width: '360px',
                 display: 'inline-block',
               }}
             >

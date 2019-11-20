@@ -1,14 +1,18 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 
 class TagRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
+    const home = this.props.data.home
     const tag = this.props.pageContext.tag
     const title = this.props.data.site.siteMetadata.title
+    console.log(tag)
     /*const totalCount = this.props.data.allMarkdownRemark.totalCount
     const tagHeader = `${totalCount} post${
       totalCount === 1 ? '' : 's'
@@ -18,11 +22,20 @@ class TagRoute extends React.Component {
       <Layout state={"tags"}>
         <section className="section">
           <Helmet title={`${tag} | ${title}`} />
-          <div className="container content">
-            <div className="columns">
+          <div className="container">
+            <div className="link-layout">
+              <Img 
+                style={{width:'20px'}}
+                fluid={home.childImageSharp.fluid}
+              />
+              <Link to="/">
+                ホーム
+              </Link>
+               > カテゴリ:{tag}
+            </div>
+            <div className="columns is-multiline">
               <div
                 className="column is-12"
-                style={{ marginBottom: '6rem' }}
               >
                 {/*<h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
                 <p>
@@ -74,6 +87,13 @@ export const tagPageQuery = graphql`
               }
             }
           }
+        }
+      }
+    }
+    home:file(relativePath: {eq: "home5.png"}) {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
     }
