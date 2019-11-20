@@ -14,6 +14,7 @@ collections:
     fields:
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "ham"}
+      - {label: "日和", name: "dayKey", widget: "hidden", default: "ham"}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "見出し", name: "description", widget: "text", required: false}
@@ -21,6 +22,7 @@ collections:
       - {label: "内容", name: "body", widget: "markdown"}
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
+      - {label: "カテゴリ", name: "category", widget: "list", required:false}
 
   - name: "owner"
     label: "飼い主日和"
@@ -30,6 +32,7 @@ collections:
     fields:
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "owner"}
+      - {label: "日和", name: "dayKey", widget: "hidden", default: "owner"}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "見出し", name: "description", widget: "text", required: false}
@@ -37,6 +40,7 @@ collections:
       - {label: "内容", name: "body", widget: "markdown"}
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
+      - {label: "カテゴリ", name: "category", widget: "list", required:false}
 
   - name: "story"
     label: "ネタ日和"
@@ -45,7 +49,8 @@ collections:
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
     fields:
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
-      - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "owner"}
+      - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "story"}
+      - {label: "日和", name: "dayKey", widget: "hidden", default: "story"}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "見出し", name: "description", widget: "text", required: false}
@@ -53,6 +58,7 @@ collections:
       - {label: "内容", name: "body", widget: "markdown"}
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "タグ", name: "tags", widget: "list"}
+      - {label: "カテゴリ", name: "category", widget: "list", required:false}
 
   - name: "pages"
     label: "固定ページたち"
