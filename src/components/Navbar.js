@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-import './all.sass'
+import Img from 'gatsby-image'
 
 const Navbar = class extends React.Component {
   constructor(props) {
@@ -9,7 +9,7 @@ const Navbar = class extends React.Component {
     this.state = {
       active: false,
       navBarActiveClass: '',
-      drawerLayoutClass: '',
+      drawerLayoutClass: 'pc-layout',
       aboutTextPositionClass: 'about-position',
       contactTextPositionClass: 'contact-position',
     }
@@ -33,7 +33,7 @@ const Navbar = class extends React.Component {
             })
           : this.setState({
               navBarActiveClass: '',
-              drawerLayoutClass: '',
+              drawerLayoutClass: 'pc-layout',
               aboutTextPositionClass: 'about-position',
               contactTextPositionClass: 'contact-position',
             })
@@ -43,8 +43,20 @@ const Navbar = class extends React.Component {
 
   render() {
     const { data } = this.props
+    //main image
     const image = this.props.state==="index" ? data.main : data.sub
-    const imagePosition = this.props.state==='index' ? 'index-position': 'other-position'
+
+    //information image
+    const about = data.about
+    const contact = data.contact
+
+    //wood image
+    const woodImage = this.props.state==='index' ? data.index_wood : data.other_wood
+    const woodImageLayout = this.props.state==='index' ? 'indexwood-layout' : 'otherwood-layout'
+
+    //hamster image
+    const hamsterImage = this.props.state==='index' ? data.index_hamster : data.other_hamster
+    const hamsterImageLayout = this.props.state==='index' ? 'indexham-layout' : 'otherham-layout'
 
     return (
       <div className="main-navbar">
@@ -70,61 +82,78 @@ const Navbar = class extends React.Component {
         >
           { this.state.active ? 
             <>
-              <Link className="navbar-item text-layout" to="/blog/ham" state={{ path: "ham" }}>
+              <Link className="navbar-item text-layout" to="/blog/ham">
                 はむ日和
               </Link>
-              <Link className="navbar-item text-layout" to="/blog/owner" state={{ path: "owner" }}>
+              <Link className="navbar-item text-layout" to="/blog/owner">
                 飼い主日和
               </Link>
-              <Link className="navbar-item text-layout" to="/blog/story" state={{ path: "story" }}>
+              <Link className="navbar-item text-layout" to="/blog/story">
                 ネタ日和
               </Link>
-              <Link className="navbar-item text-layout" to="/hamz" state={{ path: "hamz" }}>
+              <Link className="navbar-item text-layout" to="/hamz">
                 うちのはむちゃんず
               </Link>
             </>
             :  
             <>
-              <div className="column is-4 has-text-centered">
-                <Link className="navbar-item" to="/blog/ham" state={{ path: "ham" }}>
-                  はむ日和
-                </Link>
-              </div>
-              <div className="column is-4">
-                <Link className="navbar-item" to="/blog/owner" state={{ path: "owner" }}>
-                  飼い主日和
-                </Link>
-              </div>
-              <div className="column is-4">
-                <Link className="navbar-item" to="/blog/story" state={{ path: "story" }}>
-                  ネタ日和
-                </Link>
-              </div>
-              <div className={imagePosition}>
-                <Link to="/hamz">
-                  <div 
-                    style={{
-                      width: '50px',
-                      display: 'inline-block'
-                    }}
-                  >
-                    <PreviewCompatibleImage  imageInfo={{image: data.hamz, alt:"kinako"}}/>
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/ham" state={{ path: "ham" }}>
+                  <div className="sub-navbar">
+                    <div className="navtext-layout">
+                      <PreviewCompatibleImage  imageInfo={{image: data.ham_before, alt:"kinako"}}/>
+                    </div>
+                    <div className="hover-layout">
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
                   </div>
                 </Link>
               </div>
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/owner" state={{ path: "owner" }}>
+                  <div className="sub-navbar">
+                    <div className="navtext-layout">
+                      <PreviewCompatibleImage  imageInfo={{image: data.owner_before, alt:"kinako"}}/>
+                    </div>
+                    <div className="hover-layout">
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <div className="column is-3 is-offset-1">
+                <Link to="/blog/story" state={{ path: "story" }}>
+                  <div className="sub-navbar">
+                    <div className="navtext-layout">
+                      <PreviewCompatibleImage  imageInfo={{image: data.story_before, alt:"kinako"}}/>
+                    </div>
+                    <div className="hover-layout">
+                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                    </div>
+                  </div>
+                </Link>
+              </div>
+              <Link to="/hamz">
+                <div className={hamsterImageLayout}>
+                  <PreviewCompatibleImage  imageInfo={{image: hamsterImage, alt:"kinako"}}/>
+                </div>
+                
+                <div className={woodImageLayout}>
+                  <PreviewCompatibleImage  imageInfo={{image: woodImage, alt:"kinako"}}/>
+                </div>
+              </Link>
             </>
           }
           
           <div className={`${this.state.aboutTextPositionClass}`}>
-            <Link className="navbar-item text-layout" to="/about">
-              { this.state.active === false && <span role="img" aria-label="ham">🐹</span> }
-              このブログについて
+
+            <Link to="/about">
+              <Img fluid={about.childImageSharp.fluid}/>
             </Link>
           </div>
           <div className={`${this.state.contactTextPositionClass}`}>
-            <Link className="navbar-item text-layout" to="/contact">
-              { this.state.active === false && <span role="img" aria-label="ham">🐹</span> }
-              お問い合わせ
+            <Link to="/contact">
+              <Img fluid={contact.childImageSharp.fluid}/>
             </Link>
           </div>
         </div>
@@ -136,27 +165,49 @@ const Navbar = class extends React.Component {
 export default ({ state }) => (
   <StaticQuery
     query={graphql`
+      fragment imageField on File {
+        childImageSharp {
+          fluid(maxWidth: 1000, quality: 100) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
       query {
         main:file(relativePath: {eq: "kinako.jpg"}) {
-          childImageSharp{
-            fluid(maxWidth: 1000, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          ...imageField
         }
         sub:file(relativePath: {eq: "kinako2.jpg"}) {
-          childImageSharp{
-            fluid(maxWidth: 1000, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+          ...imageField
         }
-        hamz:file(relativePath: {eq: "kinako3.JPG"}) {
-          childImageSharp{
-            fluid(maxWidth: 100, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
+        index_wood:file(relativePath: {eq: "another-hamz.png"}) {
+          ...imageField
+        }
+        other_wood:file(relativePath: {eq: "utihamu.png"}) {
+          ...imageField
+        }
+        about:file(relativePath: {eq: "about.png"}) {
+          ...imageField
+        }
+        contact:file(relativePath: {eq: "contact.png"}) {
+          ...imageField
+        }
+        index_hamster:file(relativePath: {eq: "pyokooo.png"}) {
+          ...imageField
+        }
+        other_hamster:file(relativePath: {eq: "gomagoma.png"}) {
+          ...imageField
+        }
+        ham_before:file(relativePath: {eq: "ham-day.png"}) {
+          ...imageField
+        }
+        ham_after:file(relativePath: {eq: "after.png"}) {
+          ...imageField
+        }
+        owner_before:file(relativePath: {eq: "owner-day.png"}) {
+          ...imageField
+        }
+        story_before:file(relativePath: {eq: "story-day.png"}) {
+          ...imageField
         }
       }
     `}

@@ -9,6 +9,7 @@ import TranslateDate from './TranslateDate'
 class BlogRoll extends React.Component {
   render() {
     const results = this.props.results
+    const noimage = this.props.noimage
 
     return (
     <>
@@ -33,21 +34,29 @@ class BlogRoll extends React.Component {
                         }}
                       />
                     </div>
-                    ) : null
+                    ) : (
+                    <div className="featured-thumbnail">
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: noimage,
+                          alt: ""
+                        }}
+                      />
+                    </div> 
+                    )
                   }
-                  <p className="post-meta">
-                    <Link
-                      className="title has-text-primary is-size-4"
-                      to={result.fields.slug}
-                    >
-                      {result.frontmatter.title}
-                    </Link>
-                    <span> &shy; </span>
-                    <span className="subtitle is-size-5 is-block">
-                      <TranslateDate date={result.frontmatter.date} />
-                    </span>
-                  </p>
                 </header>
+                <p className="post-meta">
+                  <span className="blog-text-layout is-size-6 is-block">
+                    <TranslateDate date={result.frontmatter.date} />
+                  </span>
+                  <Link
+                    className="blog-slug-text is-size-4"
+                    to={result.fields.slug}
+                  >
+                    {result.frontmatter.title}
+                  </Link>
+                </p>
                 <p>
                   {result.excerpt}
                   <br />
@@ -105,6 +114,13 @@ export default ({ state, tagsdata }) => (
             }
           }
         }
+        noimage:file(relativePath: {eq: "ham.png"}) {
+          childImageSharp {
+            fluid(maxWidth: 1000, quality: 100) {
+              ...GatsbyImageSharpFluid
+            }
+          }
+        }
       }
     `}
     render={(data) => {
@@ -118,7 +134,7 @@ export default ({ state, tagsdata }) => (
         }
       })(state)
 
-      return <BlogRoll results={results} state={state}/>
+      return <BlogRoll noimage={data.noimage} results={results} state={state}/>
     }}
   />
 )

@@ -7,11 +7,9 @@ module.exports = {
       'とある飼い主のハムスターブログ。',
   },
   plugins: [
+    'gatsby-plugin-glamor',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
-    'gatsby-plugin-sharp',
-    'gatsby-transformer-sharp',
-    'gatsby-transformer-remark',
     {
       // keep as first gatsby-source-filesystem plugin for gatsby image support
       resolve: 'gatsby-source-filesystem',
@@ -60,6 +58,12 @@ module.exports = {
             options: {
               destinationDir: 'static',
             },
+          },
+          {
+            resolve: 'gatsby-plugin-disqus',
+            options: {
+              shortname: 'oya0831',
+            }
           },
         ],
       },

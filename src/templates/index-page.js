@@ -1,14 +1,17 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
+import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import TranslateDate from '../components/TranslateDate'
+import '../components/all.sass'
 
 export const IndexPageTemplate = ({
   mainpitch,
   date,
+  newposts,
 }) => (
   <div>
     <section className="section section--gradient">
@@ -16,10 +19,10 @@ export const IndexPageTemplate = ({
         <div className="columns">
           <div className="column is-12 has-text-centered">
           <Link className="btn" to="/news">
-            <div className="subtitle is-6">
-              New!! <TranslateDate date={date} />
+            <div className="news-date">
+              <TranslateDate date={date} /> 更新
             </div>
-            <div className="subtitle">{mainpitch}</div>
+            <div className="news-text">{mainpitch}</div>
           </Link>
           </div>
         </div>
@@ -28,14 +31,14 @@ export const IndexPageTemplate = ({
           <div className="columns">
             <div className="column is-10 is-offset-1">
               <div className="content">
+                <div className="column is-8 is-offset-4">
+                  <Img style={{width:'250px'}}fluid={newposts.childImageSharp.fluid}/>
+                </div>
                 <div className="column is-12">
-                  <h2 className="has-text-weight-semibold">
-                    カテゴリ別最新の記事
-                  </h2>
                   <BlogRoll state={"index"}/>
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
-                      もっとはむっと！
+                      全部見る ≫
                     </Link>
                   </div>
                 </div>
@@ -61,6 +64,7 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         mainpitch={frontmatter.mainpitch}
         date={frontmatter.date}
+        newposts={data.new_posts}
       />
     </Layout>
   )
@@ -82,6 +86,13 @@ export const pageQuery = graphql`
       frontmatter {
         date(formatString: "MMMM DD, YYYY")
         mainpitch 
+      }
+    }
+    new_posts:file(relativePath: {eq: "new-posts.png"}) {
+      childImageSharp{
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
+        }
       }
     }
   }

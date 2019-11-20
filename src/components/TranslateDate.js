@@ -20,7 +20,7 @@ export default class TranslateDate extends React.Component {
         default: return 12;
       }
     })();
-    const joinDate = date[2] + "年" + month + "月" + date[1].slice(0, 2) + "日";
+    const joinDate = date[2] + "." + month + "." + date[1].slice(0, 2) ;
     
     return joinDate
   }
