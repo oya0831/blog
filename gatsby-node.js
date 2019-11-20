@@ -46,23 +46,23 @@ exports.createPages = ({ actions, graphql }) => {
       })
     })
 
-    // Tag pages:
-    let tags = []
-    // Iterate through each post, putting all found tags into `tags`
+    // Category pages:
+    let category = []
+    // Iterate through each post, putting all found tags into `category`
     posts.forEach(edge => {
       if (_.get(edge, `node.frontmatter.tags`)) {
-        tags = tags.concat(edge.node.frontmatter.tags)
+        category = category.concat(edge.node.frontmatter.tags)
       }
     })
-    // Eliminate duplicate tags
-    tags = _.uniq(tags)
+    // Eliminate duplicate category
+    category = _.uniq(category)
 
-    // Make tag pages
-    tags.forEach(tag => {
-      const tagPath = `/tags/${_.kebabCase(tag)}/`
+    // Make category pages
+    category.forEach(tag => {
+      const categoryPath = `/category/${_.kebabCase(tag)}/`
 
       createPage({
-        path: tagPath,
+        path: categoryPath,
         component: path.resolve(`src/templates/tags.js`),
         context: {
           tag,
