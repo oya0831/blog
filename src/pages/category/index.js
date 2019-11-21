@@ -1,13 +1,13 @@
 import React from 'react'
-import { kebabCase } from 'lodash'
-import Helmet from 'react-helmet'
+//import { kebabCase } from 'lodash'
+//import Helmet from 'react-helmet'
 import { Link, StaticQuery, graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 import PreviewCompatibleImage from '../../components/PreviewCompatibleImage'
 
-const TagsPage = class extends React.Component {
+const CategoryPage = class extends React.Component {
   render(){
     const home = this.props.data.home
     return (
@@ -53,6 +53,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => <TagsPage data={data} />}
+    render={(data) => <CategoryPage data={data} />}
   />
 )

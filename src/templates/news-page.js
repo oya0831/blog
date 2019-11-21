@@ -38,7 +38,7 @@ const NewsPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout state={"news"}>
+    <Layout state="news">
       <NewsPageTemplate
         news={frontmatter.news}
         home={data.home}

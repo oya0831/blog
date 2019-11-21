@@ -60,7 +60,7 @@ const IndexPage = ({ data }) => {
   const { frontmatter } = data.markdownRemark
 
   return (
-    <Layout state={"index"}>
+    <Layout state="index">
       <IndexPageTemplate
         mainpitch={frontmatter.mainpitch}
         date={frontmatter.date}

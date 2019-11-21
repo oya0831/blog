@@ -6,22 +6,21 @@ import Img from 'gatsby-image'
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 
-class TagRoute extends React.Component {
+class CategoryRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
     const home = this.props.data.home
-    const tag = this.props.pageContext.tag
+    const category = this.props.pageContext.category
     const title = this.props.data.site.siteMetadata.title
-    console.log(tag)
     /*const totalCount = this.props.data.allMarkdownRemark.totalCount
     const tagHeader = `${totalCount} post${
       totalCount === 1 ? '' : 's'
     }`*/
 
     return (
-      <Layout state={"tags"}>
+      <Layout state="category">
         <section className="section">
-          <Helmet title={`${tag} | ${title}`} />
+          <Helmet title={`${category} | ${title}`} />
           <div className="container">
             <div className="link-layout">
               <Img 
@@ -31,7 +30,7 @@ class TagRoute extends React.Component {
               <Link to="/">
                 ホーム
               </Link>
-               > カテゴリ:{tag}
+               > カテゴリ:{category}
             </div>
             <div className="columns is-multiline">
               <div
@@ -42,7 +41,7 @@ class TagRoute extends React.Component {
                   <Link to="/tags/">Browse all tags</Link>
                 </p>
                 */}
-                <BlogRoll state="tags" tagsdata={posts}/>
+                <BlogRoll state="categories" categoriesData={posts}/>
               </div>
             </div>
           </div>
@@ -52,10 +51,10 @@ class TagRoute extends React.Component {
   }
 }
 
-export default TagRoute
+export default CategoryRoute
 
-export const tagPageQuery = graphql`
-  query TagPage($tag: String) {
+export const categoryPageQuery = graphql`
+  query CategoryPage($category: String) {
     site {
       siteMetadata {
         title
@@ -64,7 +63,7 @@ export const tagPageQuery = graphql`
     allMarkdownRemark(
       limit: 1000
       sort: { fields: [frontmatter___date], order: DESC }
-      filter: { frontmatter: { tags: { in: [$tag] } } }
+      filter: { frontmatter: { category: { in: [$category] } } }
     ) {
       totalCount
       edges {
@@ -77,7 +76,7 @@ export const tagPageQuery = graphql`
           frontmatter {
             title
             templateKey
-            categoryKey
+            dayKey
             date(formatString: "MMMM DD, YYYY")
             featuredimage {
               childImageSharp {

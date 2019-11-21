@@ -6,9 +6,9 @@ const BlogPostPreview = ({ entry, widgetFor }) => (
   <BlogPostTemplate
     content={widgetFor('body')}
     description={entry.getIn(['data', 'description'])}
-    tags={entry.getIn(['data', 'tags'])}
+    category={entry.getIn(['data', 'category'])}
     title={entry.getIn(['data', 'title'])}
-    categoryKey={entry.getIn(['data', 'categoryKey'])}
+    dayKey={entry.getIn(['data', 'dayKey'])}
   />
 )
 
