@@ -14,7 +14,7 @@ collections:
     fields:
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "ham"}
-      - {label: "日和", name: "dayKey", widget: "hidden", default: "ham"}
+      - {label: "日和", name: "dayKey", default: "ham"}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "見出し", name: "description", widget: "text", required: false}
@@ -50,7 +50,7 @@ collections:
     fields:
       - {label: "テンプレート", name: "templateKey", widget: "hidden", default: "blog-post"}
       - {label: "カテゴリ", name: "categoryKey", widget: "hidden", default: "story"}
-      - {label: "日和", name: "dayKey", widget: "hidden", default: "story"}
+      - {label: "日和", name: "dayKey", default: "story"}
       - {label: "タイトル", name: "title", widget: "string"}
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "見出し", name: "description", widget: "text", required: false}
