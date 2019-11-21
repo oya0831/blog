@@ -2,7 +2,7 @@ const NewPosts = ({ posts }) => {
 
   let ham=0,owner=0,story=0;
   const str = posts.map(value => {
-    switch(value.node.frontmatter.categoryKey) {
+    switch(value.node.frontmatter.dayKey) {
       case "ham" : 
         if(ham===0) {
           ham++

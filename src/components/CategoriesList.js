@@ -2,17 +2,17 @@ import React from 'react'
 import { kebabCase } from 'lodash'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
-const TagsList = ({ 
+const CategoriesList = ({ 
   data : {
     allMarkdownRemark: { group },
   }
 }) => {
   return(
     <>
-      {group.map(tag => (
-        <div key={tag.fieldValue}>
-          <Link to={`/tags/${kebabCase(tag.fieldValue)}/`}>
-            {tag.fieldValue} ({tag.totalCount})
+      {group.map(category => (
+        <div key={category.fieldValue}>
+          <Link to={`/category/${kebabCase(category.fieldValue)}/`}>
+            {category.fieldValue} ({category.totalCount})
           </Link>
         </div>
       ))}
@@ -23,15 +23,15 @@ const TagsList = ({
 export default () => (
   <StaticQuery
     query={graphql`
-      query TagsListQuery {
+      query CategoriesListQuery {
         allMarkdownRemark(limit: 1000) {
-          group(field: frontmatter___tags) {
+          group(field: frontmatter___category) {
             fieldValue
             totalCount
           }
         }
       }
     `}
-    render={(data) => <TagsList data={data} />}
+    render={(data) => <CategoriesList data={data} />}
   />
 )

@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 
 import Layout from '../../components/Layout'
-import TagsList from '../../components/TagsList'
+import CategoriesList from '../../components/CategoriesList'
 import BlogRoll from '../../components/BlogRoll'
 
 const BlogIndexPage = class extends React.Component {
@@ -19,7 +19,7 @@ const BlogIndexPage = class extends React.Component {
       }
     })(state)
     return (
-      <Layout state={"blog-roll"}>
+      <Layout state="blog-roll">
         <section className="section">
           <div className="container">
             <div className="link-layout">
@@ -41,7 +41,7 @@ const BlogIndexPage = class extends React.Component {
                   />
                 </div>
                 <div className="column is-2">
-                  <TagsList />
+                  <CategoriesList />
                 </div>
               </div>
             </div>

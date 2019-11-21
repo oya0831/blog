@@ -12,7 +12,7 @@ export const BlogPostTemplate = ({
   content,
   contentComponent,
   description,
-  tags,
+  categories,
   title,
   image,
   helmet,
@@ -33,13 +33,13 @@ export const BlogPostTemplate = ({
               <Img fluid={image.childImageSharp.fluid} alt="" />
              ) : null}
             <PostContent content={content} />
-            {tags && tags.length ? (
+            {categories && categories.length ? (
               <div style={{ marginTop: `4rem` }}>
                 <h4>タグ</h4>
                 <ul className="taglist">
-                  {tags.map(tag => (
-                    <li key={tag + `tag`}>
-                      <Link to={`/tags/${kebabCase(tag)}/`}>{tag}</Link>
+                  {categories.map(category => (
+                    <li key={category + `category`}>
+                      <Link to={`/category/${kebabCase(category)}/`}>{category}</Link>
                     </li>
                   ))}
                 </ul>
@@ -69,7 +69,7 @@ const BlogPost = ({ location, data }) => {
   }*/                
 
   return (
-    <Layout state={"blog"}>
+    <Layout state="blog">
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}
@@ -83,7 +83,7 @@ const BlogPost = ({ location, data }) => {
             />
           </Helmet>
         }
-        tags={post.frontmatter.tags}
+        categories={post.frontmatter.category}
         title={post.frontmatter.title}
         image={post.frontmatter.image}
       />
@@ -127,7 +127,7 @@ export const pageQuery = graphql`
             }
           }
         }
-        tags
+        category
       }
     }
   }

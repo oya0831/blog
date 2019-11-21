@@ -1,15 +1,16 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
+
 import PreviewCompatibleImage from './PreviewCompatibleImage'
-import ByCategoryPosts from './ByCategoryPosts'
+import ByDayPosts from './ByDayPosts'
 import NewPosts from './NewPosts'
 import TranslateDate from './TranslateDate'
 
 class BlogRoll extends React.Component {
   render() {
     const results = this.props.results
-    const noimage = this.props.noimage
+    const notImage = this.props.notImage
 
     return (
     <>
@@ -38,7 +39,7 @@ class BlogRoll extends React.Component {
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
-                          image: noimage,
+                          image: notImage,
                           alt: ""
                         }}
                       />
@@ -82,7 +83,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default ({ state, tagsdata }) => (
+export default ({ state, categoriesData }) => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -100,7 +101,7 @@ export default ({ state, tagsdata }) => (
               frontmatter {
                 title
                 templateKey
-                categoryKey
+                dayKey
                 date(formatString: "MMMM DD, YYYY")
                 featuredimage {
                   childImageSharp {
@@ -109,12 +110,12 @@ export default ({ state, tagsdata }) => (
                     }
                   }
                 }
-                tags
+                category
               }
             }
           }
         }
-        noimage:file(relativePath: {eq: "ham.png"}) {
+        not_image:file(relativePath: {eq: "ham.png"}) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
@@ -128,13 +129,13 @@ export default ({ state, tagsdata }) => (
       const results = (function(state) {
         switch (state) {
           case "index": return NewPosts({ posts })
-          case "tags": return tagsdata
+          case "categories": return categoriesData
           case "blog" : return posts
-          default : return ByCategoryPosts({ posts, state })
+          default : return ByDayPosts({ posts, state })
         }
       })(state)
 
-      return <BlogRoll noimage={data.noimage} results={results} state={state}/>
+      return <BlogRoll notImage={data.not_image} results={results} state={state}/>
     }}
   />
 )
