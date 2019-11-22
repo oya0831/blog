@@ -9,12 +9,14 @@ $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
+
+//hamz resuponsive
 $hamz: only screen and (min-width:1024px) and (max-width:1219px)
 
 .navbar .navbar-menu
   box-shadow: none !important
 
-.content .taglist
+.content .categorylist
   list-style: none
   margin-bottom: 0
   margin-left: 0
@@ -141,12 +143,17 @@ $menu-label-color: $white-ter
   font-weight: 600;
   color: #6b6b6b !important;
 
-//link layout
-.link-layout
+//ham about
+.featured-hamster-thmbnail
+  width: 250px;
+  display: inline-block;
+
+//path layout
+.path
   display: flex;
+.path-layout
+  @extend .path;
   margin-bottom: 30px;
-.link-info-layout
-  display: flex;
 .home-size
   width: 20px;
 
@@ -157,10 +164,9 @@ $menu-label-color: $white-ter
   font-size: 1.35rem !important;
   margin-top: 10px;
 
-//index posts
-.index-posts
-  text-align: center;
-  display: inline-block;
+//new posts
+.new-posts
+  width: 250px;
 
 //main navgation
 .main-navbar .sub-navbar

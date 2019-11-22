@@ -1,9 +1,8 @@
 import React from 'react'
-import { Link, StaticQuery, graphql } from 'gatsby'
 import { navigate } from 'gatsby-link'
 
 import Layout from '../../components/Layout'
-import PreviewCompatibleImage from '../../components/PreviewCompatibleImage'
+import PathLayout from '../../components/PathLayout'
 
 function encode(data) {
   return Object.keys(data)
@@ -11,7 +10,7 @@ function encode(data) {
     .join('&')
 }
 
-const ContactIndexPage = class extends React.Component {
+export default class ContactIndexPage extends React.Component {
   constructor(props) {
     super(props)
     this.state = { isValidated: false }
@@ -37,20 +36,16 @@ const ContactIndexPage = class extends React.Component {
   }
 
   render() {
-    const home = this.props.data.home
     return (
       <Layout state={"contact"}>
         <section className="section">
           <div className="container">
-            <div className="link-layout">
-              <div className="home-size">
-                <PreviewCompatibleImage imageInfo={{image:home,alt:"kinako"}} />
-              </div>
-              <Link to="/">
-                ホーム
-              </Link>
-               > お問い合わせ
-            </div>
+            <PathLayout
+              layoutInfo={{
+                path: "path-layout",
+                text: "お問い合わせ"
+              }}
+            />
             <h4>
               ご意見などがございましたらぜひ下記よりご連絡くださいませ。
               お待ちしております。
@@ -133,20 +128,3 @@ const ContactIndexPage = class extends React.Component {
     )
   }
 }
-
-export default () => (
-  <StaticQuery
-    query={graphql`
-      query {
-        home:file(relativePath: {eq: "home5.png"}) {
-          childImageSharp {
-            fluid(maxWidth: 1000, quality: 100) {
-              ...GatsbyImageSharpFluid
-            }
-          }
-        }
-      }
-    `}
-  render={(data) => <ContactIndexPage data={data} />}
-  />
-)

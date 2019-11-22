@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link, StaticQuery, graphql } from 'gatsby'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Img from 'gatsby-image'
 
-const Navbar = class extends React.Component {
+import PreviewCompatibleImage from './PreviewCompatibleImage'
+
+export const Navbar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -44,11 +44,17 @@ const Navbar = class extends React.Component {
   render() {
     const { data } = this.props
     //main image
-    const image = this.props.state==="index" ? data.main : data.sub
+    const mainImage = this.props.state==="index" ? data.main : data.sub
+
+    //day image
+    const hamImage = data.ham_before
+    const ownerImage = data.owner_before
+    const storyImage = data.story_before
+    const hoverImage = data.ham_after
 
     //information image
-    const about = data.about
-    const contact = data.contact
+    const aboutImage = data.about
+    const contactImage = data.contact
 
     //wood image
     const woodImage = this.props.state==='index' ? data.index_wood : data.other_wood
@@ -60,7 +66,12 @@ const Navbar = class extends React.Component {
 
     return (
       <div className="main-navbar">
-        <PreviewCompatibleImage  imageInfo={{image: image, alt:"kinako"}}/>
+        <PreviewCompatibleImage
+          imageInfo={{
+            image: mainImage,
+            alt: "main image"
+          }}
+        />
         <Link to="/">
           <h1 className="main-text">はむっと！</h1>
         </Link>
@@ -98,62 +109,110 @@ const Navbar = class extends React.Component {
             :  
             <>
               <div className="column is-3 is-offset-1">
-                <Link to="/blog/ham" state={{ path: "ham" }}>
+                <Link to="/blog/ham">
                   <div className="sub-navbar">
                     <div className="navtext-layout">
-                      <PreviewCompatibleImage  imageInfo={{image: data.ham_before, alt:"kinako"}}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: hamImage,
+                          alt: "ham day image"
+                        }}
+                      />
                     </div>
                     <div className="hover-layout">
-                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: hoverImage,
+                          alt: "hover image"
+                        }}
+                      />
                     </div>
                   </div>
                 </Link>
               </div>
               <div className="column is-3 is-offset-1">
-                <Link to="/blog/owner" state={{ path: "owner" }}>
+                <Link to="/blog/owner">
                   <div className="sub-navbar">
                     <div className="navtext-layout">
-                      <PreviewCompatibleImage  imageInfo={{image: data.owner_before, alt:"kinako"}}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: ownerImage,
+                          alt: "owner day image"
+                        }}
+                      />
                     </div>
                     <div className="hover-layout">
-                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: hoverImage,
+                          alt: "hover image"
+                        }}
+                      />
                     </div>
                   </div>
                 </Link>
               </div>
               <div className="column is-3 is-offset-1">
-                <Link to="/blog/story" state={{ path: "story" }}>
+                <Link to="/blog/story">
                   <div className="sub-navbar">
                     <div className="navtext-layout">
-                      <PreviewCompatibleImage  imageInfo={{image: data.story_before, alt:"kinako"}}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: storyImage,
+                          alt: "story day image"
+                        }}
+                      />
                     </div>
                     <div className="hover-layout">
-                      <Img fluid={data.ham_after.childImageSharp.fluid}/>
+                      <PreviewCompatibleImage
+                        imageInfo={{
+                          image: hoverImage,
+                          alt: "hover image"
+                        }}
+                      />
                     </div>
                   </div>
                 </Link>
               </div>
               <Link to="/hamz">
                 <div className={hamsterImageLayout}>
-                  <PreviewCompatibleImage  imageInfo={{image: hamsterImage, alt:"kinako"}}/>
+                  <PreviewCompatibleImage 
+                    imageInfo={{
+                      image: hamsterImage,
+                      alt: "kinako or goma image"
+                    }}
+                  />
                 </div>
                 
                 <div className={woodImageLayout}>
-                  <PreviewCompatibleImage  imageInfo={{image: woodImage, alt:"kinako"}}/>
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: woodImage,
+                      alt: "wood image"
+                    }}
+                  />
                 </div>
               </Link>
             </>
           }
-          
           <div className={`${this.state.aboutTextPositionClass}`}>
-
             <Link to="/about">
-              <Img fluid={about.childImageSharp.fluid}/>
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: aboutImage,
+                  alt: "about image"
+                }}
+              />
             </Link>
           </div>
           <div className={`${this.state.contactTextPositionClass}`}>
             <Link to="/contact">
-              <Img fluid={contact.childImageSharp.fluid}/>
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: contactImage,
+                  alt: "contact image"
+                }}
+              />
             </Link>
           </div>
         </div>

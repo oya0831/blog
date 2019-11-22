@@ -1,12 +1,13 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
+import kebabCase from 'lodash'
 import Helmet from 'react-helmet'
 import { graphql, Link } from 'gatsby'
+//import { Disqus } from 'gatsby-plugin-disqus'
+
 import Layout from '../components/Layout'
 import Img from 'gatsby-image'
 import Content, { HTMLContent } from '../components/Content'
-//import { Disqus } from 'gatsby-plugin-disqus'
 
 export const BlogPostTemplate = ({
   content,

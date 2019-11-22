@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import PreviewCompatibleImage from './PreviewCompatibleImage'
 
 const HamAboutFeatureGrid = ({ gridItems }) => (
   <div className="columns is-multiline">
@@ -8,13 +8,13 @@ const HamAboutFeatureGrid = ({ gridItems }) => (
       <div key={item.text} className="column is-6">
         <section className="section">
           <div className="has-text-centered">
-            <div
-              style={{
-                width: '360px',
-                display: 'inline-block',
-              }}
-            >
-              <PreviewCompatibleImage imageInfo={item} />
+            <div className="featured-hamster-thmbnail">
+              <PreviewCompatibleImage 
+                imageInfo={{
+                  image: item.image,
+                  alt: "featured thmbnail in hamster"
+                }}
+              />
             </div>
           </div>
           <p>{item.text}</p>

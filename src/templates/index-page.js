@@ -1,12 +1,11 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import TranslateDate from '../components/TranslateDate'
-import '../components/all.sass'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 export const IndexPageTemplate = ({
   mainpitch,
@@ -32,10 +31,14 @@ export const IndexPageTemplate = ({
             <div className="column is-10 is-offset-1">
               <div className="content">
                 <div className="column is-8 is-offset-4">
-                  <Img style={{width:'250px'}}fluid={newposts.childImageSharp.fluid}/>
+                  <div className="new-posts">
+                    <PreviewCompatibleImage 
+                      imageInfo={{ image: newposts, alt: "kinako"}}
+                    />
+                  </div>
                 </div>
                 <div className="column is-12">
-                  <BlogRoll state={"index"}/>
+                  <BlogRoll state="index" />
                   <div className="column is-12 has-text-centered">
                     <Link className="btn" to="/blog">
                       全部見る ≫

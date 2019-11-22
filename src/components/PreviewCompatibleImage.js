@@ -6,18 +6,18 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
   const imageStyle = { borderRadius: '5px' }
   const { alt = '', childImageSharp, image } = imageInfo
 
-  if (!!image && !!image.childImageSharp && alt==="kinako") {
+  if (!!image && !!image.childImageSharp && alt.indexOf('featured')!==-1) {
+    return (
+      <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />
+    )
+  }
+
+  if (!!image && !!image.childImageSharp && alt.indexOf('featured')===-1) {
     return (
       <Img fluid={image.childImageSharp.fluid} alt={alt} />
     )
   }
 
-
-  if (!!image && !!image.childImageSharp) {
-    return (
-      <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />
-    )
-  }
 
   if (!!childImageSharp) {
     return <Img style={imageStyle} fluid={childImageSharp.fluid} alt={alt} />

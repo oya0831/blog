@@ -1,11 +1,10 @@
-import React from 'react'
-
-export default class TranslateDate extends React.Component {
-  render() {
-    const date = String(this.props.date).split(" ")
+const TranslateDate = ({
+  date
+}) => {
+    const dateText = String(date).split(" ")
 
     const month = (() => {
-      switch (date[0]) {
+      switch (dateText[0]) {
         case "January": return 1;
         case "February": return 2;
         case "March": return 3;
@@ -20,8 +19,9 @@ export default class TranslateDate extends React.Component {
         default: return 12;
       }
     })();
-    const joinDate = date[2] + "." + month + "." + date[1].slice(0, 2) ;
+    const joinDate = dateText[2] + "." + month + "." + dateText[1].slice(0, 2) ;
     
     return joinDate
-  }
 }
+
+export default TranslateDate
