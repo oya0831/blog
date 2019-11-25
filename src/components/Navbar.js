@@ -3,7 +3,7 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
-export const Navbar = class extends React.Component {
+const Navbar = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -65,7 +65,7 @@ export const Navbar = class extends React.Component {
     const hamsterImageLayout = this.props.state==='index' ? 'indexham-layout' : 'otherham-layout'
 
     return (
-      <div className="main-navbar">
+      <>
         <PreviewCompatibleImage
           imageInfo={{
             image: mainImage,
@@ -86,7 +86,7 @@ export const Navbar = class extends React.Component {
             <span/>
           </div>
         </div>
-           
+         
         <div
           id="navMenu"
           className={`navbar-menu ${this.state.navBarActiveClass} ${this.state.drawerLayoutClass}`}
@@ -94,16 +94,16 @@ export const Navbar = class extends React.Component {
           { this.state.active ? 
             <>
               <Link className="navbar-item text-layout" to="/blog/ham">
-                はむ日和
+              はむ日和
               </Link>
               <Link className="navbar-item text-layout" to="/blog/owner">
-                飼い主日和
+              飼い主日和
               </Link>
               <Link className="navbar-item text-layout" to="/blog/story">
-                ネタ日和
+              ネタ日和
               </Link>
               <Link className="navbar-item text-layout" to="/hamz">
-                うちのはむちゃんず
+              うちのはむちゃんず
               </Link>
             </>
             :  
@@ -183,7 +183,6 @@ export const Navbar = class extends React.Component {
                     }}
                   />
                 </div>
-                
                 <div className={woodImageLayout}>
                   <PreviewCompatibleImage
                     imageInfo={{
@@ -216,60 +215,60 @@ export const Navbar = class extends React.Component {
             </Link>
           </div>
         </div>
-      </div>
+      </>
     )
   }
 }
 
 export default ({ state }) => (
-  <StaticQuery
-    query={graphql`
-      fragment imageField on File {
-        childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
-            ...GatsbyImageSharpFluid
-          }
+<StaticQuery
+  query={graphql`
+    fragment imageField on File {
+      childImageSharp {
+        fluid(maxWidth: 1000, quality: 100) {
+          ...GatsbyImageSharpFluid
         }
       }
-      query {
-        main:file(relativePath: {eq: "kinako.jpg"}) {
-          ...imageField
-        }
-        sub:file(relativePath: {eq: "kinako2.jpg"}) {
-          ...imageField
-        }
-        index_wood:file(relativePath: {eq: "another-hamz.png"}) {
-          ...imageField
-        }
-        other_wood:file(relativePath: {eq: "utihamu.png"}) {
-          ...imageField
-        }
-        about:file(relativePath: {eq: "about.png"}) {
-          ...imageField
-        }
-        contact:file(relativePath: {eq: "contact.png"}) {
-          ...imageField
-        }
-        index_hamster:file(relativePath: {eq: "pyokooo.png"}) {
-          ...imageField
-        }
-        other_hamster:file(relativePath: {eq: "gomagoma.png"}) {
-          ...imageField
-        }
-        ham_before:file(relativePath: {eq: "ham-day.png"}) {
-          ...imageField
-        }
-        ham_after:file(relativePath: {eq: "after.png"}) {
-          ...imageField
-        }
-        owner_before:file(relativePath: {eq: "owner-day.png"}) {
-          ...imageField
-        }
-        story_before:file(relativePath: {eq: "story-day.png"}) {
-          ...imageField
-        }
+    }
+    query {
+      main:file(relativePath: {eq: "kinako.jpg"}) {
+        ...imageField
       }
-    `}
-    render={(data) => <Navbar data={data} state={state} />}
-  />
+      sub:file(relativePath: {eq: "kinako2.jpg"}) {
+        ...imageField
+      }
+      index_wood:file(relativePath: {eq: "another-hamz.png"}) {
+        ...imageField
+      }
+      other_wood:file(relativePath: {eq: "utihamu.png"}) {
+        ...imageField
+      }
+      about:file(relativePath: {eq: "about.png"}) {
+        ...imageField
+      }
+      contact:file(relativePath: {eq: "contact.png"}) {
+        ...imageField
+      }
+      index_hamster:file(relativePath: {eq: "pyokooo.png"}) {
+        ...imageField
+      }
+      other_hamster:file(relativePath: {eq: "gomagoma.png"}) {
+        ...imageField
+      }
+      ham_before:file(relativePath: {eq: "ham-day.png"}) {
+        ...imageField
+      }
+      ham_after:file(relativePath: {eq: "after.png"}) {
+        ...imageField
+      }
+      owner_before:file(relativePath: {eq: "owner-day.png"}) {
+        ...imageField
+      }
+      story_before:file(relativePath: {eq: "story-day.png"}) {
+        ...imageField
+      }
+    }
+  `}
+  render={(data) => <Navbar data={data} state={state} />}
+/>
 )
