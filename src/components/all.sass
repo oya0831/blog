@@ -9,12 +9,14 @@ $primary: $kaldi-red
 $primary-invert: $kaldi-red-invert
 $body-color: #333
 $black: #2b2523
+
+//hamz resuponsive
 $hamz: only screen and (min-width:1024px) and (max-width:1219px)
 
 .navbar .navbar-menu
   box-shadow: none !important
 
-.content .taglist
+.content .categorylist
   list-style: none
   margin-bottom: 0
   margin-left: 0
@@ -118,8 +120,6 @@ $menu-label-color: $white-ter
 
 // blog roll
 .blog-list-item.is-featured
-  //background-color: #ffb23f61;
-  //background-color: #f39a2969;
   background-color: #ffb9613d;
 .blog-list-item header
   display: flex;
@@ -141,12 +141,17 @@ $menu-label-color: $white-ter
   font-weight: 600;
   color: #6b6b6b !important;
 
-//link layout
-.link-layout
+//ham about
+.featured-hamster-thmbnail
+  width: 250px;
+  display: inline-block;
+
+//path layout
+.path
   display: flex;
+.path-layout
+  @extend .path;
   margin-bottom: 30px;
-.link-info-layout
-  display: flex;
 .home-size
   width: 20px;
 
@@ -157,14 +162,11 @@ $menu-label-color: $white-ter
   font-size: 1.35rem !important;
   margin-top: 10px;
 
-//index posts
-.index-posts
-  text-align: center;
-  display: inline-block;
+//new posts
+.new-posts
+  width: 250px;
 
 //main navgation
-.main-navbar .sub-navbar
-  position: relative;
 .main-text
   position: absolute;
   color: white;
@@ -200,7 +202,7 @@ $menu-label-color: $white-ter
   z-index: 30;
   top: 0%;
   right: 0%;
-.pc-layout
+.pc-drawer-layout
   background-color: #ffb96117 !important;
   height: 70px;
 .navtext-layout
@@ -218,7 +220,7 @@ $menu-label-color: $white-ter
 .indexwood-layout
   width: 200px;
   position: absolute;
-  top: 16%;
+  top: 15%;
   right: 2%;
 .otherwood-layout
   width: 140px;
@@ -229,12 +231,12 @@ $menu-label-color: $white-ter
 .indexham-layout
   position: absolute;
   right: 2%;
-  top: 16%;
+  top: 15%;
   z-index: 40;
   width: 200px;
   opacity: 0;
   &:hover
-    top: 8%;
+    top: 7%;
     opacity: 1;
 .otherham-layout
   position: absolute;

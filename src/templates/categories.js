@@ -1,15 +1,14 @@
 import React from 'react'
 import Helmet from 'react-helmet'
-import { Link, graphql } from 'gatsby'
-import Img from 'gatsby-image'
+import { graphql } from 'gatsby'
 
 import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
+import PathLayout from '../components/PathLayout'
 
 class CategoryRoute extends React.Component {
   render() {
     const posts = this.props.data.allMarkdownRemark.edges
-    const home = this.props.data.home
     const category = this.props.pageContext.category
     const title = this.props.data.site.siteMetadata.title
     /*const totalCount = this.props.data.allMarkdownRemark.totalCount
@@ -22,16 +21,12 @@ class CategoryRoute extends React.Component {
         <section className="section">
           <Helmet title={`${category} | ${title}`} />
           <div className="container">
-            <div className="link-layout">
-              <Img 
-                style={{width:'20px'}}
-                fluid={home.childImageSharp.fluid}
-              />
-              <Link to="/">
-                ホーム
-              </Link>
-               > カテゴリ:{category}
-            </div>
+            <PathLayout
+              layoutInfo={{
+                path: "path-layout",
+                text: `カテゴリ: ${category}`
+              }}
+            />
             <div className="columns is-multiline">
               <div
                 className="column is-12"
@@ -86,13 +81,6 @@ export const categoryPageQuery = graphql`
               }
             }
           }
-        }
-      }
-    }
-    home:file(relativePath: {eq: "home5.png"}) {
-      childImageSharp {
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid
         }
       }
     }

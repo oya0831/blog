@@ -7,72 +7,69 @@ import ByDayPosts from './ByDayPosts'
 import NewPosts from './NewPosts'
 import TranslateDate from './TranslateDate'
 
-class BlogRoll extends React.Component {
-  render() {
-    const results = this.props.results
-    const notImage = this.props.notImage
-
-    return (
+export const BlogRoll = ({
+  results,
+  notImage
+}) => {
+  return (
     <>
       <div className="columns is-multiline">
-        {results &&
-          results.map(({ node: result }) => (
-            <div className="is-parent column is-6" key={result.id}>
-              <article
-                className={`blog-list-item tile is-child box notification ${
-                  result.frontmatter.featuredimage ? 'is-featured' : ''
-                }`}
-              >
-                <header>
-                  {result.frontmatter.featuredimage ? (
+        { results && results.map(({ node: result }) => (
+          <div className="is-parent column is-6" key={result.id}>
+            <article
+              className={`blog-list-item tile is-child box notification ${
+                result.frontmatter.featuredimage ? 'is-featured' : ''
+              }`}
+            >
+              <header>
+                { result.frontmatter.featuredimage ? (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: result.frontmatter.featuredimage,
                           alt: `featured image thumbnail for result ${
-                            result.title
+                            result.frontmatter.title
                           }`,
                         }}
                       />
                     </div>
-                    ) : (
+                  ) : (
                     <div className="featured-thumbnail">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: notImage,
-                          alt: ""
+                          alt: "featured image thumbnail for result not_image"
                         }}
                       />
                     </div> 
-                    )
-                  }
-                </header>
-                <p className="post-meta">
-                  <span className="blog-text-layout is-size-6 is-block">
-                    <TranslateDate date={result.frontmatter.date} />
-                  </span>
-                  <Link
-                    className="blog-slug-text is-size-4"
-                    to={result.fields.slug}
-                  >
-                    {result.frontmatter.title}
-                  </Link>
-                </p>
-                <p>
-                  {result.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={result.fields.slug}>
-                    続きを読む ≫
-                  </Link>
-                </p>
-              </article>
-            </div>
-          ))}
-        </div>
-      </>
-    )
-  }
+                  )
+                }
+              </header>
+              <p className="post-meta">
+                <span className="blog-text-layout is-size-6 is-block">
+                  <TranslateDate date={result.frontmatter.date} />
+                </span>
+                <Link
+                  className="blog-slug-text is-size-4"
+                  to={result.fields.slug}
+                >
+                  {result.frontmatter.title}
+                </Link>
+              </p>
+              <p>
+                {result.excerpt}
+                <br />
+                <br />
+                <Link className="button" to={result.fields.slug}>
+                  続きを読む ≫
+                </Link>
+              </p>
+            </article>
+          </div>
+        ))}
+      </div>
+    </>
+  )
 }
 
 BlogRoll.propTypes = {

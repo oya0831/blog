@@ -1,4 +1,7 @@
-const ByDayPosts = ({ posts, state }) => {
+const ByDayPosts = ({
+  posts,
+  state
+}) => {
   const str = posts.map(value => {
     if(value.node.frontmatter.dayKey===state) {
       return value
