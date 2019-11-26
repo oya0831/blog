@@ -137,7 +137,7 @@ $menu-label-color: $white-ter
   &:hover
     text-decoration: underline !important; 
     color: #ff7700 !important;
-.blog-text-layout
+.date-text-layout
   font-weight: 600;
   color: #6b6b6b !important;
 
@@ -166,7 +166,7 @@ $menu-label-color: $white-ter
 .new-posts
   width: 250px;
 
-//main navgation
+//navgation-bar
 .main-text
   position: absolute;
   color: white;
@@ -184,17 +184,20 @@ $menu-label-color: $white-ter
   right: 15%;
   background-color: transparent !important;
 .contact-position
-  width: 130px;
+  width: 120px;
   position: absolute !important;
   top: 0%;
-  right: 2%;
+  right: 1.8%;
   background-color: transparent !important;
 .burger-layout
   z-index: 40;
-.text-layout
+.mb-day-text
+  width: 180px;
   background-color: transparent !important;
-  color: white !important;
-.drawer-layout
+  padding: 0.15rem 0.5rem !important;
+  img
+    max-height: initial !important;
+.mb-drawer-layout
   border-top-left-radius: 10px !important;
   border-bottom-left-radius: 10px !important;
   background-color: #996633 !important;
@@ -202,10 +205,10 @@ $menu-label-color: $white-ter
   z-index: 30;
   top: 0%;
   right: 0%;
-.pc-drawer-layout
+.drawer-layout
   background-color: #ffb96117 !important;
   height: 70px;
-.navtext-layout
+.day-text
   width: 220px;
   position: absolute;
 .hover-layout
@@ -217,18 +220,18 @@ $menu-label-color: $white-ter
 
 //hamz image
 //wood
-.indexwood-layout
+.index-wood
   width: 200px;
   position: absolute;
   top: 15%;
   right: 2%;
-.otherwood-layout
+.other-wood
   width: 140px;
   position: absolute;
   top: 7.5%;
   right: 2%;
 //hamster
-.indexham-layout
+.index-ham
   position: absolute;
   right: 2%;
   top: 15%;
@@ -238,7 +241,7 @@ $menu-label-color: $white-ter
   &:hover
     top: 7%;
     opacity: 1;
-.otherham-layout
+.other-ham
   position: absolute;
   right: 2%;
   top: 7.5%;
@@ -265,19 +268,19 @@ $menu-label-color: $white-ter
     max-width: 70%;
     margin: 0 0 1em;
 @media #{$hamz}
-  .indexwood-layout
+  .index-wood
     width: 160px;
     top: 13%;
-  .otherwood-layout
+  .other-wood
     width: 110px;
     top: 6%;
-  .indexham-layout
+  .index-ham
     right: 2%;
     top: 13%;
     width: 160px;
     &:hover
       top: 6.6%;
-  .otherham-layout
+  .other-ham
     right: 2%;
     top: 6%;
     width: 110px;

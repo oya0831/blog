@@ -9,7 +9,7 @@ const Navbar = class extends React.Component {
     this.state = {
       active: false,
       navBarActiveClass: '',
-      drawerLayoutClass: 'pc-drawer-layout',
+      drawerLayoutClass: 'drawer-layout',
       aboutTextPositionClass: 'about-position',
       contactTextPositionClass: 'contact-position',
     }
@@ -27,13 +27,13 @@ const Navbar = class extends React.Component {
         this.state.active
           ? this.setState({
               navBarActiveClass: 'is-active',
-              drawerLayoutClass: 'drawer-layout',
+              drawerLayoutClass: 'mb-drawer-layout',
               aboutTextPositionClass: '',
               contactTextPositionClass: '',
             })
           : this.setState({
               navBarActiveClass: '',
-              drawerLayoutClass: 'pc-drawer-layout',
+              drawerLayoutClass: 'drawer-layout',
               aboutTextPositionClass: 'about-position',
               contactTextPositionClass: 'contact-position',
             })
@@ -50,7 +50,14 @@ const Navbar = class extends React.Component {
     const hamImage = data.ham_before
     const ownerImage = data.owner_before
     const storyImage = data.story_before
-    const hoverImage = data.ham_after
+    const hoverImage = data.hover_day
+    
+    //mobile day image
+    const mbHamImage = data.mobile_ham
+    const mbOwnerImage = data.mobile_owner
+    const mbStoryImage = data.mobile_story
+    //my hamsters
+    const mbHamzImage = data.mobile_hamz
 
     //information image
     const aboutImage = data.about
@@ -58,11 +65,11 @@ const Navbar = class extends React.Component {
 
     //wood image
     const woodImage = this.props.state==='index' ? data.index_wood : data.other_wood
-    const woodImageLayout = this.props.state==='index' ? 'indexwood-layout' : 'otherwood-layout'
+    const woodImageLayout = this.props.state==='index' ? 'index-wood' : 'other-wood'
 
     //hamster image
     const hamsterImage = this.props.state==='index' ? data.index_hamster : data.other_hamster
-    const hamsterImageLayout = this.props.state==='index' ? 'indexham-layout' : 'otherham-layout'
+    const hamsterImageLayout = this.props.state==='index' ? 'index-ham' : 'other-ham'
 
     return (
       <>
@@ -93,17 +100,56 @@ const Navbar = class extends React.Component {
         >
           { this.state.active ? 
             <>
-              <Link className="navbar-item text-layout" to="/blog/ham">
-              はむ日和
+              <Link className="navbar-item mb-day-text" to="/">
+                はむっと！
               </Link>
-              <Link className="navbar-item text-layout" to="/blog/owner">
-              飼い主日和
+              <Link className="navbar-item mb-day-text" to="/blog/ham">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: mbHamImage,
+                    alt: "ham image"
+                  }}
+                />
               </Link>
-              <Link className="navbar-item text-layout" to="/blog/story">
-              ネタ日和
+              <Link className="navbar-item mb-day-text" to="/blog/owner">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: mbOwnerImage,
+                    alt: "owner image"
+                  }}
+                />
               </Link>
-              <Link className="navbar-item text-layout" to="/hamz">
-              うちのはむちゃんず
+              <Link className="navbar-item mb-day-text" to="/blog/story">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: mbStoryImage,
+                    alt: "story image"
+                  }}
+                />
+              </Link>
+              <Link className="navbar-item mb-day-text" to="/hamz">
+                 <PreviewCompatibleImage
+                  imageInfo={{
+                    image: mbHamzImage,
+                    alt: "hamz image"
+                  }}
+                />
+              </Link>
+              <Link className="navbar-item mb-day-text" to="/about">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: aboutImage,
+                    alt: "about image"
+                  }}
+                />
+              </Link>
+              <Link className="navbar-item mb-day-text" to="/contact">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: contactImage,
+                    alt: "contact image"
+                  }}
+                />
               </Link>
             </>
             :  
@@ -111,7 +157,7 @@ const Navbar = class extends React.Component {
               <div className="column is-3 is-offset-1">
                 <Link to="/blog/ham">
                   <div className="sub-navbar">
-                    <div className="navtext-layout">
+                    <div className="day-text">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: hamImage,
@@ -133,7 +179,7 @@ const Navbar = class extends React.Component {
               <div className="column is-3 is-offset-1">
                 <Link to="/blog/owner">
                   <div className="sub-navbar">
-                    <div className="navtext-layout">
+                    <div className="day-text">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: ownerImage,
@@ -155,7 +201,7 @@ const Navbar = class extends React.Component {
               <div className="column is-3 is-offset-1">
                 <Link to="/blog/story">
                   <div className="sub-navbar">
-                    <div className="navtext-layout">
+                    <div className="day-text">
                       <PreviewCompatibleImage
                         imageInfo={{
                           image: storyImage,
@@ -192,28 +238,28 @@ const Navbar = class extends React.Component {
                   />
                 </div>
               </Link>
+              <Link to="/about">
+                <div className="about-position">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: aboutImage,
+                    alt: "about image"
+                  }}
+                />
+                </div>
+              </Link>
+              <Link to="/contact">
+                <div className="contact-position">
+                <PreviewCompatibleImage
+                  imageInfo={{
+                    image: contactImage,
+                    alt: "contact image"
+                  }}
+                />
+                </div>
+              </Link>
             </>
           }
-          <div className={`${this.state.aboutTextPositionClass}`}>
-            <Link to="/about">
-              <PreviewCompatibleImage
-                imageInfo={{
-                  image: aboutImage,
-                  alt: "about image"
-                }}
-              />
-            </Link>
-          </div>
-          <div className={`${this.state.contactTextPositionClass}`}>
-            <Link to="/contact">
-              <PreviewCompatibleImage
-                imageInfo={{
-                  image: contactImage,
-                  alt: "contact image"
-                }}
-              />
-            </Link>
-          </div>
         </div>
       </>
     )
@@ -246,10 +292,10 @@ export default ({ state }) => (
         about:file(relativePath: {eq: "about.png"}) {
           ...imageField
         }
-        contact:file(relativePath: {eq: "contact.png"}) {
+        contact:file(relativePath: {eq: "contactdesuyo.png"}) {
           ...imageField
         }
-        index_hamster:file(relativePath: {eq: "pyokooo.png"}) {
+        index_hamster:file(relativePath: {eq: "kinako2.png"}) {
           ...imageField
         }
         other_hamster:file(relativePath: {eq: "gomagoma.png"}) {
@@ -258,13 +304,25 @@ export default ({ state }) => (
         ham_before:file(relativePath: {eq: "ham-day.png"}) {
           ...imageField
         }
-        ham_after:file(relativePath: {eq: "after.png"}) {
+        mobile_ham:file(relativePath: {eq: "hambiyori.png"}) {
+          ...imageField
+        }
+        hover_day:file(relativePath: {eq: "after.png"}) {
           ...imageField
         }
         owner_before:file(relativePath: {eq: "owner-day.png"}) {
           ...imageField
         }
+        mobile_owner:file(relativePath: {eq: "kainusibiyori.png"}) {
+          ...imageField
+        }
         story_before:file(relativePath: {eq: "story-day.png"}) {
+          ...imageField
+        }
+        mobile_story:file(relativePath: {eq: "netabiyori.png"}) {
+          ...imageField
+        }
+        mobile_hamz:file(relativePath: {eq: "utiham.png"}) {
           ...imageField
         }
       }
