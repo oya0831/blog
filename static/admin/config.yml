@@ -56,6 +56,8 @@ collections:
 
   - name: "pages"
     label: "固定ページたち"
+    folder:
+    create: true
     - name: "news/"
       label: "ニュース"
       folder: "src/pages/news"
