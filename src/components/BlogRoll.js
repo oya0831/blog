@@ -46,7 +46,7 @@ export const BlogRoll = ({
                 }
               </header>
               <p className="post-meta">
-                <span className="blog-text-layout is-size-6 is-block">
+                <span className="date-text-layout is-size-6 is-block">
                   <TranslateDate date={result.frontmatter.date} />
                 </span>
                 <Link
