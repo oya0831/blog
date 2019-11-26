@@ -56,16 +56,15 @@ collections:
 
   - name: "pages"
     label: "固定ページたち"
-    folder:
-    create: true
-    - name: "news/"
-      label: "ニュース"
-      folder: "src/pages/news"
-      create: true
-      slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-      fields:
-        - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
-        - {label: ニュース一覧, name: news, widget: object, fields: [{label: ニュース, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 画像, name: image, widget: image, required: false}, {label: 内容, name: body, widget: markdown}]}]}
+    collections:
+      - name: "news/"
+        label: "ニュース"
+        folder: "src/pages/news"
+        create: true
+        slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
+          - {label: ニュース一覧, name: news, widget: object, fields: [{label: ニュース, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 画像, name: image, widget: image, required: false}, {label: 内容, name: body, widget: markdown}]}]}
     files:
       - file: "src/pages/index.md"
         label: "トップページ"
