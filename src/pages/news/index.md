@@ -8,6 +8,7 @@ news:
       title: きなこちゃんのLINEスタンプが制作決定！
     - body: testtesttesttesttesttest
       date: 2019-11-26T04:46:45.953Z
+      image: /img/jumbotron.jpg
       title: test
 ---
 
