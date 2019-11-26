@@ -65,12 +65,14 @@ collections:
           - {label: "日付", name: "date", widget: "datetime", required: false}
           - {label: "最新情報", name: mainpitch, widget: string, required: false}
 
-      - file: "src/pages/news/index.md"
+      - name: "news/"
         label: "ニュース"
-        name: "news"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
-          - {label: ニュース一覧, name: news, widget: object, fields: [{label: ニュース, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 画像, name: image, widget: image, required: false}, {label: 内容, name: body, widget: markdown}]}]}
+          folder: "src/pages/news"
+          create: true
+          slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+          fields:
+            - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
+            - {label: ニュース一覧, name: news, widget: object, fields: [{label: ニュース, name: lists, widget: list, fields: [{label: 日付, name: date, widget: datetime}, {label: 題名, name: title, widget: string}, {label: 画像, name: image, widget: image, required: false}, {label: 内容, name: body, widget: markdown}]}]}
 
       - file: "src/pages/about/index.md"
         label: "このブログについて"
