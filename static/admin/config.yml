@@ -54,6 +54,20 @@ collections:
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "カテゴリ", name: "category", widget: "list"}
 
+  - name: "foluders"
+    label: "基本項目が増えていく系"
+    collections: 
+      - label: "ニュース"
+        folder: "src/pages/news"
+        create: true
+        slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "news-page"}
+          - {label: "タイトル", name: "title", widget: "string"}
+          - {label: "日付", name: "date", widget: "datetime"}
+          - {label: "画像", name: "image", widget: "image", required: false}
+          - {label: "内容", name: "body", widget: "markdown"}
+ 
   - name: "pages"
     label: "固定ページたち"
     files:
