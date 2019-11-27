@@ -58,6 +58,13 @@ export const pageQuery = graphql`
           lists {
             date(formatString: "MMMM DD, YYYY")
             title
+            image {
+              childImageSharp {
+                fluid(maxWidth: 240, quality: 64) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
             body
           }
         }
