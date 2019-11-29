@@ -155,20 +155,18 @@ $menu-label-color: $white-ter
 .home-size
   width: 20px;
 
-//news
+//news page
 .news-date
   font-size: 1.25rem !important;
 .news-text
   font-size: 1.35rem !important;
   margin-top: 10px;
-.featured-news-thmbnail
+.featured-news-display
   display: flex;
 .featured-news-thmbnail-size
   width: 160px;
-.news-body-width
-  width: 900px;
-.news-column-padding
-  padding-left: 50px !important;
+.news-body-padding
+  padding-right: 50px;
 
 //new posts
 .new-posts
@@ -275,8 +273,10 @@ $menu-label-color: $white-ter
     text-align: center;
     max-width: 70%;
     margin: 0 0 1em;
-  .featured-news-thmbnail
+  .featured-news-display
     display: inline;
+  .news-body-padding
+    padding-right: 0px;
 @media #{$responsive}
   .index-wood
     width: 160px;

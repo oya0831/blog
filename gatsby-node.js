@@ -32,12 +32,21 @@ exports.createPages = ({ actions, graphql }) => {
     const posts = result.data.allMarkdownRemark.edges
 
     posts.forEach(edge => {
+      const templatePath = (() => {
+        switch (edge.node.frontmatter.templateKey) {
+          case "news-page": 
+            return "src/pages/news/index.js"
+          default : 
+            return `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+        }
+      })();
+
       const id = edge.node.id
       createPage({
         path: edge.node.fields.slug,
         category: edge.node.frontmatter.category,
         component: path.resolve(
-          `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
+          templatePath
         ),
         // additional data can be passed via context
         context: {

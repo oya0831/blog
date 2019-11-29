@@ -1,23 +1,19 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { NewsPageTemplate } from '../../templates/news-page'
+import NewsIndexPage from '../../pages/news/index'
 
-const NewsPagePreview = ({ entry, getAsset }) => {
-  const entryBlurbs = entry.getIn(['data', 'news', 'lists'])
-  const lists = entryBlurbs ? entryBlurbs.toJS() : []
-
-  return (
-    <NewsPageTemplate
-      news={{ lists }}
-    />
-  )
-}
+const NewsPagePreview = ({ entry, widgetFor }) => (
+  <NewsIndexPage
+    body={widgetFor('body')}
+    title={entry.getIn(['data', 'title'])}
+  />
+)
 
 NewsPagePreview.propTypes = {
   entry: PropTypes.shape({
     getIn: PropTypes.func,
   }),
-  getAsset: PropTypes.func,
+  widgetFor: PropTypes.func,
 }
 
 export default NewsPagePreview

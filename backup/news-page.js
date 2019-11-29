@@ -29,12 +29,12 @@ NewsPageTemplate.propTypes = {
 }
 
 const NewsPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
-
+  const { edges: newsPost } = data.allMarkdownRemark
+  console.log(newsPost[0].node.frontmatter.news)
   return (
     <Layout state="news">
       <NewsPageTemplate
-        news={frontmatter.news}
+        news={newsPost[0].node.frontmatter.news}    
       />
     </Layout>
   )
@@ -42,8 +42,8 @@ const NewsPage = ({ data }) => {
 
 NewsPage.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
     }),
   }),
 }
@@ -51,21 +51,28 @@ NewsPage.propTypes = {
 export default NewsPage
 
 export const pageQuery = graphql`
-  query NewsPageTemplate($id: String!) {
-    markdownRemark(id: {eq: $id}) {
-      frontmatter {
-        news {
-          lists {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
+  query NewsPageTemplate {
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      filter: { frontmatter: { templateKey: { eq: "news-page" } } }
+    ) {
+      edges {
+        node {
+          frontmatter {
+            news {
+              lists {
+                date(formatString: "MMMM DD, YYYY")
+                title
+                body
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 240, quality: 64) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
                 }
               }
             }
-            body
           }
         }
       }

@@ -11,6 +11,7 @@ export const BlogRoll = ({
   results,
   notImage
 }) => {
+  console.log(results)
   return (
     <>
       <div className="columns is-multiline">

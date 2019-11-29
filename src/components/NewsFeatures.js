@@ -3,38 +3,44 @@ import PropTypes from 'prop-types'
 
 import TranslateDate from './TranslateDate'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
+import Content, { HTMLContent } from './Content'
 
-const NewsFeatureGrid = ({ gridItems }) => (
-  <section className="section">
-  <div className="columns is-multiline">
-    {gridItems.map(item => (
-      <div key={item.date}>
-        <div className="column is-12">
+const NewsFeatureGrid = ({ gridItems }) => {
+  const PostContent = HTMLContent || Content
+
+  return (
+    <section className="section">
+      {gridItems.map(({ node: item }) => (
+        <div key={item.id}>
+          <div className="column is-12">
             <div>
-              <TranslateDate date={item.date} />
+              <TranslateDate date={item.frontmatter.date} />
             </div>
             <div>
-              {item.title}
+              {item.frontmatter.title}
             </div>
             <br/>
             <br/>
-            <div className="featured-news-thmbnail">
-              <div className="news-body-width">{item.body}</div>
+            <div className="featured-news-display">
+              <div className="news-body-padding">
+                <PostContent content={item.html} />
+              </div>
               <div className="featured-news-thmbnail-size">
                 <PreviewCompatibleImage
                   imageInfo={{
-                    image: item.image,
+                    image: item.frontmatter.image,
                     alt: "news image"
                   }}
                 />
               </div>
             </div>
+          </div>
+          <br/>
         </div>
-      </div>
-    ))}
-  </div>
-  </section>
-)
+      ))}
+    </section>
+  )
+}
 
 NewsFeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
