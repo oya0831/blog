@@ -11,7 +11,7 @@ $body-color: #333
 $black: #2b2523
 
 //hamz resuponsive
-$hamz: only screen and (min-width:1024px) and (max-width:1219px)
+$responsive: only screen and (min-width:1024px) and (max-width:1219px)
 
 .navbar .navbar-menu
   box-shadow: none !important
@@ -155,18 +155,24 @@ $menu-label-color: $white-ter
 .home-size
   width: 20px;
 
-//news
+//news page
 .news-date
   font-size: 1.25rem !important;
 .news-text
   font-size: 1.35rem !important;
   margin-top: 10px;
+.featured-news-display
+  display: flex;
+.featured-news-thmbnail-size
+  width: 160px;
+.news-body-padding
+  padding-right: 50px;
 
 //new posts
 .new-posts
   width: 250px;
 
-//navgation-bar
+//navgation bar
 .main-text
   position: absolute;
   color: white;
@@ -267,7 +273,11 @@ $menu-label-color: $white-ter
     text-align: center;
     max-width: 70%;
     margin: 0 0 1em;
-@media #{$hamz}
+  .featured-news-display
+    display: inline;
+  .news-body-padding
+    padding-right: 0px;
+@media #{$responsive}
   .index-wood
     width: 160px;
     top: 13%;

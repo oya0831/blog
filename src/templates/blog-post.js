@@ -61,7 +61,7 @@ BlogPostTemplate.propTypes = {
   helmet: PropTypes.object,
 }
 
-const BlogPost = ({ location, data }) => {
+const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
   /*let disqusConfig = {
     url: location.href,
@@ -123,7 +123,7 @@ export const pageQuery = graphql`
         description
         image {
           childImageSharp {
-            fluid(maxWidth: 1000, quality:100) {
+            fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
             }
           }
