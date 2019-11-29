@@ -63,7 +63,6 @@ BlogPostTemplate.propTypes = {
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data
-  console.log(post.html)
   /*let disqusConfig = {
     url: location.href,
     identifier: post.frontmatter.id,
