@@ -33,7 +33,10 @@ export const IndexPageTemplate = ({
                 <div className="column is-8 is-offset-4">
                   <div className="new-posts">
                     <PreviewCompatibleImage 
-                      imageInfo={{ image: newposts, alt: "kinako"}}
+                      imageInfo={{ 
+                        image: newposts,
+                        alt: "new posts"
+                      }}
                     />
                   </div>
                 </div>
@@ -57,6 +60,7 @@ export const IndexPageTemplate = ({
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,
   date: PropTypes.string,
+  newposts: PropTypes.object,
 }
 
 const IndexPage = ({ data }) => {
@@ -67,6 +71,7 @@ const IndexPage = ({ data }) => {
       <IndexPageTemplate
         date={news[0].node.frontmatter.date}
         mainpitch={news[0].node.frontmatter.title}
+        newposts={data.new_posts}
       />
     </Layout>
   )
