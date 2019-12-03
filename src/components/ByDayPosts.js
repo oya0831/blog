@@ -1,6 +1,6 @@
 const ByDayPosts = ({
   posts,
-  state
+  state,
 }) => {
   const str = posts.map(value => {
     if(value.node.frontmatter.dayKey===state) {

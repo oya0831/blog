@@ -60,14 +60,13 @@ IndexPageTemplate.propTypes = {
 }
 
 const IndexPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  const { edges: news } = data.allMarkdownRemark
 
   return (
     <Layout state="index">
       <IndexPageTemplate
-        mainpitch={frontmatter.mainpitch}
-        date={frontmatter.date}
-        newposts={data.new_posts}
+        date={news[0].node.frontmatter.date}
+        mainpitch={news[0].node.frontmatter.title}
       />
     </Layout>
   )
@@ -75,9 +74,10 @@ const IndexPage = ({ data }) => {
 
 IndexPage.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
     }),
+    new_posts: PropTypes.object,
   }),
 }
 
@@ -85,10 +85,18 @@ export default IndexPage
 
 export const pageQuery = graphql`
   query IndexPageTemplate {
-    markdownRemark(frontmatter: { templateKey: { eq: "index-page" } }) {
-      frontmatter {
-        date(formatString: "MMMM DD, YYYY")
-        mainpitch 
+    allMarkdownRemark(
+      sort: { order: DESC, fields: [frontmatter___date] }
+      limit: 1
+      filter: { frontmatter: { templateKey: { eq: "news-page" } } }
+    ) {
+      edges{
+        node{
+          frontmatter {
+            date(formatString: "MMMM DD, YYYY")
+            title
+          }
+        }
       }
     }
     new_posts:file(relativePath: {eq: "new-posts.png"}) {

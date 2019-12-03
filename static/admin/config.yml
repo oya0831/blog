@@ -69,13 +69,11 @@ collections:
   - name: "pages"
     label: "固定ページたち"
     files:
-      - file: "src/pages/index.md"
-        label: "トップページ"
-        name: "index"
-        fields:
-          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
-          - {label: "日付", name: "date", widget: "datetime", required: false}
-          - {label: "最新情報", name: mainpitch, widget: string, required: false}
+      #- file: "src/pages/index.md"
+      #  label: "トップページ"
+      #  name: "index"
+      #  fields:
+      #    - {label: "Template Key", name: "templateKey", widget: "hidden", default: "index-page"}
 
       - file: "src/pages/about/index.md"
         label: "このブログについて"
