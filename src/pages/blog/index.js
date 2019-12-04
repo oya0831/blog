@@ -4,10 +4,12 @@ import Layout from '../../components/Layout'
 import CategoriesList from '../../components/CategoriesList'
 import BlogRoll from '../../components/BlogRoll'
 import PathLayout from '../../components/PathLayout'
+import StateContext from '../../contexts/state'
+
 
 export default class BlogIndexPage extends React.Component {
- render(){
-    const state = this.props.state
+  render() {
+    const state = this.props.state===undefined ? "blog" : this.props.state
     const currentState = (function(state) {
       switch (state) {
         case "ham": return "はむ日和"
@@ -29,9 +31,9 @@ export default class BlogIndexPage extends React.Component {
             <div className="content">
               <div className="columns is-multiline">
                 <div className="column is-10">
-                  <BlogRoll
-                    state={state===undefined? "blog" : state}
-                  />
+                  <StateContext.Provider value={this.props}>
+                    <BlogRoll />
+                  </StateContext.Provider>
                 </div>
                 <div className="column is-2">
                   <CategoriesList />
