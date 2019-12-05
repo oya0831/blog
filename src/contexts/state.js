@@ -1,4 +1,5 @@
 import { createContext } from 'react';
 
-const StateContext = createContext()
+const defaultState = ""
+const StateContext = createContext(defaultState)
 export default StateContext

@@ -1,10 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux';
+
 import BlogIndexPage from '../index'
+import StateContext from '../../../contexts/state'
 
-export const ConnectedBlogIndexPage = connect(state => state)(BlogIndexPage);
-
-export default () => {
-  return  <BlogIndexPage state="owner" />
+export default class OwnerBlogIndexPage extends React.Component {
+  state = { day: "owner" }
+  render() {
+    return (
+      <StateContext.Provider value={ this.state }>
+        <BlogIndexPage />
+      </StateContext.Provider>
+    )
+  }
 }
 
