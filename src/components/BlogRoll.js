@@ -2,17 +2,42 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { Link, graphql, StaticQuery } from 'gatsby'
 
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import ByDayPosts from './ByDayPosts'
 import NewPosts from './NewPosts'
+import PreviewCompatibleImage from './PreviewCompatibleImage'
 import TranslateDate from './TranslateDate'
 
+import BlogRollContext from '../contexts/BlogRollContext'
+
 export const BlogRoll = ({
-  results,
+  data,
   notImage
-}) => {
-  return (
-    <>
+}) => (
+  <BlogRollContext.Consumer>
+  { ({ path, categoriesPosts }) => { 
+    const { edges: posts } = data.allMarkdownRemark
+    const results = (function(path) {
+      if(path==="index") {
+        return NewPosts({ posts })
+      }
+
+      else if(path==="category") {
+        return categoriesPosts
+      }
+      else {
+        const str = posts.map(value => {
+          /* '' is all , path is "ham" or "owner" or "story" */
+          if(path==="" || path==="categories" || value.node.frontmatter.dayKey===path) {
+            return value
+          }
+          else {
+            return null
+          }
+        })
+        return str.filter(str => str)
+      }
+    })(path)
+
+    return (
       <div className="columns is-multiline">
         { results && results.map(({ node: result }) => (
           <div className="is-parent column is-6" key={result.id}>
@@ -68,9 +93,10 @@ export const BlogRoll = ({
           </div>
         ))}
       </div>
-    </>
-  )
-}
+    )
+  }}
+  </BlogRollContext.Consumer>
+)
 
 BlogRoll.propTypes = {
   data: PropTypes.shape({
@@ -80,7 +106,7 @@ BlogRoll.propTypes = {
   }),
 }
 
-export default ({ state, categoriesData }) => (
+export default () => (
   <StaticQuery
     query={graphql`
       query BlogRollQuery {
@@ -121,18 +147,8 @@ export default ({ state, categoriesData }) => (
         }
       }
     `}
-    render={(data) => {
-      const { edges: posts } = data.allMarkdownRemark
-      const results = (function(state) {
-        switch (state) {
-          case "index": return NewPosts({ posts })
-          case "categories": return categoriesData
-          case "blog" : return posts
-          default : return ByDayPosts({ posts, state })
-        }
-      })(state)
-
-      return <BlogRoll notImage={data.not_image} results={results} state={state}/>
-    }}
+    render={(data) => 
+      <BlogRoll notImage={data.not_image} data={data} />
+    }
   />
 )
