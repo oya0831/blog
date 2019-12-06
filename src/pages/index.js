@@ -7,55 +7,64 @@ import BlogRoll from '../components/BlogRoll'
 import TranslateDate from '../components/TranslateDate'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-export const IndexPageTemplate = ({
-  mainpitch,
-  date,
-  newposts,
-}) => (
-  <div>
-    <section className="section section--gradient">
-      <div className="container">
-        <div className="columns">
-          <div className="column is-12 has-text-centered">
-          <Link className="btn" to="/news">
-            <div className="news-date">
-              <TranslateDate date={date} /> 更新
-            </div>
-            <div className="news-text">{mainpitch}</div>
-          </Link>
-          </div>
-        </div>
-        <br/>
-        <div className="section">
-          <div className="columns">
-            <div className="column is-10 is-offset-1">
-              <div className="content">
-                <div className="column is-8 is-offset-4">
-                  <div className="new-posts">
-                    <PreviewCompatibleImage 
-                      imageInfo={{ 
-                        image: newposts,
-                        alt: "new posts"
-                      }}
-                    />
+import BlogRollContext from '../contexts/BlogRollContext'
+
+class IndexPageTemplate extends React.Component {
+  state = { path: "index" }
+  render() {
+    const date = this.props.date
+    const mainpitch = this.props.mainpitch
+    const newposts = this.props.newposts
+
+    return (
+      <div>
+        <section className="section section--gradient">
+          <div className="container">
+            <div className="columns">
+              <div className="column is-12 has-text-centered">
+                <Link className="btn" to="/news">
+                  <div className="news-date">
+                    <TranslateDate date={date} /> 更新
                   </div>
-                </div>
-                <div className="column is-12">
-                  <BlogRoll state="index" />
-                  <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/blog">
-                      全部見る ≫
-                    </Link>
+                  <div className="news-text">{mainpitch}</div>
+                </Link>
+              </div>
+            </div>
+            <br/>
+            <div className="section">
+              <div className="columns">
+                <div className="column is-10 is-offset-1">
+                  <div className="content">
+                    <div className="column is-8 is-offset-4">
+                      <div className="new-posts">
+                        <PreviewCompatibleImage 
+                          imageInfo={{ 
+                            image: newposts,
+                            alt: "new posts"
+                          }}
+                        />
+                      </div>
+                    </div>
+                    <div className="column is-12">
+                      <BlogRollContext.Provider value={ this.state }>
+                        <BlogRoll />
+                      </BlogRollContext.Provider>
+                      <div className="column is-12 has-text-centered">
+                        <Link className="btn" to="/blog">
+                          全部見る ≫
+                        </Link>
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
+        </section>
       </div>
-    </section>
-  </div>
-)
+    )
+  }
+}
 
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,

@@ -4,21 +4,22 @@ import Layout from '../../components/Layout'
 import CategoriesList from '../../components/CategoriesList'
 import BlogRoll from '../../components/BlogRoll'
 import PathLayout from '../../components/PathLayout'
-import StateContext from '../../contexts/state'
+
+import BlogRollContext from '../../contexts/BlogRollContext'
 
 export default class BlogIndexPage extends React.Component {
   render() {
     return (
-      <StateContext.Consumer>
-      { ({ day }) => {
-        const currentState = (function(day) {
-          switch (day) {
+      <BlogRollContext.Consumer>
+      { ({ path }) => {
+        const currentPath = (function(path) {
+          switch (path) {
             case "ham": return "はむ日和"
             case "owner": return "飼い主日和"
             case "story": return "ネタ日和"
             default: return "みんな日和"
           }
-        })(day)
+        })(path)
         return (
           <Layout state="blog-roll">
             <section className="section">
@@ -26,7 +27,7 @@ export default class BlogIndexPage extends React.Component {
                 <PathLayout
                   layoutInfo={{
                     path: "path-layout",
-                    text: `${currentState}`
+                    text: `${currentPath}`
                   }}
                 />
                 <div className="content">
@@ -44,7 +45,7 @@ export default class BlogIndexPage extends React.Component {
           </Layout>
         )
       }}
-      </StateContext.Consumer>
+      </BlogRollContext.Consumer>
     )
   }
 }

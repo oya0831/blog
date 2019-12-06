@@ -1,15 +1,15 @@
 import React from 'react'
 
 import BlogIndexPage from '../index'
-import StateContext from '../../../contexts/state'
+import BlogRollContext from '../../../contexts/BlogRollContext'
 
 export default class StoryBlogIndexPage extends React.Component {
-  state = { day: "story" }
+  state = { path: "story" }
   render() {
     return (  
-      <StateContext.Provider value={ this.state }>
+      <BlogRollContext.Provider value={ this.state }>
         <BlogIndexPage />
-      </StateContext.Provider>
+      </BlogRollContext.Provider>
     )
   }
 }

@@ -6,9 +6,14 @@ import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import PathLayout from '../components/PathLayout'
 
+import BlogRollContext from '../contexts/BlogRollContext'
+
 class CategoryRoute extends React.Component {
+  state = { 
+    categoriesPosts: this.props.data.allMarkdownRemark.edges,
+    path: "category"
+  }
   render() {
-    const posts = this.props.data.allMarkdownRemark.edges
     const category = this.props.pageContext.category
     const title = this.props.data.site.siteMetadata.title
     /*const totalCount = this.props.data.allMarkdownRemark.totalCount
@@ -36,7 +41,9 @@ class CategoryRoute extends React.Component {
                   <Link to="/tags/">Browse all tags</Link>
                 </p>
                 */}
-                <BlogRoll state="categories" categoriesData={posts}/>
+                <BlogRollContext.Provider value={this.state}>
+                  <BlogRoll />
+                </BlogRollContext.Provider>
               </div>
             </div>
           </div>
