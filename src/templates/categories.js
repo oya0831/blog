@@ -23,7 +23,7 @@ class CategoryRoute extends React.Component {
     }`*/
 
     return (
-      <Layout state="category">
+      <Layout>
         <section className="section">
           <Helmet title={`${category} | ${title}`} />
           <div className="container">

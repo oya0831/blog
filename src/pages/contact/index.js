@@ -37,7 +37,7 @@ export default class ContactIndexPage extends React.Component {
 
   render() {
     return (
-      <Layout state={"contact"}>
+      <Layout>
         <section className="section">
           <div className="container">
             <PathLayout

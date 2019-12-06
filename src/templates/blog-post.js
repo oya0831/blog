@@ -70,7 +70,7 @@ const BlogPost = ({ data }) => {
   }*/                
 
   return (
-    <Layout state="blog">
+    <Layout>
       <BlogPostTemplate
         content={post.html}
         contentComponent={HTMLContent}

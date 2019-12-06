@@ -25,7 +25,7 @@ const NewsPage = ({ data }) => {
   const { edges: newsPost } = data.allMarkdownRemark
 
   return (
-    <Layout state="news">
+    <Layout>
       <NewsIndexPage
         news={newsPost}    
       />

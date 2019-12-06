@@ -21,7 +21,7 @@ export default class BlogIndexPage extends React.Component {
           }
         })(path)
         return (
-          <Layout state="blog-roll">
+          <Layout>
             <section className="section">
               <div className="container">
                 <PathLayout

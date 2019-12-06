@@ -12,7 +12,7 @@ export default class CategoryPage extends React.Component {
   state = { path: "categories" }
   render() {
     return (
-      <Layout state="category-roll">
+      <Layout>
         <section className="section">
           <div className="container">
             <PathLayout
