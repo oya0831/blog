@@ -5,12 +5,12 @@ import CategoriesList from '../../components/CategoriesList'
 import BlogRoll from '../../components/BlogRoll'
 import PathLayout from '../../components/PathLayout'
 
-import BlogRollContext from '../../contexts/BlogRollContext'
+import PathContext from '../../contexts/PathContext'
 
 export default class BlogIndexPage extends React.Component {
   render() {
     return (
-      <BlogRollContext.Consumer>
+      <PathContext.Consumer>
       { ({ path }) => {
         const currentPath = (function(path) {
           switch (path) {
@@ -45,7 +45,7 @@ export default class BlogIndexPage extends React.Component {
           </Layout>
         )
       }}
-      </BlogRollContext.Consumer>
+      </PathContext.Consumer>
     )
   }
 }

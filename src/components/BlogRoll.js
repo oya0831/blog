@@ -6,96 +6,100 @@ import NewPosts from './NewPosts'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import TranslateDate from './TranslateDate'
 
+import PathContext from '../contexts/PathContext'
 import BlogRollContext from '../contexts/BlogRollContext'
 
 export const BlogRoll = ({
   data,
   notImage
 }) => (
-  <BlogRollContext.Consumer>
-  { ({ path, categoriesPosts }) => { 
-    const { edges: posts } = data.allMarkdownRemark
-    const results = (function(path) {
-      if(path==="index") {
-        return NewPosts({ posts })
-      }
+  <PathContext.Consumer>
+  { ({ path }) => (
+    <BlogRollContext.Consumer>
+    { ({ categoriesPosts }) => { 
+      const { edges: posts } = data.allMarkdownRemark
+      const results = (function(path) {
+        if(path==="index") {
+          return NewPosts({ posts })
+        }
+        else if(path==="category") {
+          return categoriesPosts
+        }
+        else {
+          const str = posts.map(value => {
+            /* '' is all , path is "ham" or "owner" or "story" */
+            if(path==="" || path==="categories" || value.node.frontmatter.dayKey===path) {
+              return value
+            }
+            else {
+              return null
+            }
+          })
+          return str.filter(str => str)
+        }
+      })(path)
 
-      else if(path==="category") {
-        return categoriesPosts
-      }
-      else {
-        const str = posts.map(value => {
-          /* '' is all , path is "ham" or "owner" or "story" */
-          if(path==="" || path==="categories" || value.node.frontmatter.dayKey===path) {
-            return value
-          }
-          else {
-            return null
-          }
-        })
-        return str.filter(str => str)
-      }
-    })(path)
-
-    return (
-      <div className="columns is-multiline">
-        { results && results.map(({ node: result }) => (
-          <div className="is-parent column is-6" key={result.id}>
-            <article
-              className={`blog-list-item tile is-child box notification ${
-                result.frontmatter.featuredimage ? 'is-featured' : ''
-              }`}
-            >
-              <header>
-                { result.frontmatter.featuredimage ? (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: result.frontmatter.featuredimage,
-                          alt: `featured image thumbnail for result ${
-                            result.frontmatter.title
-                          }`,
-                        }}
-                      />
-                    </div>
-                  ) : (
-                    <div className="featured-thumbnail">
-                      <PreviewCompatibleImage
-                        imageInfo={{
-                          image: notImage,
-                          alt: "featured image thumbnail for result not_image"
-                        }}
-                      />
-                    </div> 
-                  )
-                }
-              </header>
-              <p className="post-meta">
-                <span className="date-text-layout is-size-6 is-block">
-                  <TranslateDate date={result.frontmatter.date} />
-                </span>
-                <Link
-                  className="blog-slug-text is-size-4"
-                  to={result.fields.slug}
-                >
-                  {result.frontmatter.title}
-                </Link>
-              </p>
-              <p>
-                {result.excerpt}
-                <br />
-                <br />
-                <Link className="button" to={result.fields.slug}>
-                  続きを読む ≫
-                </Link>
-              </p>
-            </article>
-          </div>
-        ))}
-      </div>
-    )
-  }}
-  </BlogRollContext.Consumer>
+      return (
+        <div className="columns is-multiline">
+          { results && results.map(({ node: result }) => (
+            <div className="is-parent column is-6" key={result.id}>
+              <article
+                className={`blog-list-item tile is-child box notification ${
+                  result.frontmatter.featuredimage ? 'is-featured' : ''
+                }`}
+              >
+                <header>
+                  { result.frontmatter.featuredimage ? (
+                      <div className="featured-thumbnail">
+                        <PreviewCompatibleImage
+                          imageInfo={{
+                            image: result.frontmatter.featuredimage,
+                            alt: `featured image thumbnail for result ${
+                              result.frontmatter.title
+                            }`,
+                          }}
+                        />
+                      </div>
+                    ) : (
+                      <div className="featured-thumbnail">
+                        <PreviewCompatibleImage
+                          imageInfo={{
+                            image: notImage,
+                            alt: "featured image thumbnail for result not_image"
+                          }}
+                        />
+                      </div> 
+                    )
+                  }
+                </header>
+                <p className="post-meta">
+                  <span className="date-text-layout is-size-6 is-block">
+                    <TranslateDate date={result.frontmatter.date} />
+                  </span>
+                  <Link
+                    className="blog-slug-text is-size-4"
+                    to={result.fields.slug}
+                  >
+                    {result.frontmatter.title}
+                  </Link>
+                </p>
+                <p>
+                  {result.excerpt}
+                  <br />
+                  <br />
+                  <Link className="button" to={result.fields.slug}>
+                    続きを読む ≫
+                  </Link>
+                </p>
+              </article>
+            </div>
+          ))}
+        </div>
+      )
+    }}
+    </BlogRollContext.Consumer>
+  )}
+  </PathContext.Consumer>
 )
 
 BlogRoll.propTypes = {

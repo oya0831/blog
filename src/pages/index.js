@@ -7,7 +7,7 @@ import BlogRoll from '../components/BlogRoll'
 import TranslateDate from '../components/TranslateDate'
 import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
-import BlogRollContext from '../contexts/BlogRollContext'
+import PathContext from '../contexts/PathContext'
 
 class IndexPageTemplate extends React.Component {
   state = { path: "index" }
@@ -46,9 +46,9 @@ class IndexPageTemplate extends React.Component {
                       </div>
                     </div>
                     <div className="column is-12">
-                      <BlogRollContext.Provider value={ this.state }>
+                      <PathContext.Provider value={ this.state }>
                         <BlogRoll />
-                      </BlogRollContext.Provider>
+                      </PathContext.Provider>
                       <div className="column is-12 has-text-centered">
                         <Link className="btn" to="/blog">
                           全部見る ≫
