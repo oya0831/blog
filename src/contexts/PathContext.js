@@ -1,8 +1,8 @@
 import { createContext } from 'react';
 
 //initialize
-const defaultState = {
+const defaultPath = {
   path: "",
 }
-const PathContext = createContext(defaultState)
+const PathContext = createContext(defaultPath)
 export default PathContext
