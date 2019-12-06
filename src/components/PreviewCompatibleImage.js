@@ -7,24 +7,20 @@ const PreviewCompatibleImage = ({ imageInfo }) => {
   const { alt = '', childImageSharp, image } = imageInfo
 
   if (!!image && !!image.childImageSharp && alt.indexOf('featured')!==-1) {
-    return (
-      <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />
-    )
+    return <Img style={imageStyle} fluid={image.childImageSharp.fluid} alt={alt} />
   }
 
   if (!!image && !!image.childImageSharp && alt.indexOf('featured')===-1) {
-    return (
-      <Img fluid={image.childImageSharp.fluid} alt={alt} />
-    )
+    return <Img fluid={image.childImageSharp.fluid} alt={alt} />
   }
-
 
   if (!!childImageSharp) {
     return <Img style={imageStyle} fluid={childImageSharp.fluid} alt={alt} />
   }
 
-  if (!!image && typeof image === 'string')
-    return <img style={imageStyle} src={image} alt={alt} />
+  if (!!image && typeof image === 'string') {
+    return <img src={image} alt={alt} />
+  }
 
   return null
 }
