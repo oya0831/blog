@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 import BlogRoll from '../../components/BlogRoll'
 import PathLayout from '../../components/PathLayout'
 
-import BlogRollContext from '../../contexts/BlogRollContext'
+import PathContext from '../../contexts/PathContext'
 
 export default class CategoryPage extends React.Component {
   state = { path: "categories" }
@@ -24,9 +24,9 @@ export default class CategoryPage extends React.Component {
             <div className="content">
               <div className="columns">
                 <div className="column is-12">
-                  <BlogRollContext.Provider value={ this.state }>
+                  <PathContext.Provider value={ this.state }>
                     <BlogRoll />
-                  </BlogRollContext.Provider>
+                  </PathContext.Provider>
                 </div>
               </div>
             </div>

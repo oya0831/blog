@@ -6,6 +6,7 @@ import Layout from '../components/Layout'
 import BlogRoll from '../components/BlogRoll'
 import PathLayout from '../components/PathLayout'
 
+import PathContext from '../contexts/PathContext'
 import BlogRollContext from '../contexts/BlogRollContext'
 
 class CategoryRoute extends React.Component {
@@ -41,9 +42,11 @@ class CategoryRoute extends React.Component {
                   <Link to="/tags/">Browse all tags</Link>
                 </p>
                 */}
-                <BlogRollContext.Provider value={this.state}>
-                  <BlogRoll />
-                </BlogRollContext.Provider>
+                <PathContext.Provider value={this.state}>
+                  <BlogRollContext.Provider value={this.state}>
+                    <BlogRoll />
+                  </BlogRollContext.Provider>
+                </PathContext.Provider>
               </div>
             </div>
           </div>
