@@ -58,6 +58,8 @@ collections:
     label: "このブログについて"
     files:
       - file: "src/pages/about/index.md"
+        name: "about"
+        label: "このブログについて"
         fields:
           - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
           - {label: "タイトル", name: "title", widget: "string"}
