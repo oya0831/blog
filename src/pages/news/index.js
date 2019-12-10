@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 import PathLayout from '../../components/PathLayout'
 import NewsFeatures from '../../components/NewsFeatures'
 
-export const NewsIndexPage = ({ news, location }) => (
+export const NewsIndexPage = ({ news }) => (
   <section className="section">
     <div className="container">
       <PathLayout

@@ -2,11 +2,11 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 
-import Layout from '../components/Layout'
-import HamAboutFeatures from '../components/HamAboutFeatures'
-import PathLayout from '../components/PathLayout'
+import Layout from '../../components/Layout'
+//import HamAboutFeatures from '../components/HamAboutFeatures'
+import PathLayout from '../../components/PathLayout'
 
-export const HamAboutPageTemplate = ({ /*hamz*/ }) => (
+export const HamAboutIndexPage = ({ /*hamz*/ }) => (
   <div className="content">
     <section className="section section--gradient">
       <div className="container">
@@ -37,7 +37,7 @@ const HamAboutPage = ({ data }) => {
 
   return (
     <Layout>
-      <HamAboutPageTemplate
+      <HamAboutIndexPage
         //hamz={frontmatter.hamz}
       />
     </Layout>

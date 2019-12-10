@@ -1,9 +1,11 @@
 import React from 'react'
+import { graphql, StaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
-const HamAboutFeatureGrid = ({ gridItems }) => (
-  <div className="columns is-multiline">
+const HamAboutFeatureGrid = ({ data }) => (
+  <div></div>
+  /*<div className="columns is-multiline">
     {gridItems.map(item => (
       <div key={item.text} className="column is-6">
         <section className="section">
@@ -22,15 +24,46 @@ const HamAboutFeatureGrid = ({ gridItems }) => (
       </div>
     ))}
   </div>
+  */
 )
 
-HamAboutFeatureGrid.propTypes = {
+/*HamAboutFeatureGrid.propTypes = {
   gridItems: PropTypes.arrayOf(
     PropTypes.shape({
       image: PropTypes.oneOfType([PropTypes.object, PropTypes.string]),
       text: PropTypes.string,
     })
   ),
-}
+}*/
 
-export default HamAboutFeatureGrid
+
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query HamAboutFeatureGridQuery {
+        allMarkdownRemark(
+          filter: { frontmatter: { templateKey: { eq: "ham-about" } } }
+        ) {
+          edges {
+            node {
+              html
+              id
+              frontmatter {
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 120, quality: 100) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => 
+      <HamAboutFeatureGrid data={data} />
+    }
+  />
+)
