@@ -6,7 +6,7 @@ import Layout from '../../components/Layout'
 import PathLayout from '../../components/PathLayout'
 import NewsFeatures from '../../components/NewsFeatures'
 
-export const NewsIndexPage = ({ news }) => (
+export const NewsIndexPage = ({ news, location }) => (
   <section className="section">
     <div className="container">
       <PathLayout
@@ -15,7 +15,7 @@ export const NewsIndexPage = ({ news }) => (
           text: "ニュース"
         }}
       />
-      <NewsFeatures gridItems={news}/>
+      {location===undefined? null : (<NewsFeatures gridItems={news}/>)}
     </div>
   </section>
 )
@@ -23,12 +23,13 @@ export const NewsIndexPage = ({ news }) => (
 
 const NewsPage = ({ data, location }) => {
   console.log(location)
-  const { edges: newsPost } = location===undefined? null: data.allMarkdownRemark
+  const { edges: newsPost } = data.allMarkdownRemark
 
   return (
     <Layout>
       <NewsIndexPage
         news={newsPost}    
+        location={location}
       />
     </Layout>
   )
