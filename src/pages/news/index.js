@@ -22,7 +22,7 @@ export const NewsIndexPage = ({ news }) => (
 
 
 const NewsPage = ({ data, location }) => {
-  const { edges: newsPost } = location.href.indexOf('admin')===-1? data.allMarkdownRemark : null
+  const { edges: newsPost } = (location.href).indexOf('admin')===-1? data.allMarkdownRemark : null
 
   return (
     <Layout>
