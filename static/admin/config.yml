@@ -54,6 +54,14 @@ collections:
       - {label: "ブログ内画像", name: "image", widget: "image", required: false}
       - {label: "カテゴリ", name: "category", widget: "list"}
 
+  - name: "about"
+    label: "このブログについて"
+    file: "src/pages/about/index.md"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
+      - {label: "タイトル", name: "title", widget: "string"}
+      - {label: "内容", name: "body", widget: "markdown"}
+ 
   - name: "news"
     label: "ニュース"
     folder: "src/pages/news"
@@ -65,6 +73,16 @@ collections:
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "画像", name: "image", widget: "image", required: false}
       - {label: "内容", name: "body", widget: "markdown"}
+
+  - name: "hamz"
+    label: "うちはむ"
+    folder: "src/pages/hamz"
+    create: true
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    fields:
+      - {label: "Template Key", name: "templateKey", widget: "hidden", default: "ham-about"}
+      - {label: "画像", name: "image", widget: "image"}
+      - {label: "紹介文", name: "body", widget: "markdown"}
  
   - name: "pages"
     label: "固定ページたち"
