@@ -15,26 +15,22 @@ export const NewsIndexPage = ({ news, location }) => (
           text: "ニュース"
         }}
       />
-      {news===null? null : (<NewsFeatures gridItems={news}/>)}
+      {location===undefined? null : (<NewsFeatures gridItems={news}/>)}
     </div>
   </section>
 )
 
 
-const NewsPage = ({ data }) => {
-  const newsPost = (function(data){
-    if(data===undefined) {
-      return null
-    }
-    else {
-      return data.allMarkdownRemark.edges
-    }
-  })(data)
+const NewsPage = ({ data, location }) => {
+  console.log(data)
+  const { edges: newsPost } = data.allMarkdownRemark
+
 
   return (
     <Layout>
       <NewsIndexPage
         news={newsPost}    
+        location={location}
       />
     </Layout>
   )
