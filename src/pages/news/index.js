@@ -23,7 +23,7 @@ export const NewsIndexPage = ({ news }) => (
 
 const NewsPage = ({ data, location }) => {
   console.log(location)
-  const { edges: newsPost } = data.allMarkdownRemark
+  const { edges: newsPost } = location===undefined? null: data.allMarkdownRemark
 
   return (
     <Layout>
