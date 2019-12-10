@@ -22,7 +22,7 @@ export const NewsIndexPage = ({ news }) => (
 
 
 const NewsPage = ({ data, location }) => {
-  console.log(location.href)
+  console.log(location)
   const { edges: newsPost } = data.allMarkdownRemark
 
   return (
