@@ -1,36 +1,34 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
+//import PropTypes from 'prop-types'
+//import { graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import HamAboutFeatures from '../../components/HamAboutFeatures'
 import PathLayout from '../../components/PathLayout'
 
-export default class HamAboutIndexPage extends React.Component {
-  render() {
-    return (
+export const HamAboutIndexPage = () => (
   <Layout>
-  <div className="content">
-    <section className="section section--gradient">
-      <div className="container">
-        <PathLayout
-          layoutInfo={{
-            path: "path",
-            text: "うちのはむちゃんず"
-          }}
-        />
-        <div className="columns">
-          <div className="column is-10 is-offset-1">
-            <HamAboutFeatures />
+    <div className="content">
+      <section className="section section--gradient">
+        <div className="container">
+          <PathLayout
+            layoutInfo={{
+              path: "path",
+              text: "うちのはむちゃんず"
+            }}
+          />
+          <div className="columns">
+            <div className="column is-10 is-offset-1">
+              <HamAboutFeatures />
+            </div>
           </div>
         </div>
-      </div>
-    </section>
-  </div>
+      </section>
+    </div>
   </Layout>
-  )
-  }
-}
+)
+
+export default HamAboutIndexPage
 
 /*
 HamAboutPageTemplate.propTypes = {
