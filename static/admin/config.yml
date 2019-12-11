@@ -87,4 +87,4 @@ collections:
       - {label: "日付", name: "date", widget: "datetime"}
       - {label: "画像", name: "image", widget: "image"}
       - {label: "名前", name: "title", widget: "string"}
-      - {label: "紹介文", name: "introduction", widget: "markdown"}
+      - {label: "紹介文", name: "body", widget: "markdown"}
