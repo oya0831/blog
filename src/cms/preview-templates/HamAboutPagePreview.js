@@ -9,7 +9,8 @@ const HamAboutPagePreview = ({ entry, widgetFor/*getAsset*/ }) => {
   return (
     <HamAboutIndexPage
      // hamz={{ lists }}
-      body={widgetFor('body')}
+      introduction={widgetFor('introduction')}
+      title={entry.getIn(['data', 'title'])}
     />
   )
 }

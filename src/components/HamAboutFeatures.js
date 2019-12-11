@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 
-const HamAboutFeatureGrid = ({ data }) => (
+export const HamAboutFeatureGrid = ({ data }) => (
   <div></div>
   /*<div className="columns is-multiline">
     {gridItems.map(item => (
@@ -42,6 +42,7 @@ export default () => (
     query={graphql`
       query HamAboutFeatureGridQuery {
         allMarkdownRemark(
+          sort: { order: DESC, fields: [frontmatter___date] }
           filter: { frontmatter: { templateKey: { eq: "ham-about" } } }
         ) {
           edges {
@@ -56,14 +57,19 @@ export default () => (
                     }
                   }
                 }
+                title
+                introduction
               }
             }
           }
         }
       }
     `}
-    render={(data) => 
+    render={(data) => {
+      console.log(data)
+      return (
       <HamAboutFeatureGrid data={data} />
-    }
+      )
+    }}
   />
 )
