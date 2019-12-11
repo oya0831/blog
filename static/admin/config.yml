@@ -89,9 +89,9 @@ collections:
       - {label: "名前", name: "title", widget: "string"}
       - {label: "紹介文", name: "body", widget: "markdown"}
 
-    - name: "pages"
-      label: "固定ページたち"
-      files:
+  - name: "pages"
+    label: "固定ページたち"
+    files:
       #- file: "src/pages/index.md"
       #  label: "トップページ"
       #  name: "index"
@@ -105,10 +105,10 @@ collections:
       #    - {label: "Template Key", name: "templateKey", widget: "hidden", default: "about-page"}
       #    - {label: "タイトル", name: "title", widget: "string"}
       #    - {label: "内容", name: "body", widget: "markdown"}
-      
-        - file: "src/pages/hamz/index.md"
-          label: "うちはむ"
-          name: "hamz"
-          fields:
-            - {label: "Template Key", name: "templateKey", widget: "hidden", default: "ham-about"}
-            - {label: はむちゃんず, name: hamz, widget: object, fields: [{label: はむ, name: lists, widget: list, fields: [{label: 画像, name: image, widget: image}, {label: 紹介文, name: text, widget: markdown}]}]}
+     
+      - file: "src/pages/hamz/index.md"
+        label: "うちはむ"
+        name: "hamz"
+        fields:
+          - {label: "Template Key", name: "templateKey", widget: "hidden", default: "ham-about"}
+          - {label: はむちゃんず, name: hamz, widget: object, fields: [{label: はむ, name: lists, widget: list, fields: [{label: 画像, name: image, widget: image}, {label: 紹介文, name: text, widget: markdown}]}]}
