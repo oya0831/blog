@@ -1,78 +1,23 @@
 import React from 'react'
-import PropTypes from 'prop-types'
-import { graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import PathLayout from '../../components/PathLayout'
 import NewsFeatures from '../../components/NewsFeatures'
 
-export const NewsIndexPage = ({ news }) => (
-  <section className="section">
-    <div className="container">
-      <PathLayout
-        layoutInfo={{
-          path: "path-layout",
-          text: "ニュース"
-        }}
-      />
-      {news===null? null : (<NewsFeatures gridItems={news}/>)}
-    </div>
-  </section>
+export const NewsIndexPage = () => (
+  <Layout>
+    <section className="section">
+      <div className="container">
+        <PathLayout
+          layoutInfo={{
+            path: "path-layout",
+            text: "ニュース"
+          }}
+        />
+        <NewsFeatures />
+      </div>
+    </section>
+  </Layout>
 )
 
-
-const NewsPage = ({ data }) => {
-  const newsPost = (function(data){
-    if(data===undefined) {
-      return null
-    }
-    else {
-      return data.allMarkdownRemark.edges
-    }
-  })(data)
-
-  return (
-    <Layout>
-      <NewsIndexPage
-        news={newsPost}    
-      />
-    </Layout>
-  )
-}
-
-NewsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
-
-export default NewsPage
-
-export const pageQuery = graphql`
-  query NewsIndexPage {
-    allMarkdownRemark(
-      sort: { order: DESC, fields: [frontmatter___date] }
-      filter: { frontmatter: { templateKey: { eq: "news-page" } } }
-    ) {
-      edges {
-        node {
-          html
-          id
-          frontmatter {
-            date(formatString: "MMMM DD, YYYY")
-            title
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-  }
-`
+export default NewsIndexPage
