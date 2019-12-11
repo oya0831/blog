@@ -1,13 +1,15 @@
 import React from 'react'
+import { graphql, StaticQuery } from 'gatsby'
 import PropTypes from 'prop-types'
 
 import TranslateDate from './TranslateDate'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import Content, { HTMLContent } from './Content'
 
-const NewsFeatureGrid = ({ gridItems }) => {
+export const NewsFeatureGrid = ({ data }) => {
+  const { edges: gridItems } = data.allMarkdownRemark
   const PostContent = HTMLContent || Content
-
+ 
   return (
     <section className="section">
       {gridItems.map(({ node: item }) => (
@@ -43,13 +45,41 @@ const NewsFeatureGrid = ({ gridItems }) => {
 }
 
 NewsFeatureGrid.propTypes = {
-  gridItems: PropTypes.arrayOf(
-    PropTypes.shape({
-      date: PropTypes.string,
-      title: PropTypes.string,
-      body: PropTypes.string,
-    })
-  ),
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array,
+    }),
+  }),
 }
 
-export default NewsFeatureGrid
+export default () => (
+  <StaticQuery
+    query={graphql`
+      query NewsFeaturesQuery {
+        allMarkdownRemark(
+          sort: { order: DESC, fields: [frontmatter___date] }
+          filter: { frontmatter: { templateKey: { eq: "news-page" } } }
+        ) {
+          edges {
+            node {
+              html
+              id
+              frontmatter {
+                date(formatString: "MMMM DD, YYYY")
+                title
+                image {
+                  childImageSharp {
+                    fluid(maxWidth: 240, quality: 64) {
+                      ...GatsbyImageSharpFluid
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    `}
+    render={(data) => <NewsFeatureGrid data={data} /> }
+  />
+)
