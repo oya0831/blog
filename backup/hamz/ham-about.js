@@ -6,7 +6,7 @@ import Layout from '../components/Layout'
 import HamAboutFeatures from '../components/HamAboutFeatures'
 import PathLayout from '../components/PathLayout'
 
-export const HamAboutPageTemplate = ({ hamz }) => (
+export const HamAboutPageTemplate = ({ /*hamz*/ }) => (
   <div className="content">
     <section className="section section--gradient">
       <div className="container">
@@ -18,7 +18,7 @@ export const HamAboutPageTemplate = ({ hamz }) => (
         />
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <HamAboutFeatures gridItems={hamz.lists} />
+            {/*<HamAboutFeatures gridItems={hamz.lists} />*/}
           </div>
         </div>
       </div>
@@ -26,35 +26,35 @@ export const HamAboutPageTemplate = ({ hamz }) => (
   </div>
 )
 
-HamAboutPageTemplate.propTypes = {
+/*HamAboutPageTemplate.propTypes = {
   hamz: PropTypes.shape({
     lists: PropTypes.array,
   }),
-}
+}*/
 
 const HamAboutPage = ({ data }) => {
-  const { frontmatter } = data.markdownRemark
+  //const { frontmatter } = data.markdownRemark
 
   return (
     <Layout>
       <HamAboutPageTemplate
-        hamz={frontmatter.hamz}
+        //hamz={frontmatter.hamz}
       />
     </Layout>
   )
 }
 
-HamAboutPage.propTypes = {
+/*HamAboutPage.propTypes = {
   data: PropTypes.shape({
     markdownRemark: PropTypes.shape({
       frontmatter: PropTypes.object,
     }),
   }),
-}
+}*/
 
 export default HamAboutPage
 
-export const hamAboutPageQuery = graphql`
+/*export const hamAboutPageQuery = graphql`
   query HamAboutPage($id: String!) {
     markdownRemark(id: { eq: $id }) {
       frontmatter {
@@ -73,4 +73,4 @@ export const hamAboutPageQuery = graphql`
       }
     }
   }
-`
+`*/

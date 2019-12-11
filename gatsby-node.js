@@ -36,6 +36,8 @@ exports.createPages = ({ actions, graphql }) => {
         switch (edge.node.frontmatter.templateKey) {
           case "news-page": 
             return "src/pages/news/index.js"
+          case "ham-about":
+            return "src/pages/hamz/index.js"
           default : 
             return `src/templates/${String(edge.node.frontmatter.templateKey)}.js`
         }
