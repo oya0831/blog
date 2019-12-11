@@ -1,6 +1,4 @@
 import React from 'react'
-//import PropTypes from 'prop-types'
-//import { graphql } from 'gatsby'
 
 import Layout from '../../components/Layout'
 import HamAboutFeatures from '../../components/HamAboutFeatures'
@@ -29,54 +27,3 @@ export const HamAboutIndexPage = () => (
 )
 
 export default HamAboutIndexPage
-
-/*
-HamAboutPageTemplate.propTypes = {
-  hamz: PropTypes.shape({
-    lists: PropTypes.array,
-  }),
-}
-
-const HamAboutPage = ({ data }) => {
-  //const { frontmatter } = data.markdownRemark
-
-  return (
-    <Layout>
-      <HamAboutIndexPage
-        //hamz={frontmatter.hamz}
-      />
-    </Layout>
-  )
-}
-
-HamAboutPage.propTypes = {
-  data: PropTypes.shape({
-    markdownRemark: PropTypes.shape({
-      frontmatter: PropTypes.object,
-    }),
-  }),
-}
-
-export default HamAboutPage
-
-export const hamAboutPageQuery = graphql`
-  query HamAboutPage($id: String!) {
-    markdownRemark(id: { eq: $id }) {
-      frontmatter {
-        hamz {
-          lists {
-            image {
-              childImageSharp {
-                fluid(maxWidth: 240, quality: 64) {
-                  ...GatsbyImageSharpFluid
-                }
-              }
-            }
-            text
-          }
-        }
-      }
-    }
-  }
-`
-*/
