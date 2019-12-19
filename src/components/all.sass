@@ -13,6 +13,14 @@ $black: #2b2523
 //hamz resuponsive
 $responsive: only screen and (min-width:1024px) and (max-width:1219px)
 
+//Base Font
+@font-face 
+  font-family: 'BaseFont'
+  src: url('./BaseFont.ttf') 
+
+.base-font
+  font-family: 'BaseFont'
+
 .navbar .navbar-menu
   box-shadow: none !important
 
@@ -46,39 +54,39 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px)
   align-items: center
 
 .full-width-image
-    width: 100vw
-    height: 400px
-    background-size: cover
-    background-position: bottom
-    display: flex
-    justify-content: center
-    align-items: center
+  width: 100vw
+  height: 400px
+  background-size: cover
+  background-position: bottom
+  display: flex
+  justify-content: center
+  align-items: center
 
 .btn
-    display: inline-block
-    padding: 12px 16px 10px
-    font-size: 18px
-    font-size: 1rem
-    line-height: 1.25
-    background-color: #fff
-    border-radius: .25rem
-    text-decoration: none
-    font-weight: 700
-    color: #f58c06c7;
-    text-align: center
-    -webkit-box-shadow: inset 0 0 0 2px #f58c06c7
-    box-shadow: inset 0 0 0 2px #f58c06c7
-    -webkit-transition: all .15s ease
-    transition: all .15s ease
-    &:hover
-      color: #ff7700;
-      box-shadow: inset 0 0 0 2px #ff7700
+  display: inline-block
+  padding: 12px 16px 10px
+  font-size: 18px
+  font-size: 1.5rem
+  line-height: 1.25
+  background-color: #fff
+  border-radius: .25rem
+  text-decoration: none
+  font-weight: 700
+  color: #f58c06c7
+  text-align: center
+  -webkit-box-shadow: inset 0 0 0 2px #f58c06c7
+  box-shadow: inset 0 0 0 2px #f58c06c7
+  -webkit-transition: all .15s ease
+  transition: all .15s ease
+  &:hover
+    color: #ff7700
+    box-shadow: inset 0 0 0 2px #ff7700
 
 .margin-top-0
   margin-top: 0 !important
+.navbar-item.day-item
+  padding: 0 !important
 
-.navbar-item .icon
-  color: $primary
 // Override for use of svg's from https://simpleicons.org/
 .icon svg
   width: 1.5rem
@@ -99,7 +107,6 @@ $menu-item-active-background-color:	$kaldi-red-invert
 $menu-list-border-left: 1px solid $kaldi-red-invert
 $menu-label-color: $white-ter
 
-
 .menu-label
   font-size: 1em !important
   text-align: left
@@ -109,190 +116,218 @@ $menu-label-color: $white-ter
 .social
   padding: 2em
 .social a
-    padding: .5em .5em .3em .5em
-    border-radius: 1em
-    background-color: $white-ter
-    margin: .5em
-    width: 1em
-    height: 1em
-    vertical-align: middle
-    display: inline
+  padding: .5em .5em .3em .5em
+  border-radius: 1em
+  background-color: $white-ter
+  margin: .5em
+  width: 1em
+  height: 1em
+  vertical-align: middle
+  display: inline
 
 // blog roll
 .blog-list-item.is-featured
-  background-color: #ffb9613d;
+  background-color: #ffb9613d
 .blog-list-item header
-  display: flex;
-  margin-bottom: 1em;
+  display: flex
+  margin-bottom: 1em
 .blog-list-item .featured-thumbnail
-  flex-basis: 35%;
-  margin: 0 1.5em 0 0;
+  flex-basis: 35%
+  margin: 0 1.5em 0 0
 .blog-read-text
-  font-weight: bolder !important;
-  color: #6b6b6b !important;
+  font-weight: bolder !important
+  color: #6b6b6b !important
 .blog-slug-text
-  font-weight: bolder;
-  color: #545454 !important;
-  text-decoration: none !important;
+  font-weight: bolder
+  color: #545454 !important
+  text-decoration: none !important
   &:hover
-    text-decoration: underline !important; 
-    color: #ff7700 !important;
+    color: #ff7700 !important
 .date-text-layout
-  font-weight: 600;
-  color: #6b6b6b !important;
+  font-weight: 600
+  color: #6b6b6b !important
 
 //ham about
 .featured-hamster-thmbnail
-  width: 250px;
-  display: inline-block;
+  width: 250px
+  display: inline-block
 
 //path layout
 .path
-  display: flex;
+  display: flex
 .path-layout
-  @extend .path;
-  margin-bottom: 30px;
+  @extend .path
+  margin-bottom: 30px
 .home-size
-  width: 20px;
+  width: 20px
 
 //news page
 .news-date
-  font-size: 1.25rem !important;
+  font-size: 1.85rem !important
 .news-text
-  font-size: 1.35rem !important;
-  margin-top: 10px;
+  font-size: 1.85rem !important
+  margin-top: 10px
 .featured-news-display
-  display: flex;
+  display: flex
 .featured-news-thmbnail-size
-  width: 160px;
+  width: 160px
 .news-body-padding
-  padding-right: 50px;
+  padding-right: 50px
 
 //new posts
 .new-posts
-  width: 250px;
+  width: 250px
 
 //navgation bar
+.fixed
+  position: fixed
 .main-text
-  position: absolute;
-  color: white;
-  top: 0;
-  left: 0;
+  position: absolute
+  color: white
+  top: 0
+  left: 0
 .burger-position
-  position: absolute !important;
-  top: 0%;
-  right: 0%;
-  background-color: transparent !important;
+  position: absolute !important
+  top: 0%
+  right: 0%
+  background-color: transparent !important
 .about-position
-  width: 120px;
-  position: absolute !important;
-  top: 0%;
-  right: 15%;
-  background-color: transparent !important;
+  width: 120px
+  position: absolute !important
+  top: 0%
+  right: 15%
+  background-color: transparent !important
 .contact-position
-  width: 120px;
-  position: absolute !important;
-  top: 0%;
-  right: 1.8%;
-  background-color: transparent !important;
+  width: 120px
+  position: absolute !important
+  top: 0%
+  right: 1.8%
+  background-color: transparent !important
 .burger-layout
-  z-index: 40;
+  z-index: 40
 .mb-day-text
-  width: 180px;
-  background-color: transparent !important;
-  padding: 0.15rem 0.5rem !important;
+  width: 180px
+  background-color: transparent !important
+  padding: 0.15rem 0.5rem !important
   img
-    max-height: initial !important;
+    max-height: initial !important
 .mb-drawer-layout
-  border-top-left-radius: 10px !important;
-  border-bottom-left-radius: 10px !important;
-  background-color: #996633 !important;
-  position: absolute !important;
-  z-index: 30;
-  top: 0%;
-  right: 0%;
+  border-top-left-radius: 10px !important
+  border-bottom-left-radius: 10px !important
+  background-color: #996633 !important
+  position: absolute !important
+  z-index: 30
+  top: 0%
+  right: 0%
 .drawer-layout
-  background-color: #ffb96117 !important;
-  height: 70px;
+  background-color: #ffb96117 !important
+  height: 100px
 .day-text
-  width: 220px;
-  position: absolute;
+  position: absolute !important
+  font-size: 4.0em
+  font-weight: bold
+.day-padding
+  padding: 0 !important
+.ham-margin
+  margin-left: 95px
+.owner-margin
+  margin-left: 80px 
+.story-margin
+  margin-left: 80px
 .hover-layout
-  width: 220px;
-  position: absolute;
-  opacity: 0;
+  position: absolute
+  width: 280px
+  padding-top: 20px
+  opacity: 0
   &:hover
-    opacity: 0.7;
+    opacity: 0.7
+.hover-owner-layout
+  @extend .hover-layout
+  margin-left: 13px
+  width: 290px
+  padding-top: 15px
 
 //hamz image
 //wood
 .index-wood
-  width: 200px;
-  position: absolute;
-  top: 15%;
-  right: 2%;
+  width: 200px
+  position: absolute
+  top: 15%
+  right: 2%
 .other-wood
-  width: 140px;
-  position: absolute;
-  top: 7.5%;
-  right: 2%;
+  width: 140px
+  position: absolute
+  top: 7.5%
+  right: 2%
 //hamster
 .index-ham
-  position: absolute;
-  right: 2%;
-  top: 15%;
-  z-index: 40;
-  width: 200px;
-  opacity: 0;
+  position: absolute
+  right: 2%
+  top: 15%
+  z-index: 40
+  width: 200px
+  opacity: 0
   &:hover
-    top: 7%;
-    opacity: 1;
+    top: 7%
+    opacity: 1
 .other-ham
-  position: absolute;
-  right: 2%;
-  top: 7.5%;
-  z-index: 60;
-  width: 140px;
-  opacity: 0;
+  position: absolute
+  right: 2%
+  top: 7.5%
+  z-index: 60
+  width: 140px
+  opacity: 0
   &:hover
-    right: 6.5%;
-    top: 9%;
-    opacity: 1;
-    
+    right: 6.5%
+    top: 9%
+    opacity: 1
+.ham-up-size
+  width: 90px
+  margin-right: 20px
+
 @import "~bulma"
 
 
 // responsiveness
 +tablet-only
   .blog-list-item .featured-thumbnail
-    flex-basis: 50%;
+    flex-basis: 50%
 +mobile
   .blog-list-item header
     display: block
   .blog-list-item .featured-thumbnail
-    text-align: center;
-    max-width: 70%;
-    margin: 0 0 1em;
+    text-align: center
+    max-width: 70%
+    margin: 0 0 1em
   .featured-news-display
-    display: inline;
+    display: inline
   .news-body-padding
-    padding-right: 0px;
+    padding-right: 0px
+  .ham-up-size
+    width: 70px
+    margin-right: 0px
 @media #{$responsive}
   .index-wood
-    width: 160px;
-    top: 13%;
+    width: 160px
+    top: 13%
   .other-wood
-    width: 110px;
-    top: 6%;
+    width: 110px
+    top: 6%
   .index-ham
-    right: 2%;
-    top: 13%;
-    width: 160px;
+    right: 2%
+    top: 13%
+    width: 160px
     &:hover
-      top: 6.6%;
+      top: 6.6%
   .other-ham
-    right: 2%;
-    top: 6%;
-    width: 110px;
+    right: 2%
+    top: 6%
+    width: 110px
     &:hover
-      top: 7.5%;
+      top: 7.5%
+  .ham-margin
+    margin-left: 50px
+  .owner-margin
+    margin-left: 30px 
+  .story-margin
+    margin-left: 70px
