@@ -24,7 +24,9 @@ export const HamAboutFeatureGrid = ({ data }) => {
                 />
               </div>
             </div>
+            <div className="has-text-centered hamz-name base-font">
             {item.frontmatter.title}
+            </div>
             <PostContent content={item.html} />
           </section>
         </div>
