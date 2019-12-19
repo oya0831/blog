@@ -18,10 +18,12 @@ const PathLayout = ({
           }}
         />
       </div>
-      <Link to="/">
-        ホーム
-      </Link>
-      > {text}
+      <div className="base-font">
+        <Link to="/" className="home-text">
+          ホーム
+        </Link>
+        &nbsp;>&nbsp;{text}
+      </div>
     </div>
   )
 }

@@ -71,23 +71,21 @@ export const BlogRoll = ({
                       </div> 
                     )
                   }
-                </header>
                 <p className="post-meta">
-                  <span className="date-text-layout is-size-6 is-block">
+                  <span className="base-font date-text-layout is-block">
                     <TranslateDate date={result.frontmatter.date} />
                   </span>
                   <Link
-                    className="blog-slug-text is-size-4"
+                    className="base-font blog-slug-text"
                     to={result.fields.slug}
                   >
                     {result.frontmatter.title}
                   </Link>
                 </p>
-                <p>
-                  {result.excerpt}
-                  <br />
-                  <br />
-                  <Link className="button" to={result.fields.slug}>
+                </header>
+                <p className="base-font">
+                  <div className="excerpt-text">{result.excerpt}</div>
+                  <Link className="continue-text-size button" to={result.fields.slug}>
                     続きを読む ≫
                   </Link>
                 </p>

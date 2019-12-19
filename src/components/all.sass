@@ -79,8 +79,8 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px)
   -webkit-transition: all .15s ease
   transition: all .15s ease
   &:hover
-    color: #ff7700
-    box-shadow: inset 0 0 0 2px #ff7700
+    color: #fdb963c7
+    box-shadow: inset 0 0 0 2px #fdb963c7
 
 .margin-top-0
   margin-top: 0 !important
@@ -130,7 +130,7 @@ $menu-label-color: $white-ter
   background-color: #ffb9613d
 .blog-list-item header
   display: flex
-  margin-bottom: 1em
+  margin-bottom: 1rem
 .blog-list-item .featured-thumbnail
   flex-basis: 35%
   margin: 0 1.5em 0 0
@@ -141,11 +141,18 @@ $menu-label-color: $white-ter
   font-weight: bolder
   color: #545454 !important
   text-decoration: none !important
+  font-size: 2rem
   &:hover
     color: #ff7700 !important
 .date-text-layout
-  font-weight: 600
+  font-weight: bold
+  font-size: 1.5rem
   color: #6b6b6b !important
+.excerpt-text
+  font-size: 1.3rem
+  margin-bottom: 25px
+.continue-text-size
+  font-size: 1.3rem !important
 
 //ham about
 .featured-hamster-thmbnail
@@ -155,11 +162,16 @@ $menu-label-color: $white-ter
 //path layout
 .path
   display: flex
+  font-size: 1.2rem
 .path-layout
   @extend .path
   margin-bottom: 30px
 .home-size
   width: 20px
+.home-text
+  color: #f58c03 !important
+  &:hover
+    color: #ffa42e !important
 
 //news page
 .news-date
@@ -176,7 +188,8 @@ $menu-label-color: $white-ter
 
 //new posts
 .new-posts
-  width: 250px
+  width: 380px
+  margin-left: 320px;
 
 //navgation bar
 .fixed
@@ -292,6 +305,10 @@ $menu-label-color: $white-ter
 +tablet-only
   .blog-list-item .featured-thumbnail
     flex-basis: 50%
+  .date-text-layout
+    font-size: 1.3rem
+  .blog-slug-text
+    font-size: 1.5rem
 +mobile
   .blog-list-item header
     display: block
@@ -306,6 +323,11 @@ $menu-label-color: $white-ter
   .ham-up-size
     width: 70px
     margin-right: 0px
+  .new-posts
+    width: 250px
+    margin-left: 0px !important
+  .excerpt-text
+    font-size: 1.1rem
 @media #{$responsive}
   .index-wood
     width: 160px
@@ -331,3 +353,5 @@ $menu-label-color: $white-ter
     margin-left: 30px 
   .story-margin
     margin-left: 70px
+  .new-posts
+    margin-left: 100px
