@@ -9,11 +9,21 @@ const CategoriesList = ({
 }) => {
   return(
     <>
+      <div className="has-text-centered soft-font category-list">カテゴリ</div>
+      <hr />
       {group.map(category => (
         <div key={category.fieldValue}>
-          <Link to={`/category/${kebabCase(category.fieldValue)}/`}>
-            {category.fieldValue} ({category.totalCount})
-          </Link>
+          <div className="rounded-font">
+            <nobr>
+              <Link to={`/category/${kebabCase(category.fieldValue)}/`} className="category-title">
+                {category.fieldValue}
+              </Link>
+            </nobr>
+            <nobr className="category-total-count">
+               &nbsp;({category.totalCount})
+               <hr />
+            </nobr>
+          </div>
         </div>
       ))}
     </>

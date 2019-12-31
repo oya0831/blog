@@ -18,7 +18,7 @@ const PathLayout = ({
           }}
         />
       </div>
-      <div className="base-font">
+      <div className="soft-font">
         <Link to="/" className="home-text">
           ホーム
         </Link>

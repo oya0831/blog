@@ -1,4 +1,5 @@
 @import "~bulma/sass/utilities/initial-variables"
+@import url(https://fonts.googleapis.com/css?family=M+PLUS+Rounded+1c&display=swap)
 
 // Config vars
 // Kaldi logo brand color: #FD461E
@@ -13,55 +14,21 @@ $black: #2b2523
 //hamz resuponsive
 $responsive: only screen and (min-width:1024px) and (max-width:1219px)
 
-//Base Font
+//Attention Font
 @font-face 
-  font-family: 'BaseFont'
-  src: url('./BaseFont.ttf') 
+  font-family: SoftFont
+  src: url('./SoftFont.ttf') 
 
-.base-font
-  font-family: 'BaseFont'
+.soft-font
+  font-family: SoftFont
+
+.rounded-font
+  font-family: 'M PLUS Rounded 1c'
 
 .navbar .navbar-menu
   box-shadow: none !important
 
-.content .categorylist
-  list-style: none
-  margin-bottom: 0
-  margin-left: 0
-  margin-right: 1.5rem
-  margin-top: 1.5rem
-  display: flex
-  flex-wrap: wrap
-  justify-content: left
-  align-items: center
-  li
-    padding: 0 2rem 1rem 0
-    margin-bottom: 1.5rem
-    margin-top: 0
-
 // Helper Classes
-.full-width-image-container
-  width: 100vw
-  height: 400px
-  position: relative
-  left: 50%
-  right: 50%
-  margin: 2em -50vw
-  background-size: cover
-  background-position: bottom
-  display: flex
-  justify-content: center
-  align-items: center
-
-.full-width-image
-  width: 100vw
-  height: 400px
-  background-size: cover
-  background-position: bottom
-  display: flex
-  justify-content: center
-  align-items: center
-
 .btn
   display: inline-block
   padding: 12px 16px 10px
@@ -82,48 +49,20 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px)
     color: #fdb963c7
     box-shadow: inset 0 0 0 2px #fdb963c7
 
+.margin-top-1
+  margin-top: 20px !important
+
 .margin-top-0
   margin-top: 0 !important
 .navbar-item.day-item
   padding: 0 !important
 
 // Override for use of svg's from https://simpleicons.org/
+//そのうちいるであろう
 .icon svg
   width: 1.5rem
   height: 1.5rem
   fill: currentColor
-.navbar-brand .navbar-item.logo
-  padding: 0 1rem
-footer.footer
-  padding: 3rem 0rem 0rem
-  background-color: transparent
-
-//Menu overrides
-$menu-item-color: $white-ter
-$menu-item-hover-color: $black !important
-$menu-item-hover-background-color: $black
-$menu-item-active-color: $kaldi-red-invert
-$menu-item-active-background-color:	$kaldi-red-invert
-$menu-list-border-left: 1px solid $kaldi-red-invert
-$menu-label-color: $white-ter
-
-.menu-label
-  font-size: 1em !important
-  text-align: left
-.menu-list
-  list-style: none !important
-  text-align: left
-.social
-  padding: 2em
-.social a
-  padding: .5em .5em .3em .5em
-  border-radius: 1em
-  background-color: $white-ter
-  margin: .5em
-  width: 1em
-  height: 1em
-  vertical-align: middle
-  display: inline
 
 // blog roll
 .blog-list-item.is-featured
@@ -135,10 +74,10 @@ $menu-label-color: $white-ter
   flex-basis: 35%
   margin: 0 1.5em 0 0
 .blog-read-text
-  font-weight: bolder !important
+  font-weight: bold !important
   color: #6b6b6b !important
 .blog-slug-text
-  font-weight: bolder
+  font-weight: bold
   color: #545454 !important
   text-decoration: none !important
   font-size: 2rem
@@ -146,13 +85,54 @@ $menu-label-color: $white-ter
     color: #ff7700 !important
 .date-text-layout
   font-weight: bold
-  font-size: 1.5rem
+  font-size: 1rem
   color: #6b6b6b !important
 .excerpt-text
-  font-size: 1.3rem
+  font-size: 1rem
   margin-bottom: 25px
+  font-weight: bold
+  color: #6b6b6b
 .continue-text-size
-  font-size: 1.3rem !important
+  text-decoration: none !important
+  display: inline-block
+  padding: 12px 16px 10px
+  font-size: 1.35rem
+  line-height: 1.25
+  background-color: #fff
+  border-radius: .25rem
+  text-decoration: none
+  font-weight: 700
+  color: #f58c06c7 !important
+  text-align: center
+  -webkit-box-shadow: inset 0 0 0 2px #f58c06c7
+  box-shadow: inset 0 0 0 2px #f58c06c7
+  -webkit-transition: all .15s ease
+  transition: all .15s ease
+  &:hover
+    color: #fdb963c7 !important
+    box-shadow: inset 0 0 0 2px #fdb963c7
+
+
+
+//categories lists
+.category-list
+  font-size: 1.7rem
+  font-weight: 600
+.category-title
+  font-size: 1rem
+  font-weight: bold
+  color: #545454 !important
+  &:hover
+    color: #ff7700 !important
+.category-total-count
+  font-size: 1rem
+  color: #545454 !important
+
+//about
+.about-title
+  font-size: 3rem
+  font-weight: bold
+  margin-bottom: 30px
 
 //hamz about
 .featured-hamster-thmbnail
@@ -165,6 +145,8 @@ $menu-label-color: $white-ter
 .path
   display: flex
   font-size: 1.2rem
+  font-weight: bold
+  color: #545454
 .path-layout
   @extend .path
   margin-bottom: 30px
@@ -175,18 +157,32 @@ $menu-label-color: $white-ter
   &:hover
     color: #ffa42e !important
 
+//contact
+.contact-sentence
+  margin-bottom: 50px !important
+
 //news page
-.news-date
+.news-date-btn
   font-size: 1.85rem !important
-.news-text
+.news-date
+  font-size: 1rem
+  font-weight: bold
+  color: #6b6b6b
+.news-title-btn
   font-size: 1.85rem !important
   margin-top: 10px
+.news-title
+  font-size: 1.8rem
+  font-weight: bold
+  color: #545454
 .featured-news-display
   display: flex
 .featured-news-thmbnail-size
   width: 160px
 .news-body-padding
   padding-right: 50px
+.news-column-margin
+  margin-bottom: 75px
 
 //new posts
 .new-posts
@@ -318,6 +314,8 @@ $menu-label-color: $white-ter
     text-align: center
     max-width: 70%
     margin: 0 0 1em
+  .featured-hamster-thmbnail
+    width: 200px
   .featured-news-display
     display: inline
   .news-body-padding
@@ -328,8 +326,8 @@ $menu-label-color: $white-ter
   .new-posts
     width: 250px
     margin-left: 0px !important
-  .excerpt-text
-    font-size: 1.1rem
+  .continue-text-size
+    font-size: 1.2rem
 @media #{$responsive}
   .index-wood
     width: 160px

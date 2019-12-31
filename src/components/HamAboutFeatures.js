@@ -24,10 +24,10 @@ export const HamAboutFeatureGrid = ({ data }) => {
                 />
               </div>
             </div>
-            <div className="has-text-centered hamz-name base-font">
+            <div className="soft-font has-text-centered hamz-name">
             {item.frontmatter.title}
             </div>
-            <PostContent content={item.html} />
+            <div className="rounded-font"><PostContent content={item.html} /></div>
           </section>
         </div>
       ))}
@@ -58,7 +58,7 @@ export default () => (
               frontmatter {
                 image {
                   childImageSharp {
-                    fluid(maxWidth: 120, quality: 100) {
+                    fluid(maxWidth: 1000, quality: 100) {
                       ...GatsbyImageSharpFluid
                     }
                   }

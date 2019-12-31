@@ -46,15 +46,11 @@ export default class ContactIndexPage extends React.Component {
                 text: "お問い合わせ"
               }}
             />
-            <h4>
+            <div className="rounded-font contact-sentence">
               ご意見などがございましたらぜひ下記よりご連絡くださいませ。
               お待ちしております。
-            </h4>
-            {/*ここ後でリファクタリングすること*/}
-            <br/>
-            <br/>
-            <br/>
-            <div className="content">
+            </div>
+            <div>
               <form
                 name="contact"
                 method="post"
@@ -71,7 +67,7 @@ export default class ContactIndexPage extends React.Component {
                     <input name="bot-field" onChange={this.handleChange} />
                   </label>
                 </div>
-                <div className="field">
+                <div className="rounded-font field">
                   <label className="label" htmlFor={'name'}>
                     名前：
                   </label>
@@ -86,7 +82,7 @@ export default class ContactIndexPage extends React.Component {
                     />
                   </div>
                 </div>
-                <div className="field">
+                <div className="rounded-font field">
                   <label className="label" htmlFor={'email'}>
                     メールアドレス：
                   </label>
@@ -101,7 +97,7 @@ export default class ContactIndexPage extends React.Component {
                     />
                   </div>
                 </div>
-                <div className="field">
+                <div className="rounded-font field">
                   <label className="label" htmlFor={'message'}>
                     内容：  
                   </label>
@@ -116,7 +112,7 @@ export default class ContactIndexPage extends React.Component {
                   </div>
                 </div>
                 <div className="field">
-                  <button className="button is-link" type="submit">
+                  <button className="rounded-font button is-link" type="submit">
                     送信
                   </button>
                 </div>

@@ -14,19 +14,20 @@ export const NewsFeatureGrid = ({ data }) => {
     <section className="section">
       {gridItems.map(({ node: item }) => (
         <div key={item.id}>
-          <div className="column is-12">
-            <div>
+          <div className="column is-12 news-column-margin">
+            <div className="rounded-font news-date">
               <TranslateDate date={item.frontmatter.date} />
             </div>
-            <div>
+            <div className="soft-font news-title">
               {item.frontmatter.title}
             </div>
             <br/>
             <br/>
             <div className="featured-news-display">
-              <div className="news-body-padding">
+              <div className="rounded-font news-body-padding">
                 <PostContent content={item.html} />
               </div>
+              <br/>
               <div className="featured-news-thmbnail-size">
                 <PreviewCompatibleImage
                   imageInfo={{

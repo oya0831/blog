@@ -18,6 +18,7 @@ export const BlogRoll = ({
     <BlogRollContext.Consumer>
     { ({ categoriesPosts }) => { 
       const { edges: posts } = data.allMarkdownRemark
+      console.log(posts)
       const results = (function(path) {
         if(path==="index") {
           return NewPosts({ posts })
@@ -72,23 +73,21 @@ export const BlogRoll = ({
                     )
                   }
                 <p className="post-meta">
-                  <span className="base-font date-text-layout is-block">
+                  <span className="rounded-font date-text-layout is-block">
                     <TranslateDate date={result.frontmatter.date} />
                   </span>
                   <Link
-                    className="base-font blog-slug-text"
+                    className="soft-font blog-slug-text"
                     to={result.fields.slug}
                   >
                     {result.frontmatter.title}
                   </Link>
                 </p>
                 </header>
-                <p className="base-font">
-                  <div className="excerpt-text">{result.excerpt}</div>
-                  <Link className="continue-text-size button" to={result.fields.slug}>
-                    続きを読む ≫
-                  </Link>
-                </p>
+                <div className="rounded-font excerpt-text">{result.excerpt}</div>
+                <Link className="soft-font continue-text-size " to={result.fields.slug}>
+                  続きを読む ≫
+                </Link>
               </article>
             </div>
           ))}

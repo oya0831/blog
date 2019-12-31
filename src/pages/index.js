@@ -25,11 +25,11 @@ class IndexPageTemplate extends React.Component {
               <div className="container">
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
-                    <Link className="base-font btn" to="/news">
-                      <div className="news-date">
+                    <Link className="soft-font btn" to="/news">
+                      <div className="news-date-btn">
                         <TranslateDate date={date} /> 更新
                       </div>
-                      <div className="news-text">{mainpitch}</div>
+                      <div className="news-title-btn">{mainpitch}</div>
                     </Link>
                   </div>
                 </div>
@@ -51,7 +51,7 @@ class IndexPageTemplate extends React.Component {
                         <div className="column is-12">
                           <BlogRoll />
                           <div className="column is-12 has-text-centered">
-                            <Link className="base-font btn" to="/blog">
+                            <Link className="soft-font btn" to="/blog">
                               全部見る ≫
                             </Link>
                           </div>

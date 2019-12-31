@@ -32,7 +32,7 @@ export default class BlogIndexPage extends React.Component {
                 />
                 <div className="content">
                   <div className="columns is-multiline">
-                    <div className="column is-10">
+                    <div className="column is-10 margin-top-1">
                       <BlogRoll />
                     </div>
                     <div className="column is-2">
