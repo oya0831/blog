@@ -9,12 +9,13 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 import PathContext from '../contexts/PathContext'
 
+import newPostsImg from '../img/new_posts_by_day.png'
+
 class IndexPageTemplate extends React.Component {
   state = { path: "index" }
   render() {
     const date = this.props.date
     const mainpitch = this.props.mainpitch
-    const newposts = this.props.newposts
 
     return (
       <PathContext.Provider value={ this.state }>
@@ -24,11 +25,11 @@ class IndexPageTemplate extends React.Component {
               <div className="container">
                 <div className="columns">
                   <div className="column is-12 has-text-centered">
-                    <Link className="btn" to="/news">
-                      <div className="news-date">
+                    <Link className="soft-font btn" to="/news">
+                      <div className="news-date-btn">
                         <TranslateDate date={date} /> 更新
                       </div>
-                      <div className="news-text">{mainpitch}</div>
+                      <div className="news-title-btn">{mainpitch}</div>
                     </Link>
                   </div>
                 </div>
@@ -37,11 +38,11 @@ class IndexPageTemplate extends React.Component {
                   <div className="columns">
                     <div className="column is-10 is-offset-1">
                       <div className="content">
-                        <div className="column is-8 is-offset-4">
+                        <div className="column is-12">
                           <div className="new-posts">
                             <PreviewCompatibleImage 
                               imageInfo={{ 
-                                image: newposts,
+                                image: newPostsImg,
                                 alt: "new posts"
                               }}
                             />
@@ -50,7 +51,7 @@ class IndexPageTemplate extends React.Component {
                         <div className="column is-12">
                           <BlogRoll />
                           <div className="column is-12 has-text-centered">
-                            <Link className="btn" to="/blog">
+                            <Link className="soft-font btn" to="/blog">
                               全部見る ≫
                             </Link>
                           </div>
@@ -71,7 +72,6 @@ class IndexPageTemplate extends React.Component {
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,
   date: PropTypes.string,
-  newposts: PropTypes.object,
 }
 
 const IndexPage = ({ data }) => {
@@ -80,7 +80,6 @@ const IndexPage = ({ data }) => {
     <IndexPageTemplate
       date={news[0].node.frontmatter.date}
       mainpitch={news[0].node.frontmatter.title}
-      newposts={data.new_posts}
     />
   )
 }
@@ -90,7 +89,6 @@ IndexPage.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array,
     }),
-    new_posts: PropTypes.object,
   }),
 }
 
@@ -109,13 +107,6 @@ export const pageQuery = graphql`
             date(formatString: "MMMM DD, YYYY")
             title
           }
-        }
-      }
-    }
-    new_posts:file(relativePath: {eq: "new-posts.png"}) {
-      childImageSharp{
-        fluid(maxWidth: 1000, quality: 100) {
-          ...GatsbyImageSharpFluid
         }
       }
     }

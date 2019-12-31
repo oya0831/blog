@@ -170,7 +170,7 @@ const Navbar = class extends React.Component {
                 <>
                   <div className="column ham-margin day-padding">
                     <Link to="/blog/ham">
-                        <div className="base-font navbar-item day-item day-text">
+                        <div className="soft-font navbar-item day-item day-text">
                           はむ日和
                         </div>
                         <div className="hover-layout">
@@ -185,7 +185,7 @@ const Navbar = class extends React.Component {
                   </div>
                   <div className="column owner-margin day-padding">
                     <Link to="/blog/owner">
-                        <div className="base-font navbar-item day-item day-text">
+                        <div className="soft-font navbar-item day-item day-text">
                           飼い主日和
                         </div>
                         <div className="hover-owner-layout">
@@ -200,7 +200,7 @@ const Navbar = class extends React.Component {
                   </div>
                   <div className="column story-margin day-padding">
                     <Link to="/blog/story">
-                        <div className="base-font navbar-item day-item day-text">
+                        <div className="soft-font navbar-item day-item day-text">
                           ネタ日和
                         </div>
                         <div className="hover-layout">
