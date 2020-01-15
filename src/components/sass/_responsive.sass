@@ -1,0 +1,61 @@
+@import "~bulma/sass/utilities/initial-variables"
+@import "~bulma"
+//hamz resuponsive
+$responsive: only screen and (min-width:1024px) and (max-width:1219px)
+
+// responsiveness
++tablet-only
+  .blog-list-item .featured-thumbnail
+    flex-basis: 50%
+  .date-text-layout
+    font-size: 1.3rem
+  .blog-slug-text
+    font-size: 1.5rem
++mobile
+  .blog-list-item header
+    display: block
+  .blog-list-item .featured-thumbnail
+    text-align: center
+    max-width: 70%
+    margin: 0 0 1em
+  .featured-hamster-thmbnail
+    width: 200px
+  .featured-news-display
+    display: inline
+  .news-body-padding
+    padding-right: 0px
+  .ham-up-size
+    width: 70px
+    margin-right: 0px
+  .new-posts
+    width: 250px
+    margin-left: 0px !important
+  .continue-text-size
+    font-size: 1.2rem
+@media #{$responsive}
+  .index-wood
+    width: 160px
+    top: 13%
+  .other-wood
+    width: 110px
+    top: 6%
+  .index-ham
+    right: 2%
+    top: 13%
+    width: 160px
+    &:hover
+      top: 6.6%
+  .other-ham
+    right: 2%
+    top: 6%
+    width: 110px
+    &:hover
+      top: 7.5%
+  .ham-margin
+    margin-left: 50px
+  .owner-margin
+    margin-left: 30px 
+  .story-margin
+    margin-left: 70px
+  .new-posts
+    margin-left: 100px
