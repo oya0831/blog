@@ -7,7 +7,6 @@ module.exports = {
       'とある飼い主のハムスターブログ。',
   },
   plugins: [
-    'gatsby-plugin-glamor',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
@@ -59,12 +58,12 @@ module.exports = {
               destinationDir: 'static',
             },
           },
-          {
+          /*今は削除{
             resolve: 'gatsby-plugin-disqus',
             options: {
               shortname: 'oya0831',
             }
-          },
+          },*/
         ],
       },
     },

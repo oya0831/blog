@@ -18,7 +18,6 @@ export const BlogRoll = ({
     <BlogRollContext.Consumer>
     { ({ categoriesPosts }) => { 
       const { edges: posts } = data.allMarkdownRemark
-      console.log(posts)
       const results = (function(path) {
         if(path==="index") {
           return NewPosts({ posts })
