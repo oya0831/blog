@@ -5,23 +5,23 @@ import { Link, StaticQuery, graphql } from 'gatsby'
 import PreviewCompatibleImage from './PreviewCompatibleImage'
 import PathContext from '../contexts/PathContext'
 
-//import Navbar Img
+//import Header Img
 import hoverImg from '../img/after.png'
 import aboutImg from '../img/about.png'
-import contactImg from '../img/contactdesuyo.png'
-import indexWoodImg from '../img/another-hamz.png'
-import otherWoodImg from '../img/utihamu.png'
-import kinakoImg from '../img/kinako2.png'
-import gomaImg from '../img/gomagoma.png'
-import hamUpImg from '../img/hamtop.png'
+import contactImg from '../img/contact.png'
+import indexWoodImg from '../img/index-hamz.png'
+import otherWoodImg from '../img/other-hamz.png'
+import kinakoImg from '../img/kinako.png'
+import gomaImg from '../img/goma.png'
+import hamUpImg from '../img/ham-up.png'
 
 //import mobile Img
-import mbHamzImg from '../img/utiham.png'
-import mbHamImg from '../img/hambiyori.png'
-import mbOwnerImg from '../img/kainusibiyori.png'
-import mbStoryImg from '../img/netabiyori.png'
+import mbHamzImg from '../img/mb-hamz.png'
+import mbHamImg from '../img/ham-day.png'
+import mbOwnerImg from '../img/owner-day.png'
+import mbStoryImg from '../img/story-day.png'
 
-const Navbar = class extends React.Component {
+const Header = class extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -281,6 +281,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => <Navbar data={data} />}
+    render={(data) => <Header data={data} />}
   />
 )

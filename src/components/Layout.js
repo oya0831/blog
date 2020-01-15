@@ -1,7 +1,7 @@
 import React from 'react'
 import { Helmet } from 'react-helmet'
 import { withPrefix } from "gatsby"
-import Navbar from '../components/Navbar'
+import Header from '../components/Header'
 import useSiteMetadata from './SiteMetadata'
 import './sass/all.sass'
 
@@ -49,7 +49,7 @@ const TemplateWrapper = ({
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <Navbar state={state}/>
+      <Header state={state}/>
       {children}
     </div>
   )
