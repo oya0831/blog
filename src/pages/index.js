@@ -9,7 +9,7 @@ import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
 
 import PathContext from '../contexts/PathContext'
 
-import newPostsImg from '../img/new-posts-by-day.png'
+import newPostsImg from '../img/news/new-posts-by-day.png'
 
 class IndexPageTemplate extends React.Component {
   state = { path: "index" }
