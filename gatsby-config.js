@@ -7,7 +7,6 @@ module.exports = {
       'とある飼い主のハムスターブログ。',
   },
   plugins: [
-    'gatsby-plugin-glamor',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-sass',
     {
