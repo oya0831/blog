@@ -58,12 +58,12 @@ module.exports = {
               destinationDir: 'static',
             },
           },
-          {
+          /*今は削除{
             resolve: 'gatsby-plugin-disqus',
             options: {
               shortname: 'oya0831',
             }
-          },
+          },*/
         ],
       },
     },
