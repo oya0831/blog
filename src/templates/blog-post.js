@@ -60,14 +60,13 @@ export const BlogPostTemplate = ({
             <PostContent className="rounded-font" content={content} />
             {categories && categories.length ? (
               <div style={{ marginTop: `4rem` }}>
-                <h4>タグ</h4>
-                <ul className="taglist">
+                <div className="columns is-multiline">
                   {categories.map(category => (
-                    <li key={category + `category`}>
-                      <Link to={`/category/${kebabCase(category)}/`}>{category}</Link>
-                    </li>
+                    <div key={category + `category`}>
+                      <Link className="rounded-font btn blog-tags" to={`/category/${kebabCase(category)}/`}>{category}</Link>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ) : null}
           </div>
