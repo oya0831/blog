@@ -1,7 +1,7 @@
 const TranslateDate = ({
   date
 }) => {
-    const dateText = String(date).split(" ")
+    const dateText = String(date).split(" ");
 
     const month = (() => {
       switch (dateText[0]) {
@@ -19,9 +19,9 @@ const TranslateDate = ({
         default: return 12;
       }
     })();
-    const joinDate = dateText[2] + "." + month + "." + dateText[1].slice(0, 2) ;
+    const joinDate = dateText[2] + "." + month + "." + dateText[1].slice(0, 2);
     
-    return joinDate
+    return joinDate;
 }
 
 export default TranslateDate

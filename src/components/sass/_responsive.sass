@@ -1,4 +1,8 @@
 @import "~bulma"
+@import "blogroll"
+@import "blog_content"
+@import "header"
+
 //hamz resuponsive
 $responsive: only screen and (min-width:1024px) and (max-width:1219px)
 
@@ -6,8 +10,6 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px)
 +tablet-only
   .blog-list-item .featured-thumbnail
     flex-basis: 50%
-  .date-text-layout
-    font-size: 1.3rem
   .blog-slug-text
     font-size: 1.5rem
 +mobile
@@ -31,6 +33,8 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px)
     margin-left: 0px !important
   .continue-text-size
     font-size: 1.2rem
+  .blog-main-image
+    padding: 0px
 @media #{$responsive}
   .index-wood
     width: 160px

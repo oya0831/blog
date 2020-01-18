@@ -267,7 +267,7 @@ export default () => (
     query={graphql`
       fragment imageField on File {
         childImageSharp {
-          fluid(maxWidth: 1000, quality: 100) {
+          fluid(maxWidth: 1500, quality: 100) {
             ...GatsbyImageSharpFluid
           }
         }
