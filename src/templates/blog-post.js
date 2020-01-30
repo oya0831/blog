@@ -6,8 +6,10 @@ import { graphql, Link } from 'gatsby'
 //import { Disqus } from 'gatsby-plugin-disqus'
 
 import Layout from '../components/Layout'
-import Img from 'gatsby-image'
+import PathLayout from '../components/PathLayout'
 import Content, { HTMLContent } from '../components/Content'
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import TranslateDate from '../components/TranslateDate'
 
 export const BlogPostTemplate = ({
   content,
@@ -17,33 +19,54 @@ export const BlogPostTemplate = ({
   title,
   image,
   helmet,
+  date,
+  dayKey,
+  dayText
 }) => {
-  const PostContent = contentComponent || Content
-
+  const PostContent = contentComponent || Content;
+  
   return (
     <section className="section">
       {helmet || ''}
       <div className="container content">
+        <PathLayout
+          layoutInfo={{
+            path: 'path-layout',
+            text: title,
+            dayKey: dayKey,
+            dayText: dayText,
+          }}
+        />
         <div className="columns">
           <div className="column is-10 is-offset-1">
-            <h1 className="title is-size-2 has-text-weight-bold is-bold-light">
+
+            <div className="rounded-font has-text-centered blog-title">
               {title}
-            </h1>
-            <p>{description}</p>
+            </div>
+            <div className="rounded-font blog-date">
+              <TranslateDate date={date}/>
+            </div>
+            <p className="rounded-font has-text-centered blog-description">{description}</p>
             {image ? (
-              <Img fluid={image.childImageSharp.fluid} alt="" />
+              <div className="blog-main-image">
+              <PreviewCompatibleImage
+                imageInfo={{
+                  image: image,
+                  alt: `blog main image`,
+                }}
+              />
+              </div>
              ) : null}
-            <PostContent content={content} />
+            <PostContent className="rounded-font" content={content} />
             {categories && categories.length ? (
               <div style={{ marginTop: `4rem` }}>
-                <h4>タグ</h4>
-                <ul className="taglist">
+                <div className="columns is-multiline">
                   {categories.map(category => (
-                    <li key={category + `category`}>
-                      <Link to={`/category/${kebabCase(category)}/`}>{category}</Link>
-                    </li>
+                    <div key={category + `category`}>
+                      <Link className="rounded-font btn blog-tags" to={`/category/${kebabCase(category)}/`}>{category}</Link>
+                    </div>
                   ))}
-                </ul>
+                </div>
               </div>
             ) : null}
           </div>
@@ -62,13 +85,19 @@ BlogPostTemplate.propTypes = {
 }
 
 const BlogPost = ({ data }) => {
-  const { markdownRemark: post } = data
+  const { markdownRemark: post } = data;
+  const dayText = (() => {
+    switch (post.frontmatter.dayKey) {
+      case "ham": return "はむ日和";
+      case "owner": return "飼い主日和";
+      default : return "ネタ日和";
+    }
+  })();
   /*let disqusConfig = {
     url: location.href,
     identifier: post.frontmatter.id,
     title: post.frontmatter.title,
   }*/                
-
   return (
     <Layout>
       <BlogPostTemplate
@@ -87,6 +116,9 @@ const BlogPost = ({ data }) => {
         categories={post.frontmatter.category}
         title={post.frontmatter.title}
         image={post.frontmatter.image}
+        date={post.frontmatter.date}
+        dayKey={post.frontmatter.dayKey}
+        dayText={dayText}
       />
       <section className="section">
         <div className="container">
@@ -118,6 +150,7 @@ export const pageQuery = graphql`
       id
       html
       frontmatter {
+        dayKey
         date(formatString: "MMMM DD, YYYY")
         title
         description

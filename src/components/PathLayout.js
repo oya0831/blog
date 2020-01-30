@@ -7,7 +7,7 @@ import PreviewCompatibleImage from './PreviewCompatibleImage'
 const PathLayout = ({
   layoutInfo,
 }) => {
-  const { path, text } = layoutInfo
+  const { path, text, dayKey, dayText } = layoutInfo;
   return(
     <div className={path}>
       <div className="home-size">
@@ -22,6 +22,14 @@ const PathLayout = ({
         <Link to="/" className="home-text">
           ホーム
         </Link>
+        {dayKey ? (
+          <>
+            &nbsp;>&nbsp;
+            <Link to={`/blog/${dayKey}`} className="home-text">
+              {dayText}
+            </Link>
+          </>
+        ) : null}
         &nbsp;>&nbsp;{text}
       </div>
     </div>
