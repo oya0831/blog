@@ -82,6 +82,11 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
+  image: PropTypes.object,
+  categories: PropTypes.array,
+  dayKey: PropTypes.string,
+  dayText: PropTypes.string,
+  date: PropTypes.string,
 }
 
 const BlogPost = ({ data }) => {

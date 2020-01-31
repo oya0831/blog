@@ -3,7 +3,7 @@ const NewPosts = ({ posts }) => {
   const str = posts.map(value => {
     switch (value.node.frontmatter.dayKey) {
       case "ham" : 
-        if(ham===0) {
+        if (ham===0) {
           ham++;
           return value;
         }

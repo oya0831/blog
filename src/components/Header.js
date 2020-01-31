@@ -21,6 +21,12 @@ import mbHamImg from '../img/header/ham-day.png'
 import mbOwnerImg from '../img/header/owner-day.png'
 import mbStoryImg from '../img/header/story-day.png'
 
+export function getScreenWidth() {
+  if(typeof window !== `undefined`) {
+    return window.innerWidth;
+  }
+}
+
 const Header = class extends React.Component {
   constructor(props) {
     super(props)
@@ -60,21 +66,43 @@ const Header = class extends React.Component {
   }
 
   render() {
-    const { data } = this.props
+    const { data } = this.props;
+    const width = getScreenWidth();
 
     return (
       <PathContext.Consumer>
       { ({ path }) => {
+        const scroll = (function(width) {
+          switch (path) {
+            case 'index' : 
+              if (width>1219) {
+                return 500;
+              } else if (1023<width && width<1220) {
+                return 400;
+              } else {
+                return  110;
+              }
+            default : 
+              if (width>1219) {
+                return 260;
+              } else if (1023<width && width<1220) {
+                return 200;
+              } else {
+                return  50;
+              }
+          }
+        })(width);
+
         //main image
-        const mainImage = path==='index' ? data.main : data.sub
+        const mainImage = path==='index' ? data.main : data.sub;
 
         //wood image
-        const woodImage = path==='index' ? indexWoodImg : otherWoodImg
-        const woodImageLayout = path==='index' ? 'index-wood' : 'other-wood'
+        const woodImage = path==='index' ? indexWoodImg : otherWoodImg;
+        const woodImageLayout = path==='index' ? 'index-wood' : 'other-wood';
 
         //hamster image
-        const hamsterImage = path==='index' ? kinakoImg : gomaImg
-        const hamsterImageLayout = path==='index' ? 'index-ham' : 'other-ham'
+        const hamsterImage = path==='index' ? kinakoImg : gomaImg;
+        const hamsterImageLayout = path==='index' ? 'index-ham' : 'other-ham';
 
         return (
           <>
@@ -87,7 +115,7 @@ const Header = class extends React.Component {
             <Link to="/">
               <h1 className="main-text">はむっと！</h1>
             </Link>
-            <ScrollToTop showUnder={220} style={{zIndex: 10}}>
+            <ScrollToTop showUnder={scroll} style={{zIndex: 10}}>
               <div className="ham-up-size">
                 <PreviewCompatibleImage
                   imageInfo={{
@@ -273,7 +301,7 @@ export default () => (
         }
       }
       query {
-        main:file(relativePath: {eq: "kinako.jpg"}) {
+        main:file(relativePath: {eq: "kin.jpeg"}) {
           ...imageField
         }
         sub:file(relativePath: {eq: "kinako2.jpg"}) {
