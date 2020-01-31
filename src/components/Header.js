@@ -84,9 +84,9 @@ const Header = class extends React.Component {
               }
             default : 
               if (width>1219) {
-                return 260;
+                return 360;
               } else if (1023<width && width<1220) {
-                return 200;
+                return 320;
               } else {
                 return  50;
               }
@@ -301,10 +301,10 @@ export default () => (
         }
       }
       query {
-        main:file(relativePath: {eq: "kin.jpeg"}) {
+        main:file(relativePath: {eq: "kinako.jpeg"}) {
           ...imageField
         }
-        sub:file(relativePath: {eq: "kinako2.jpg"}) {
+        sub:file(relativePath: {eq: "goma.jpeg"}) {
           ...imageField
         }
       }
