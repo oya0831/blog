@@ -1,46 +1,47 @@
-import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import TranslateDate from './TranslateDate'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Content, { HTMLContent } from './Content'
+import TranslateDate from './TranslateDate';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import Content, { HTMLContent } from './Content';
 
 export const NewsFeatureGrid = ({ data }) => {
-  const { edges: gridItems } = data.allMarkdownRemark
-  const PostContent = HTMLContent || Content
+  const { edges: gridItems } = data.allMarkdownRemark;
+  const PostContent = HTMLContent || Content;
  
   return (
     <section className="section">
-      {gridItems.map(({ node: item }) => (
-        <div key={item.id}>
-          <div className="column is-12 news-column-margin">
-            <div className="rounded-font news-date">
-              <TranslateDate date={item.frontmatter.date} />
-            </div>
-            <div className="soft-font news-title">
-              {item.frontmatter.title}
-            </div>
-            <br/>
-            <br/>
-            <div className="featured-news-display">
-              <div className="rounded-font news-body-padding">
-                <PostContent content={item.html} />
+      <div className="columns is-multiline">
+        {gridItems.map(({ node: item }) => (
+          <div key={item.id} className="column is-6">
+            <div className="box news-article-padding">
+              <div className="rounded-font news-date">
+                <TranslateDate date={item.frontmatter.date} />
+              </div>
+              <div className="soft-font news-title">
+                {item.frontmatter.title}
               </div>
               <br/>
-              <div className="featured-news-thmbnail-size">
-                <PreviewCompatibleImage
-                  imageInfo={{
-                    image: item.frontmatter.image,
-                    alt: "news image"
-                  }}
-                />
+              <br/>
+              <div className="featured-news-display">
+                <div className="rounded-font news-body-padding">
+                  <PostContent content={item.html} />
+                </div>
+                <br/>
+                <div className="featured-news-thmbnail-size">
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: item.frontmatter.image,
+                      alt: "news image"
+                    }}
+                  />
+                </div>
               </div>
             </div>
           </div>
-          <br/>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   )
 }
@@ -48,10 +49,10 @@ export const NewsFeatureGrid = ({ data }) => {
 NewsFeatureGrid.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery
@@ -81,6 +82,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => <NewsFeatureGrid data={data} /> }
+    render={(data) => <NewsFeatureGrid data={data} />}
   />
 )

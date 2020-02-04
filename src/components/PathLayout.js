@@ -1,12 +1,10 @@
-import React from 'react'
-import { Link } from 'gatsby'
-import homeImage from '../img/path/home.png'
+import React from 'react';
+import { Link } from 'gatsby';
+import homeImage from '../img/path/home.png';
 
-import PreviewCompatibleImage from './PreviewCompatibleImage'
+import PreviewCompatibleImage from './PreviewCompatibleImage';
 
-const PathLayout = ({
-  layoutInfo,
-}) => {
+const PathLayout = ({ layoutInfo }) => {
   const { path, text, dayKey, dayText } = layoutInfo;
   return(
     <div className={path}>
@@ -36,4 +34,4 @@ const PathLayout = ({
   )
 }
 
-export default PathLayout
+export default PathLayout;

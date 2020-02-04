@@ -1,10 +1,10 @@
-import React from 'react'
+import React from 'react';
 
-import BlogIndexPage from '../index'
-import PathContext from '../../../contexts/PathContext'
+import BlogIndexPage from '../index';
+import PathContext from '../../../contexts/PathContext';
 
 export default class OwnerBlogIndexPage extends React.Component {
-  state = { path: "owner" }
+  state = { path: 'owner' };
   render() {
     return (
       <PathContext.Provider value={ this.state }>

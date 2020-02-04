@@ -1,15 +1,15 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import kebabCase from 'lodash'
-import Helmet from 'react-helmet'
-import { graphql, Link } from 'gatsby'
-//import { Disqus } from 'gatsby-plugin-disqus'
+import React from 'react';
+import PropTypes from 'prop-types';
+import kebabCase from 'lodash';
+import Helmet from 'react-helmet';
+import { graphql, Link } from 'gatsby';
+//import { Disqus } from 'gatsby-plugin-disqus';
 
-import Layout from '../components/Layout'
-import PathLayout from '../components/PathLayout'
-import Content, { HTMLContent } from '../components/Content'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
-import TranslateDate from '../components/TranslateDate'
+import Layout from '../components/Layout';
+import PathLayout from '../components/PathLayout';
+import Content, { HTMLContent } from '../components/Content';
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
+import TranslateDate from '../components/TranslateDate';
 
 export const BlogPostTemplate = ({
   content,
@@ -82,7 +82,12 @@ BlogPostTemplate.propTypes = {
   description: PropTypes.string,
   title: PropTypes.string,
   helmet: PropTypes.object,
-}
+  image: PropTypes.object,
+  categories: PropTypes.array,
+  dayKey: PropTypes.string,
+  dayText: PropTypes.string,
+  date: PropTypes.string
+};
 
 const BlogPost = ({ data }) => {
   const { markdownRemark: post } = data;
@@ -96,8 +101,8 @@ const BlogPost = ({ data }) => {
   /*let disqusConfig = {
     url: location.href,
     identifier: post.frontmatter.id,
-    title: post.frontmatter.title,
-  }*/                
+    title: post.frontmatter.title
+  };*/                
   return (
     <Layout>
       <BlogPostTemplate
@@ -138,11 +143,11 @@ const BlogPost = ({ data }) => {
 
 BlogPost.propTypes = {
   data: PropTypes.shape({
-    markdownRemark: PropTypes.object,
-  }),
-}
+    markdownRemark: PropTypes.object
+  })
+};
 
-export default BlogPost
+export default BlogPost;
 
 export const pageQuery = graphql`
   query BlogPostByID($id: String!) {

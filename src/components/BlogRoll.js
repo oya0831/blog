@@ -1,43 +1,40 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, graphql, StaticQuery } from 'gatsby';
 
-import NewPosts from './NewPosts'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import TranslateDate from './TranslateDate'
+import NewPosts from './NewPosts';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import TranslateDate from './TranslateDate';
 
-import PathContext from '../contexts/PathContext'
-import BlogRollContext from '../contexts/BlogRollContext'
+import PathContext from '../contexts/PathContext';
+import BlogRollContext from '../contexts/BlogRollContext';
 
-export const BlogRoll = ({
-  data,
-  notImage
-}) => (
+export const BlogRoll = ({ data, notImage }) => (
   <PathContext.Consumer>
   { ({ path }) => (
     <BlogRollContext.Consumer>
     { ({ categoriesPosts }) => { 
-      const { edges: posts } = data.allMarkdownRemark
+      const { edges: posts } = data.allMarkdownRemark;
       const results = (function(path) {
-        if(path==="index") {
-          return NewPosts({ posts })
+        if (path === 'index') {
+          return NewPosts({ posts });
         }
-        else if(path==="category") {
-          return categoriesPosts
+        else if (path === 'category') {
+          return categoriesPosts;
         }
         else {
           const str = posts.map(value => {
-            /* '' is all , path is "ham" or "owner" or "story" */
-            if(path==="" || path==="categories" || value.node.frontmatter.dayKey===path) {
-              return value
+            /* '' is all , path is 'ham' or 'owner' or 'story' */
+            if (path === '' || path === 'categories' || value.node.frontmatter.dayKey === path) {
+              return value;
             }
             else {
-              return null
+              return null;
             }
           })
-          return str.filter(str => str)
+          return str.filter(str => str);
         }
-      })(path)
+      })(path);
 
       return (
         <div className="columns is-multiline">
@@ -84,7 +81,7 @@ export const BlogRoll = ({
                 </p>
                 </header>
                 <div className="rounded-font excerpt-text">{result.excerpt}</div>
-                <Link className="soft-font continue-text-size " to={result.fields.slug}>
+                <Link className="soft-font continue-text-size" to={result.fields.slug}>
                   続きを読む ≫
                 </Link>
               </article>
@@ -101,10 +98,11 @@ export const BlogRoll = ({
 BlogRoll.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
+      edges: PropTypes.array
+    })
   }),
-}
+  notImage: PropTypes.object 
+};
 
 export default () => (
   <StaticQuery
@@ -147,8 +145,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => 
-      <BlogRoll notImage={data.not_image} data={data} />
-    }
+    render={(data) => <BlogRoll notImage={data.not_image} data={data} />}
   />
 )

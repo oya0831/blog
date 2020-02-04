@@ -1,14 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { HamAboutIndexPage } from '../../pages/hamz/index'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { HamAboutIndexPage } from '../../pages/hamz/index';
 
-const HamAboutPagePreview = ({ entry, widgetFor/*getAsset*/ }) => {
-  //const entryBlurbs = entry.getIn(['data', 'hamz', 'lists'])
-  //const lists = entryBlurbs ? entryBlurbs.toJS() : []
+const HamAboutPagePreview = ({ entry, widgetFor }) => {
 
   return (
     <HamAboutIndexPage
-     // hamz={{ lists }}
       body={widgetFor('body')}
       title={entry.getIn(['data', 'title'])}
     />
@@ -17,10 +14,9 @@ const HamAboutPagePreview = ({ entry, widgetFor/*getAsset*/ }) => {
 
 HamAboutPagePreview.propTypes = {
   entry: PropTypes.shape({
-    getIn: PropTypes.func,
+    getIn: PropTypes.func
   }),
-  //getAsset: PropTypes.func,
-  widgetFor: PropTypes.func,
-}
+  widgetFor: PropTypes.func
+};
 
-export default HamAboutPagePreview
+export default HamAboutPagePreview;
