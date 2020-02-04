@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import ScrollToTop from 'react-scroll-up';
 import { Link, StaticQuery, graphql } from 'gatsby';
 
@@ -289,6 +290,14 @@ const Header = class extends React.Component {
     )
   }
 }
+
+Header.propTypes = {
+  data: PropTypes.shape({
+    allMarkdownRemark: PropTypes.shape({
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery

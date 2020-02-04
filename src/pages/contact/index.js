@@ -12,7 +12,7 @@ function encode(data) {
 
 export default class ContactIndexPage extends React.Component {
   constructor(props) {
-    super(props)
+    super(props);
     this.state = { isValidated: false };
   }
 
@@ -28,8 +28,8 @@ export default class ContactIndexPage extends React.Component {
       headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
       body: encode({
         'form-name': form.getAttribute('name'),
-        ...this.state,
-      }),
+        ...this.state
+      })
     })
       .then(() => navigate(form.getAttribute('action')))
       .catch(error => alert(error));

@@ -100,7 +100,8 @@ BlogRoll.propTypes = {
     allMarkdownRemark: PropTypes.shape({
       edges: PropTypes.array
     })
-  })
+  }),
+  notImage: PropTypes.object 
 };
 
 export default () => (
