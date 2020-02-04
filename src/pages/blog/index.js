@@ -1,11 +1,11 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../../components/Layout'
-import CategoriesList from '../../components/CategoriesList'
-import BlogRoll from '../../components/BlogRoll'
-import PathLayout from '../../components/PathLayout'
+import Layout from '../../components/Layout';
+import CategoriesList from '../../components/CategoriesList';
+import BlogRoll from '../../components/BlogRoll';
+import PathLayout from '../../components/PathLayout';
 
-import PathContext from '../../contexts/PathContext'
+import PathContext from '../../contexts/PathContext';
 
 export default class BlogIndexPage extends React.Component {
   render() {
@@ -14,12 +14,13 @@ export default class BlogIndexPage extends React.Component {
       { ({ path }) => {
         const currentPath = (function(path) {
           switch (path) {
-            case "ham": return "はむ日和"
-            case "owner": return "飼い主日和"
-            case "story": return "ネタ日和"
-            default: return "みんな日和"
+            case 'ham': return 'はむ日和';
+            case 'owner': return '飼い主日和';
+            case 'story': return 'ネタ日和';
+            default: return 'みんな日和';
           }
         })(path)
+
         return (
           <Layout>
             <section className="section">

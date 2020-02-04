@@ -1,8 +1,8 @@
-import React from 'react'
+import React from 'react';
 
-import Layout from '../../components/Layout'
-import HamAboutFeatures from '../../components/HamAboutFeatures'
-import PathLayout from '../../components/PathLayout'
+import Layout from '../../components/Layout';
+import HamAboutFeatures from '../../components/HamAboutFeatures';
+import PathLayout from '../../components/PathLayout';
 
 export const HamAboutIndexPage = () => (
   <Layout>
@@ -26,4 +26,4 @@ export const HamAboutIndexPage = () => (
   </Layout>
 )
 
-export default HamAboutIndexPage
+export default HamAboutIndexPage;

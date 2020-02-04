@@ -1,15 +1,15 @@
-import React from 'react'
-import { Helmet } from 'react-helmet'
-import { withPrefix } from "gatsby"
-import Header from '../components/Header'
-import useSiteMetadata from './SiteMetadata'
-import './sass/all.sass'
+import React from 'react';
+import { Helmet } from 'react-helmet';
+import { withPrefix } from 'gatsby';
 
-const TemplateWrapper = ({
-  children,
-  state
-}) => {
-  const { title, description } = useSiteMetadata()
+import Header from '../components/Header';
+import useSiteMetadata from './SiteMetadata';
+
+import './sass/all.sass';
+
+const TemplateWrapper = ({ children }) => {
+  const { title, description } = useSiteMetadata();
+
   return (
     <div>
       <Helmet>
@@ -49,10 +49,10 @@ const TemplateWrapper = ({
         <meta property="og:url" content="/" />
         <meta property="og:image" content={`${withPrefix("/")}img/og-image.jpg`} />
       </Helmet>
-      <Header state={state}/>
+      <Header />
       {children}
     </div>
   )
 }
 
-export default TemplateWrapper
+export default TemplateWrapper;

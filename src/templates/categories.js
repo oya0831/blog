@@ -1,26 +1,22 @@
-import React from 'react'
-import Helmet from 'react-helmet'
-import { graphql } from 'gatsby'
+import React from 'react';
+import Helmet from 'react-helmet';
+import { graphql } from 'gatsby';
 
-import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
-import PathLayout from '../components/PathLayout'
+import Layout from '../components/Layout';
+import BlogRoll from '../components/BlogRoll';
+import PathLayout from '../components/PathLayout';
 
-import PathContext from '../contexts/PathContext'
-import BlogRollContext from '../contexts/BlogRollContext'
+import PathContext from '../contexts/PathContext';
+import BlogRollContext from '../contexts/BlogRollContext';
 
 class CategoryRoute extends React.Component {
   state = { 
     categoriesPosts: this.props.data.allMarkdownRemark.edges,
-    path: "category"
-  }
+    path: 'category'
+  };
   render() {
-    const category = this.props.pageContext.category
-    const title = this.props.data.site.siteMetadata.title
-    /*const totalCount = this.props.data.allMarkdownRemark.totalCount
-    const tagHeader = `${totalCount} post${
-      totalCount === 1 ? '' : 's'
-    }`*/
+    const category = this.props.pageContext.category;
+    const title = this.props.data.site.siteMetadata.title;
 
     return (
       <Layout>
@@ -37,11 +33,6 @@ class CategoryRoute extends React.Component {
               <div
                 className="column is-12"
               >
-                {/*<h3 className="title is-size-4 is-bold-light">{tagHeader}</h3>
-                <p>
-                  <Link to="/tags/">Browse all tags</Link>
-                </p>
-                */}
                 <PathContext.Provider value={this.state}>
                   <BlogRollContext.Provider value={this.state}>
                     <BlogRoll />
@@ -56,7 +47,7 @@ class CategoryRoute extends React.Component {
   }
 }
 
-export default CategoryRoute
+export default CategoryRoute;
 
 export const categoryPageQuery = graphql`
   query CategoryPage($category: String) {

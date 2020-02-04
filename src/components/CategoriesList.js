@@ -1,11 +1,11 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { kebabCase } from 'lodash'
-import { Link, graphql, StaticQuery } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { kebabCase } from 'lodash';
+import { Link, graphql, StaticQuery } from 'gatsby';
 
 const CategoriesList = ({ 
   data : {
-    allMarkdownRemark: { group },
+    allMarkdownRemark: { group }
   }
 }) => {
   return(
@@ -34,10 +34,10 @@ const CategoriesList = ({
 CategoriesList.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery

@@ -1,22 +1,21 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import { Link, graphql } from 'gatsby'
+import React from 'react';
+import PropTypes from 'prop-types';
+import { Link, graphql } from 'gatsby';
 
-import Layout from '../components/Layout'
-import BlogRoll from '../components/BlogRoll'
-import TranslateDate from '../components/TranslateDate'
-import PreviewCompatibleImage from '../components/PreviewCompatibleImage'
+import Layout from '../components/Layout';
+import BlogRoll from '../components/BlogRoll';
+import TranslateDate from '../components/TranslateDate';
+import PreviewCompatibleImage from '../components/PreviewCompatibleImage';
 
-import PathContext from '../contexts/PathContext'
+import PathContext from '../contexts/PathContext';
 
-import newPostsImg from '../img/news/new-posts-by-day.png'
+import newPostsImg from '../img/news/new-posts-by-day.png';
 
 class IndexPageTemplate extends React.Component {
-  state = { path: "index" }
+  state = { path: 'index' };
   render() {
-    const date = this.props.date
-    const mainpitch = this.props.mainpitch
-
+    const date = this.props.date;
+    const mainpitch = this.props.mainpitch;
     return (
       <PathContext.Provider value={ this.state }>
         <Layout>
@@ -71,11 +70,11 @@ class IndexPageTemplate extends React.Component {
 
 IndexPageTemplate.propTypes = {
   mainpitch: PropTypes.string,
-  date: PropTypes.string,
-}
+  date: PropTypes.string
+};
 
 const IndexPage = ({ data }) => {
-  const { edges: news } = data.allMarkdownRemark
+  const { edges: news } = data.allMarkdownRemark;
   return (
     <IndexPageTemplate
       date={news[0].node.frontmatter.date}
@@ -87,12 +86,12 @@ const IndexPage = ({ data }) => {
 IndexPage.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
-export default IndexPage
+export default IndexPage;
 
 export const pageQuery = graphql`
   query IndexPageTemplate {

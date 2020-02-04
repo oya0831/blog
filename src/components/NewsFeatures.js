@@ -1,14 +1,14 @@
-import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import TranslateDate from './TranslateDate'
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Content, { HTMLContent } from './Content'
+import TranslateDate from './TranslateDate';
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import Content, { HTMLContent } from './Content';
 
 export const NewsFeatureGrid = ({ data }) => {
-  const { edges: gridItems } = data.allMarkdownRemark
-  const PostContent = HTMLContent || Content
+  const { edges: gridItems } = data.allMarkdownRemark;
+  const PostContent = HTMLContent || Content;
  
   return (
     <section className="section">
@@ -49,10 +49,10 @@ export const NewsFeatureGrid = ({ data }) => {
 NewsFeatureGrid.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery
@@ -82,6 +82,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => <NewsFeatureGrid data={data} /> }
+    render={(data) => <NewsFeatureGrid data={data} />}
   />
 )

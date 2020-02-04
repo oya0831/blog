@@ -1,15 +1,13 @@
-import React from 'react'
-//import { kebabCase } from 'lodash'
-//import Helmet from 'react-helmet'
+import React from 'react';
 
-import Layout from '../../components/Layout'
-import BlogRoll from '../../components/BlogRoll'
-import PathLayout from '../../components/PathLayout'
+import Layout from '../../components/Layout';
+import BlogRoll from '../../components/BlogRoll';
+import PathLayout from '../../components/PathLayout';
 
-import PathContext from '../../contexts/PathContext'
+import PathContext from '../../contexts/PathContext';
 
 export default class CategoryPage extends React.Component {
-  state = { path: "categories" }
+  state = { path: 'categories' };
   render() {
     return (
       <Layout>

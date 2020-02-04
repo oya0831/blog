@@ -1,13 +1,13 @@
-import React from 'react'
-import { graphql, StaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
+import React from 'react';
+import { graphql, StaticQuery } from 'gatsby';
+import PropTypes from 'prop-types';
 
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import Content, { HTMLContent } from './Content'
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import Content, { HTMLContent } from './Content';
 
 export const HamAboutFeatureGrid = ({ data }) => {
-  const { edges: gridItems } = data.allMarkdownRemark
-  const PostContent = HTMLContent || Content
+  const { edges: gridItems } = data.allMarkdownRemark;
+  const PostContent = HTMLContent || Content;
 
   return (
     <div className="columns is-multiline">
@@ -38,10 +38,10 @@ export const HamAboutFeatureGrid = ({ data }) => {
 HamAboutFeatureGrid.propTypes = {
   data: PropTypes.shape({
     allMarkdownRemark: PropTypes.shape({
-      edges: PropTypes.array,
-    }),
-  }),
-}
+      edges: PropTypes.array
+    })
+  })
+};
 
 export default () => (
   <StaticQuery
@@ -70,6 +70,6 @@ export default () => (
         }
       }
     `}
-    render={(data) => <HamAboutFeatureGrid data={data} /> }
+    render={(data) => <HamAboutFeatureGrid data={data} />}
   />
 )

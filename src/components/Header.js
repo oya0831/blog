@@ -1,28 +1,28 @@
-import React from 'react'
-import ScrollToTop from 'react-scroll-up'
-import { Link, StaticQuery, graphql } from 'gatsby'
+import React from 'react';
+import ScrollToTop from 'react-scroll-up';
+import { Link, StaticQuery, graphql } from 'gatsby';
 
-import PreviewCompatibleImage from './PreviewCompatibleImage'
-import PathContext from '../contexts/PathContext'
+import PreviewCompatibleImage from './PreviewCompatibleImage';
+import PathContext from '../contexts/PathContext';
 
 //import Header Img
-import hoverImg from '../img/header/after.png'
-import aboutImg from '../img/header/about.png'
-import contactImg from '../img/header/contact.png'
-import indexWoodImg from '../img/header/index-hamz.png'
-import otherWoodImg from '../img/header/other-hamz.png'
-import kinakoImg from '../img/header/kinako.png'
-import gomaImg from '../img/header/goma.png'
-import hamUpImg from '../img/header/ham-up.png'
+import hoverImg from '../img/header/after.png';
+import aboutImg from '../img/header/about.png';
+import contactImg from '../img/header/contact.png';
+import indexWoodImg from '../img/header/index-hamz.png';
+import otherWoodImg from '../img/header/other-hamz.png';
+import kinakoImg from '../img/header/kinako.png';
+import gomaImg from '../img/header/goma.png';
+import hamUpImg from '../img/header/ham-up.png';
 
 //import mobile Img
-import mbHamzImg from '../img/header/mb-hamz.png'
-import mbHamImg from '../img/header/ham-day.png'
-import mbOwnerImg from '../img/header/owner-day.png'
-import mbStoryImg from '../img/header/story-day.png'
+import mbHamzImg from '../img/header/mb-hamz.png';
+import mbHamImg from '../img/header/ham-day.png';
+import mbOwnerImg from '../img/header/owner-day.png';
+import mbStoryImg from '../img/header/story-day.png';
 
 export function getScreenWidth() {
-  if(typeof window !== `undefined`) {
+  if (typeof window !== `undefined`) {
     return window.innerWidth;
   }
 }
@@ -35,7 +35,7 @@ const Header = class extends React.Component {
       navBarActiveClass: '',
       drawerLayoutClass: 'drawer-layout',
       aboutTextPositionClass: 'about-position',
-      contactTextPositionClass: 'contact-position',
+      contactTextPositionClass: 'contact-position'
     }
   }
 
@@ -43,7 +43,7 @@ const Header = class extends React.Component {
     // toggle the active boolean in the state
     this.setState(
       {
-        active: !this.state.active,
+        active: !this.state.active
       },
       // after state has been updated,
       () => {
@@ -53,13 +53,13 @@ const Header = class extends React.Component {
               navBarActiveClass: 'is-active',
               drawerLayoutClass: 'mb-drawer-layout',
               aboutTextPositionClass: '',
-              contactTextPositionClass: '',
+              contactTextPositionClass: ''
             })
           : this.setState({
               navBarActiveClass: '',
               drawerLayoutClass: 'drawer-layout',
               aboutTextPositionClass: 'about-position',
-              contactTextPositionClass: 'contact-position',
+              contactTextPositionClass: 'contact-position'
             })
       }
     )
@@ -94,15 +94,15 @@ const Header = class extends React.Component {
         })(width);
 
         //main image
-        const mainImage = path==='index' ? data.main : data.sub;
+        const mainImage = path === 'index' ? data.main : data.sub;
 
         //wood image
-        const woodImage = path==='index' ? indexWoodImg : otherWoodImg;
-        const woodImageLayout = path==='index' ? 'index-wood' : 'other-wood';
+        const woodImage = path === 'index' ? indexWoodImg : otherWoodImg;
+        const woodImageLayout = path === 'index' ? 'index-wood' : 'other-wood';
 
         //hamster image
-        const hamsterImage = path==='index' ? kinakoImg : gomaImg;
-        const hamsterImageLayout = path==='index' ? 'index-ham' : 'other-ham';
+        const hamsterImage = path === 'index' ? kinakoImg : gomaImg;
+        const hamsterImageLayout = path === 'index' ? 'index-ham' : 'other-ham';
 
         return (
           <>

@@ -1,6 +1,6 @@
-import React from 'react'
-import PropTypes from 'prop-types'
-import NewsIndexPage from '../../pages/news/index'
+import React from 'react';
+import PropTypes from 'prop-types';
+import NewsIndexPage from '../../pages/news/index';
 
 const NewsPagePreview = ({ entry, widgetFor }) => (
   <NewsIndexPage
@@ -11,9 +11,9 @@ const NewsPagePreview = ({ entry, widgetFor }) => (
 
 NewsPagePreview.propTypes = {
   entry: PropTypes.shape({
-    getIn: PropTypes.func,
+    getIn: PropTypes.func
   }),
-  widgetFor: PropTypes.func,
-}
+  widgetFor: PropTypes.func
+};
 
-export default NewsPagePreview
+export default NewsPagePreview;

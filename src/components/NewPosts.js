@@ -2,20 +2,20 @@ const NewPosts = ({ posts }) => {
   let ham=0, owner=0, story=0;
   const str = posts.map(value => {
     switch (value.node.frontmatter.dayKey) {
-      case "ham" : 
-        if (ham===0) {
+      case 'ham' : 
+        if (ham === 0) {
           ham++;
           return value;
         }
-        return null
-      case "owner" :
-        if (owner===0) {
+        return null;
+      case 'owner' :
+        if (owner === 0) {
           owner++;
           return value;
         }
-        return null
+        return null;
       default :
-        if (story===0) {
+        if (story === 0) {
           story++;
           return value;
         }
@@ -27,4 +27,4 @@ const NewPosts = ({ posts }) => {
   return results;
 }
 
-export default NewPosts
+export default NewPosts;

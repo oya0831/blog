@@ -1,8 +1,8 @@
 import React from 'react'
 
-import Layout from '../../components/Layout'
-import PathLayout from '../../components/PathLayout'
-import NewsFeatures from '../../components/NewsFeatures'
+import Layout from '../../components/Layout';
+import PathLayout from '../../components/PathLayout';
+import NewsFeatures from '../../components/NewsFeatures';
 
 export const NewsIndexPage = () => (
   <Layout>
@@ -20,4 +20,4 @@ export const NewsIndexPage = () => (
   </Layout>
 )
 
-export default NewsIndexPage
+export default NewsIndexPage;
