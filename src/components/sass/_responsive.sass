@@ -1,63 +1,67 @@
-@import "~bulma"
-@import "blogroll"
-@import "blog_content"
-@import "header"
+@import '~bulma';
+@import 'blogroll';
+@import 'blog_content';
+@import 'header';
+
 
 //hamz resuponsive
-$responsive: only screen and (min-width:1024px) and (max-width:1219px)
+$responsive: only screen and (min-width:1024px) and (max-width:1219px);
+
 
 // responsiveness
 +tablet-only
   .blog-list-item .featured-thumbnail
-    flex-basis: 50%
+    flex-basis: 50%;
   .blog-slug-text
-    font-size: 1.5rem
+    font-size: 1.5rem;
+
 +mobile
   .blog-list-item header
-    display: block
+    display: block;
   .blog-list-item .featured-thumbnail
-    text-align: center
-    max-width: 70%
-    margin: 0 0 1em
+    text-align: center;
+    max-width: 70%;
+    margin: 0 0 1em;
   .featured-hamster-thmbnail
-    width: 200px
+    width: 200px;
   .featured-news-display
-    display: inline
+    display: inline;
   .news-body-padding
-    padding-right: 0px
+    padding-right: 0px;
   .ham-up-size
-    width: 70px
-    margin-right: 0px
+    width: 70px;
+    margin-right: 0px;
   .new-posts
-    width: 250px
-    margin-left: 0px !important
+    width: 250px;
+    margin-left: 0px !important;
   .continue-text-size
-    font-size: 1.2rem
+    font-size: 1.2rem;
   .blog-main-image
-    padding: 0px
+    padding: 0px;
+
 @media #{$responsive}
   .index-wood
-    width: 160px
-    top: 24%
+    width: 160px;
+    top: 24%;
   .other-wood
-    width: 110px
-    top: 14%
+    width: 110px;
+    top: 14%;
   .index-ham
-    top: 24%
-    width: 160px
+    top: 24%;
+    width: 160px;
     &:hover
-      top: 17.5%
+      top: 17.5%;
   .other-ham
-    right: 2%
-    top: 14%
-    width: 110px
+    right: 2%;
+    top: 14%;
+    width: 110px;
     &:hover
-      top: 15.5%
+      top: 15.5%;
   .ham-margin
-    margin-left: 50px
+    margin-left: 50px;
   .owner-margin
-    margin-left: 30px 
+    margin-left: 30px; 
   .story-margin
-    margin-left: 70px
+    margin-left: 70px;
   .new-posts
-    margin-left: 100px
+    margin-left: 100px;
