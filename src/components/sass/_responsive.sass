@@ -4,9 +4,10 @@
 @import 'header';
 
 
-//hamz resuponsive
+//responsive
 $responsive: only screen and (min-width:1024px) and (max-width:1219px);
-
+$logo-tb: only screen and (min-width:769px) and (max-width:1299px);
+$logo-mb: only screen and (max-width:760px);
 
 // responsiveness
 +tablet-only
@@ -38,6 +39,10 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px);
     font-size: 1.2rem;
   .blog-main-image
     padding: 0px;
+  .news-date-btn
+    font-size: 1.6rem !important;
+  .news-title-btn
+    font-size: 1.6rem !important;
 
 @media #{$responsive}
   .index-wood
@@ -65,3 +70,15 @@ $responsive: only screen and (min-width:1024px) and (max-width:1219px);
     margin-left: 70px;
   .new-posts
     margin-left: 100px;
+
+@media #{$logo-tb}
+  .main-logo
+    width: 300px;
+  .sub-logo
+    width: 220px;
+
+@media #{$logo-mb}
+  .main-logo
+    width: 130px !important;
+  .sub-logo
+    width: 90px !important;
