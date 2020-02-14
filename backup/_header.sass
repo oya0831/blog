@@ -1,0 +1,197 @@
+//header
+.main-text
+  position: absolute
+  color: white
+  top: 0
+  left: 0
+.burger-position
+  position: absolute !important
+  top: 0%
+  right: 0%
+  background-color: transparent !important
+.about-position
+  width: 120px
+  position: absolute !important
+  top: 2%
+  right: 15%
+  background-color: transparent !important
+.contact-position
+  width: 120px
+  position: absolute !important
+  top: 2%
+  right: 1.8%
+  background-color: transparent !important
+.burger-layout
+  z-index: 40
+  color: white !important;
+.mb-day-text
+  width: 180px
+  background-color: transparent !important
+  padding: 0.15rem 0.5rem !important
+  img
+    max-height: initial !important
+.mb-drawer-layout
+  border-top-left-radius: 10px !important
+  border-bottom-left-radius: 10px !important
+  background-color: #996633 !important
+  position: absolute !important
+  z-index: 30
+  top: 0%
+  right: 0%
+.sidebar
+  -webkit-transform: translateX(-250px);
+  -webkit-transform-style: preserve-3d;
+  transform: translateX(-250px);
+  transform-style: preserve-3d;
+  transition-duration: .2s;
+  transition-property: -webkit-transform;
+  transition-property: transform;
+  transition-property: transform,-webkit-transform;
+  transition-timing-function: cubic-bezier(.4,0,.2,1);
+  will-change: transform;
+.sidebar.is-active
+  -webkit-transform: translateX(0);
+  transform: translateX(0);
+.drawer-layout
+  background-color: #ffb96117 !important
+  height: 100px
+.day-text
+  position: absolute !important
+  font-size: 4.0em
+  font-weight: bold
+.day-padding
+  padding: 0 !important
+.ham-margin
+  margin-left: 95px
+.owner-margin
+  margin-left: 80px 
+.story-margin
+  margin-left: 80px
+.hover-layout
+  position: absolute
+  width: 280px
+  padding-top: 20px
+  opacity: 0
+  &:hover
+    opacity: 0.7
+.hover-owner-layout
+  @extend .hover-layout
+  margin-left: 13px
+  width: 290px
+  padding-top: 15px
+.navbar-item.day-item
+  padding: 0 !important
+
+//hamz image
+//wood
+.index-wood
+  width: 200px
+  position: absolute
+  top: 27%
+  right: 5%
+.other-wood
+  width: 140px
+  position: absolute
+  top: 16%
+  right: 6%
+//hamster
+.index-ham
+  position: absolute
+  right: 5%
+  top: 27%
+  z-index: 40
+  width: 200px
+  opacity: 0
+  &:hover
+    top: 19%
+    opacity: 1
+.other-ham
+  position: absolute
+  right: 6%
+  top: 16%
+  z-index: 60
+  width: 140px
+  opacity: 0
+  &:hover
+    right: 10.5%
+    top: 17.5%
+    opacity: 1
+.ham-up-size
+  width: 90px
+  margin-right: 20px
+
+
+
+
+/*.header
+  width: 100%;
+  background-color: #FC466B;
+  position: fixed;
+  height: 60px!important;*/
+  
+
+#sidebarMenu 
+  height: 100%;
+  position: fixed;
+  right: 0;
+  width: 250px;
+  margin-top: 60px;
+  transform: translateX(250px);
+  transition: transform 250ms ease-in-out;
+  background: linear-gradient(180deg, #FC466B 0%, #3F5EFB 100%);
+                                  
+input[type="checkbox"]:checked ~ #sidebarMenu
+  transform: translateX(0);
+
+
+.sidebarIconToggle
+  transition: all 0.3s;
+  box-sizing: border-box;
+  cursor: pointer;
+  position: absolute;
+  z-index: 99;
+  height: 100%;
+  width: 100%;
+  top: 22px;
+  left: 15px;
+  height: 22px;
+  width: 22px;
+.spinner
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: absolute !important;
+  height: 3px;
+  width: 100%;
+  background-color: #fff;
+.horizontal
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+.diagonal.part-1
+  position: relative;
+  transition: all 0.3s;
+  box-sizing: border-box;
+  float: left;
+.diagonal.part-2
+  transition: all 0.3s;
+  box-sizing: border-box;
+  position: relative;
+  float: left;
+  margin-top: 3px;
+input[type=checkbox]:checked ~ .sidebarIconToggle > .horizontal
+  transition: all 0.3s;
+  box-sizing: border-box;
+  opacity: 0;
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-1
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(135deg);
+  margin-top: 8px;
+input[type=checkbox]:checked ~ .sidebarIconToggle > .diagonal.part-2
+  transition: all 0.3s;
+  box-sizing: border-box;
+  transform: rotate(-135deg);
+  margin-top: -9px;
+

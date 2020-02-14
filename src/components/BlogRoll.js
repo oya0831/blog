@@ -81,7 +81,7 @@ export const BlogRoll = ({ data, notImage }) => (
                 </p>
                 </header>
                 <div className="rounded-font excerpt-text">{result.excerpt}</div>
-                <Link className="soft-font continue-text-size" to={result.fields.slug}>
+                <Link className="soft-font btn continue-text-size" to={result.fields.slug}>
                   続きを読む ≫
                 </Link>
               </article>
@@ -114,7 +114,7 @@ export default () => (
         ) {
           edges {
             node {
-              excerpt(pruneLength: 400)
+              excerpt(truncate: true, pruneLength: 80)
               id
               fields {
                 slug

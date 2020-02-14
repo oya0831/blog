@@ -15,14 +15,12 @@ import otherWoodImg from '../img/header/other-hamz.png';
 import kinakoImg from '../img/header/kinako.png';
 import gomaImg from '../img/header/goma.png';
 import hamUpImg from '../img/header/ham-up.png';
-import mainLogoImg from '../img/header/logo.png';
 
 //import mobile Img
 import mbHamzImg from '../img/header/mb-hamz.png';
 import mbHamImg from '../img/header/ham-day.png';
 import mbOwnerImg from '../img/header/owner-day.png';
 import mbStoryImg from '../img/header/story-day.png';
-import mbMainLogoImg from '../img/header/mb-logo.png';
 
 export function getScreenWidth() {
   if (typeof window !== `undefined`) {
@@ -99,9 +97,6 @@ const Header = class extends React.Component {
         //main image
         const mainImage = path === 'index' ? data.main : data.sub;
 
-        //main logo
-        const mainLogoLayout = path === 'index' ? 'main-logo' : 'sub-logo';
-
         //wood image
         const woodImage = path === 'index' ? indexWoodImg : otherWoodImg;
         const woodImageLayout = path === 'index' ? 'index-wood' : 'other-wood';
@@ -118,13 +113,8 @@ const Header = class extends React.Component {
                 alt: "main image"
               }}
             />
-            <Link to="/" className={mainLogoLayout}>
-              <PreviewCompatibleImage
-                imageInfo={{
-                  image: mainLogoImg,
-                  alt: "main logo image"
-                }}
-              />
+            <Link to="/">
+              <h1 className="main-text">はむっと！</h1>
             </Link>
             <ScrollToTop showUnder={scroll} style={{zIndex: 10}}>
               <div className="ham-up-size">
@@ -151,13 +141,8 @@ const Header = class extends React.Component {
             >
               { this.state.active ? 
                 <>
-                  <Link className="navbar-item mb-logo" to="/">
-                    <PreviewCompatibleImage
-                      imageInfo={{
-                        image: mbMainLogoImg,
-                        alt: "mobile main logo image"
-                      }}
-                    />
+                  <Link className="navbar-item mb-day-text" to="/">
+                    はむっと！
                   </Link>
                   <Link className="navbar-item mb-day-text" to="/blog/ham">
                     <PreviewCompatibleImage
@@ -296,6 +281,17 @@ const Header = class extends React.Component {
                 </>
               }
             </div>
+            {/*<input type="checkbox" class="openSidebarMenu" id="openSidebarMenu" />
+              <label for="openSidebarMenu" class="sidebarIconToggle">
+                  
+            <div class="spinner diagonal part-1"></div>
+            <div class="spinner horizontal"></div>
+            <div class="spinner diagonal part-2"></div>
+            </label>
+             <div id="sidebarMenu">
+                 
+             </div>
+            */}
           </>
         )
       }}
