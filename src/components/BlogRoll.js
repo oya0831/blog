@@ -136,7 +136,7 @@ export default () => (
             }
           }
         }
-        not_image:file(relativePath: {eq: "ham.png"}) {
+        not_image:file(relativePath: {eq: "not-image.jpg"}) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid
