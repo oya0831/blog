@@ -4,7 +4,7 @@ dayKey: owner
 title: ownertest
 date: 2020-02-17T04:16:05.435Z
 description: test
-featuredimage: ''
+featuredimage: /img/products-grid3.jpg
 image: /img/products-grid2.jpg
 category:
   - ownertest
