@@ -92,7 +92,7 @@ export const BlogRoll = ({ data, notImage }) => (
                 </p>
                 </header>
                 <div className="rounded-font excerpt-text">{result.excerpt}</div>
-                <Link className="soft-font btn continue-text-size" to={result.fields.slug}>
+                <Link className="soft-font btn continue-btn-text" to={result.fields.slug}>
                   続きを読む ≫
                 </Link>
                 <div className={`day-decoration ${result.frontmatter.dayKey==='owner' ? 'owner-decoration' : 'other-decoration'}`} >
