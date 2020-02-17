@@ -8,6 +8,7 @@ import TranslateDate from './TranslateDate';
 
 import PathContext from '../contexts/PathContext';
 import BlogRollContext from '../contexts/BlogRollContext';
+import DecorationDayText from '../img/header/hover.png';
 
 export const BlogRoll = ({ data, notImage }) => (
   <PathContext.Consumer>
@@ -31,10 +32,20 @@ export const BlogRoll = ({ data, notImage }) => (
             else {
               return null;
             }
-          })
+          });
+          //removed undefined
           return str.filter(str => str);
         }
       })(path);
+
+      /*const dayText = posts.map(value => {
+        switch (value.node.frontmatter.dayKey) {
+          case 'ham': return 'はむ日和';
+          case 'owner': return '飼い主日和';
+          default: return 'ネタ日和';
+        }
+      });*/
+
 
       return (
         <div className="columns is-multiline">
@@ -81,9 +92,24 @@ export const BlogRoll = ({ data, notImage }) => (
                 </p>
                 </header>
                 <div className="rounded-font excerpt-text">{result.excerpt}</div>
-                <Link className="soft-font btn continue-text-size" to={result.fields.slug}>
+                <Link className="soft-font btn continue-btn-text" to={result.fields.slug}>
                   続きを読む ≫
                 </Link>
+                <div className={`day-decoration ${result.frontmatter.dayKey==='owner' ? 'owner-decoration' : 'other-decoration'}`} >
+                  <PreviewCompatibleImage
+                    imageInfo={{
+                      image: DecorationDayText,
+                      alt: 'decoration image',
+                    }}
+                  />
+                </div>
+                <div className="soft-font blog-day-text has-text-centered">
+                  {
+                    result.frontmatter.dayKey==='ham' ? 'はむ日和' : 
+                    result.frontmatter.dayKey==='owner' ? '飼い主日和' :
+                    result.frontmatter.dayKey==='story' ? 'ネタ日和' : null
+                  }
+                </div>
               </article>
             </div>
           ))}
@@ -136,7 +162,7 @@ export default () => (
             }
           }
         }
-        not_image:file(relativePath: {eq: "ham.png"}) {
+        not_image:file(relativePath: {eq: "not-image.jpg"}) {
           childImageSharp {
             fluid(maxWidth: 1000, quality: 100) {
               ...GatsbyImageSharpFluid

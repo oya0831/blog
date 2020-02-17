@@ -19,7 +19,7 @@ export default class BlogIndexPage extends React.Component {
             case 'story': return 'ネタ日和';
             default: return 'みんな日和';
           }
-        })(path)
+        })(path);
 
         return (
           <Layout>
